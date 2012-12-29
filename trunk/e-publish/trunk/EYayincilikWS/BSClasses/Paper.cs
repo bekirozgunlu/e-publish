@@ -18,6 +18,7 @@ namespace BSClass
         public double version;
         public Survey survey;
         public string title;
+        public string publisherComment;
         public Comment[] comments;
 
         public int isActive ;
