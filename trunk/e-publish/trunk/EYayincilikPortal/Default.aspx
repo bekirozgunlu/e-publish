@@ -46,7 +46,8 @@
             </Columns>
         </asp:GridView>
         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
-            SelectMethod="GetMagazineList" TypeName="EYayincilikPortal.Manager">
+            SelectMethod="GetMagazineList" TypeName="EYayincilikPortal.Manager" 
+            DataObjectTypeName="EYayincilikPortal.SVC1.Magazine" InsertMethod="AddMagazine">
             <SelectParameters>
                 <asp:Parameter DefaultValue="&quot;&quot;" Name="MagazineIDList" 
                     Type="String" />
