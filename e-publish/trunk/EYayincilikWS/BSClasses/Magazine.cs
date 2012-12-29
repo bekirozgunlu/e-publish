@@ -12,6 +12,6 @@ namespace BSClass
         public SubCategory[] subCategories;
         public PublishedMagazine[] publishedMagazines;
         public Paper [] ApprovedPaperList;
-
+        public int maxPaperCount;
     }
 }
