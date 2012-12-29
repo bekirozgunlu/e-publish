@@ -81,7 +81,27 @@ namespace BSClass
             try
             {
                 int newID = 0;
-                string sSQL = "";
+                string sSQL = @"INSERT INTO [Magazine]
+                        ([PublisherUserRef],[name],[maxPaperCount])
+                        VALUES
+                         ("+ 
+                                m.publisherId.ToString() +","+
+                                m.name+","+
+                                m.maxPaperCount.ToString() +                                                               
+                        ")" +
+
+                        " Select @@IDENTITY " ;
+
+                sc.Open();
+                SqlCommand scmd= new SqlCommand(sSQL, sc);
+                
+                object o= scmd.ExecuteScalar();
+                newID = Convert.ToInt32(o.ToString());
+                sc.Close();
+
+
+
+
                 return newID;
             }
             catch (Exception ex)
