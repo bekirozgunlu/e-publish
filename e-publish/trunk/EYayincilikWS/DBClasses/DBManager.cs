@@ -1369,15 +1369,39 @@ namespace BSClass
 
         public BSClass.Magazine[] GetMagazineList(string MagazineIDList, bool onlyActiveRecords)
         {
-
+             List<Magazine> tList = new List<Magazine>();
             try
             {
+                string sSQL = @"SELECT Magazine.ID,PublisherUserRef,Magazine.name,Magazine.createDate,Magazine.modifiedDate,
+		                    maxPaperCount,UPPER(PortalUser.name+' '+PortalUser.surName) as EditorAdi
+                            FROM Magazine
+                            inner join PortalUser on PortalUser.ID=Magazine.PublisherUserRef "  ;
 
-                Magazine a1 = new Magazine();
-                Magazine a2 = new Magazine();
-                List<Magazine> tList = new List<Magazine>();
-                tList.Add(a1);
-                tList.Add(a2);
+
+                sc.Open();
+                SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                sc.Close();
+
+              
+
+                if (dt.Rows.Count < 0)
+                {
+                    return null;
+                }
+                else
+                {
+
+                    foreach (DataRow dr in dt.Rows) 
+                    {
+                        Magazine m = new Magazine();
+                        m.id = Convert.ToInt32(  dr["ID"].ToString());
+                        m.name = dr["name"].ToString();                        
+                        tList.Add(m);
+                    }
+                }
+                
                 return tList.ToArray(); 
 
             }
