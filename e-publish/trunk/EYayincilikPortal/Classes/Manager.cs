@@ -14,6 +14,7 @@ namespace EYayincilikPortal
 
         private Manager() 
         {
+            //sdsf
             SVC1.Service1 svc = new SVC1.Service1();  //initializes web service...
         }
 
