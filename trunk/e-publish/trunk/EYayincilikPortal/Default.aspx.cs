@@ -19,7 +19,7 @@ namespace EYayincilikPortal
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-           
+           //sdfsdfs s
                 SVC1.User x = Manager.singleton().GetUserByID(2);
                 TextBox1.Text = x.userID.ToString();
                 TextBox2.Text = x.userName.ToUpper() ;
