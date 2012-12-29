@@ -13,7 +13,7 @@ namespace EYayincilikPortal
         //EYWS.User u;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //
+            //aa
         }
 
         protected void Button1_Click(object sender, EventArgs e)
