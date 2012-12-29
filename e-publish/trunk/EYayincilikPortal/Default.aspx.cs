@@ -24,7 +24,7 @@ namespace EYayincilikPortal
                 TextBox1.Text = x.userID.ToString();
                 TextBox2.Text = x.userName.ToUpper() ;
 
-            //asdasd 
+            //asdasd mmmmm
         }
 
         protected void Button2_Click(object sender, EventArgs e)
