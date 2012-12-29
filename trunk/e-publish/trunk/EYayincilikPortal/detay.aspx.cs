@@ -22,7 +22,10 @@ namespace EYayincilikPortal
 
             mm = Session["MZ"] as SVC1.Magazine[] ;
 
-            string aa;
+            string aa = "";
+            aa = "dfgdfg";
+
+
 
         }
     }
