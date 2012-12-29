@@ -15,9 +15,7 @@ namespace EYayincilikPortal
         {
             
             Manager m2 = new Manager();
-           SVC1.Magazine [] mm= m2.GetMagazineList("", true);
-
-
+           SVC1.Magazine [] mm= m2.GetMagazineList("", true);            
            Session["MZ"] = mm;
 
             
