@@ -1378,6 +1378,7 @@ namespace BSClass
                             inner join PortalUser on PortalUser.ID=Magazine.PublisherUserRef "  ;
 
 
+
                 sc.Open();
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();

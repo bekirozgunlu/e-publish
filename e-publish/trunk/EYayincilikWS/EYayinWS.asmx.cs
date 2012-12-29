@@ -485,12 +485,7 @@ namespace EYayincilikWS
         [WebMethod]
         public Magazine[] GetMagazineList(string MagazineIDList, bool onlyActiveRecords)
         {
-            Magazine a1 = new Magazine();
-            Magazine a2 = new Magazine();
-            List<Magazine> tList = new List<Magazine>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetMagazineList(MagazineIDList, onlyActiveRecords);
         }
 
 
