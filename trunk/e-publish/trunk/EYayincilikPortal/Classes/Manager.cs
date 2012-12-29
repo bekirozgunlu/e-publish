@@ -9,21 +9,21 @@ namespace EYayincilikPortal
     public class Manager
     {
 
-        private static Manager p_singleton;
+        //private static Manager p_singleton;
         private static SVC1.Service1 svc = new SVC1.Service1();
 
-        private Manager() 
-        {
-            //sdsf
-            SVC1.Service1 svc = new SVC1.Service1();  //initializes web service...
-        }
+        //private Manager() 
+        //{
+        //    //sdsf
+        //    SVC1.Service1 svc = new SVC1.Service1();  //initializes web service...
+        //}
 
-        public static Manager singleton()
-        {
-            if (p_singleton == null)
-                p_singleton = new Manager();
-            return p_singleton;
-        }
+        //public static Manager singleton()
+        //{
+        //    if (p_singleton == null)
+        //        p_singleton = new Manager();
+        //    return p_singleton;
+        //}
 
 
         
@@ -32,6 +32,7 @@ namespace EYayincilikPortal
 
             try
             {
+                SVC1.Service1 svc = new SVC1.Service1(); 
                 SVC1.User u = svc.GetUserByID(userID);
                 return u;
             }

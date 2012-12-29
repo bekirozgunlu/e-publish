@@ -13,16 +13,26 @@ namespace EYayincilikPortal
         //EYWS.User u;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //aa
+            
+            Manager m2 = new Manager();
+           SVC1.Magazine [] mm= m2.GetMagazineList("", true);
+
+
+           Session["MZ"] = mm;
+
+            
+          //  GridView1.DataSource = mm;
+          //  GridView1.AutoGenerateColumns = true;
+           // DataBind();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
 
            //sdfsdfs s
-                SVC1.User x = Manager.singleton().GetUserByID(2);
-                TextBox1.Text = x.userID.ToString();
-                TextBox2.Text = x.userName.ToUpper() ;
+               // SVC1.User x = Manager.singleton().GetUserByID(2);
+                //TextBox1.Text = x.userID.ToString();
+                //TextBox2.Text = x.userName.ToUpper() ;
 
             //asdasd mmmmm
         }
@@ -33,6 +43,11 @@ namespace EYayincilikPortal
             
             
             Response.Redirect("sayfa2.aspx?tt=21");
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("detay.aspx?makaleID="+"1");
         }
     }
 }
