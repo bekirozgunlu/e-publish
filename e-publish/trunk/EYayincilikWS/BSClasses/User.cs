@@ -11,7 +11,7 @@ namespace BSClass
         public string passWord;
         public string name;
         public string surName;
-        public bool isActive;
+        public int isActive;
         public string photoFilePath;
         public int []userType;
 
