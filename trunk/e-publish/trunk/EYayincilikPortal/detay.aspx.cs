@@ -14,7 +14,7 @@ namespace EYayincilikPortal
         {
             parametre = Request.QueryString["makaleID"].ToString();
 
-            TextBox1.Text = parametre;
+           // TextBox1.Text = parametre;
 
 
             SVC1.Magazine[] mm;

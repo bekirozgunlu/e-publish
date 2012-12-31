@@ -14,13 +14,14 @@ namespace BSClass
         public DateTime approvalDate;
         public Referee[] referees;
         public string [] referencePaperID;   
-        public int publishedId;
+        public string publishedId;
         public double version;
         public Survey survey;
         public string title;
         public string publisherComment;
         public Comment[] comments;
-
+        public int MagazineID ;
+        public int PublishedMagazineID;
         public int isActive ;
     }
 }

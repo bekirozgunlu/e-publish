@@ -40,7 +40,7 @@ namespace BSClass
 
         public void ListComments()
         {
-            comments = DBManager.singleton().GetCommentList("", this.id.ToString(), -1, false);
+            comments = DBManager.singleton().GetCommentList(this.id.ToString(), -1, false);
         }
 
     }

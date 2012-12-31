@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="BSClasses\Author.cs" />
     <Compile Include="BSClasses\Comment.cs" />
+    <Compile Include="BSClasses\Enums.cs" />
     <Compile Include="BSClasses\Magazine.cs" />
     <Compile Include="BSClasses\Moderator.cs" />
     <Compile Include="BSClasses\Paper.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="BSClasses\ScienceCategory.cs" />
     <Compile Include="BSClasses\SubCategory.cs" />
     <Compile Include="BSClasses\Survey.cs" />
+    <Compile Include="BSClasses\SurveyAnswer.cs" />
     <Compile Include="BSClasses\SurveyQuestionary.cs" />
     <Compile Include="BSClasses\SystemAdmin.cs" />
     <Compile Include="BSClasses\User.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="DBClasses\ScienceCategory.cs" />
     <Compile Include="DBClasses\SubCategory.cs" />
     <Compile Include="DBClasses\Survey.cs" />
+    <Compile Include="DBClasses\SurveyAnswer.cs" />
     <Compile Include="DBClasses\SurveyQuestionary.cs" />
     <Compile Include="DBClasses\SystemAdmin.cs" />
     <Compile Include="DBClasses\User.cs" />
@@ -99,11 +102,10 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
+          <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>3961</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/EYayincilikWS</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

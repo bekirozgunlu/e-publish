@@ -8,6 +8,7 @@ namespace BSClass
     {
         public int id;
         public string name;
-        public SubCategory[] subCategories;
+        public int isActive;
+        //public SubCategory[] subCategories;
     }
 }

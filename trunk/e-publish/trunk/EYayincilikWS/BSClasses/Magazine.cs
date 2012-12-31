@@ -13,5 +13,6 @@ namespace BSClass
         public PublishedMagazine[] publishedMagazines;
         public Paper [] ApprovedPaperList;
         public int maxPaperCount;
+        public int isActive;
     }
 }

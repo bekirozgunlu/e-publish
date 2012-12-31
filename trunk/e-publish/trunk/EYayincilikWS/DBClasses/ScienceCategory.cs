@@ -28,7 +28,7 @@ namespace BSClass
 
         public void GetSubCategoryList() 
         {
-            DBManager.singleton().GetSubCategoryList(false);
+            DBManager.singleton().GetSubCategoryList(false,this.id.ToString(),-1);
         }
     }
 }

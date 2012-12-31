@@ -236,9 +236,9 @@ namespace EYayincilikWS
         }
 
         [WebMethod]
-        public void AnswerSurvey(int SurveyID,SurveyQuestionary [] sAnswers)
+        public void AnswerSurvey(SurveyAnswer [] sAnswers)
         {
-            //Called when a referee answers a set of Question
+            DBManager.singleton().AnswerSurvey( sAnswers);
         }
 
         [WebMethod]
@@ -374,7 +374,7 @@ namespace EYayincilikWS
         /// <param name="MagazineID"></param>
 
         [WebMethod]
-        public int  AddSurveyQuestionary(SurveyQuestionary sq, int MagazineID)
+        public int  AddSurveyQuestionary(SurveyQuestionary sq, int SurveyRef)
         {
             //adds a new SurveyQuestionary for a Survey
             int newID = 0;
@@ -427,6 +427,13 @@ namespace EYayincilikWS
 
         //YENI2
         //GET METHODS...
+
+        [WebMethod]
+        int[] GetUserTypes(int userID) 
+        {
+            return DBManager.singleton().GetUserTypes(userID);
+        }
+
         [WebMethod]
         public Author[] GetAuthorList(string AuthorIDList, string MagazineIDList, string PaperIDList,string PublishedMagazineIDList) 
         {
@@ -513,7 +520,7 @@ namespace EYayincilikWS
         }
 
         [WebMethod]
-        public Paper[] GetPaperList(string MagazineIDList,string PaperIDList, int RefereeID,int PublisherID,int AuthorID,string category,string subCategory, bool onlyActiveRecords)
+        public Paper[] GetPaperList(string PublishedMagazineIDList,string MagazineIDList, string PaperIDList, int RefereeID, int PublisherID, int AuthorID, string category, string subCategory, bool onlyActiveRecords)
         {
             Paper a1 = new Paper();            
             Paper a2 = new Paper();
@@ -571,6 +578,24 @@ namespace EYayincilikWS
         }
 
 
+         [WebMethod]
+        public int AddSurveyAnswer(SurveyAnswer sa)
+        {
+            return sa.AddSurveyAnswer();
+        }
+
+
+         [WebMethod]
+        public void DeleteSurveyAnswer(int SurveyAnswerID)
+        {
+
+            DBManager.singleton().DeleteSurveyAnswer(SurveyAnswerID);
+        }
+
+        public void UpdateSurveyAnswer(SurveyAnswer sa)
+        {
+            DBManager.singleton().UpdateSurveyAnswer(sa) ;
+        }
 
 
     }

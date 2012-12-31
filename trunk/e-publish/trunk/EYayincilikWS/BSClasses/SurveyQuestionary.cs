@@ -7,7 +7,7 @@ namespace BSClass
     public partial class SurveyQuestionary
     {
         public int id;
-        public string question;
-        public string answer;
+        public string question;        
+        public int isActive;
     }
 }
