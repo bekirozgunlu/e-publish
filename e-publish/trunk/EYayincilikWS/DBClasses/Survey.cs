@@ -27,9 +27,9 @@ namespace BSClass
         }
 
 
-        public void AnswerSurvey()
+        public void AnswerSurvey(SurveyAnswer []surveyAnswerslist)
         {
-            DBManager.singleton().AnswerSurvey(this.id, surveyQuestionary);
+            DBManager.singleton().AnswerSurvey(surveyAnswerslist);
         }
 
         public void AddQuestion(SurveyQuestionary sq)

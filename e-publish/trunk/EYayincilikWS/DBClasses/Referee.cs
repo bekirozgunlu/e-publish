@@ -24,19 +24,19 @@ namespace BSClass
             DBManager.singleton().UpdateReferee(this);
         }
 
-        public void ExaminePaper(BSClass.Paper p, BSClass.Comment[] commentlist, BSClass.Survey[] surveyList) 
+        public void ExaminePaper(BSClass.Paper p, BSClass.Comment[] commentlist, BSClass.SurveyAnswer[] answerList) 
         {
-            DBManager.singleton().ExaminePaper(p, commentlist, this.userID, surveyList);
+            DBManager.singleton().ExaminePaper(p, commentlist, this.userID, answerList);
         }
 
         public void ListPapers() 
         {
-            papers = DBManager.singleton().GetPaperList("", "", this.userID, -1, -1, "", "", false);
+            papers = DBManager.singleton().GetPaperList("", "", "",this.userID, -1, -1, "", "", false);
         }
 
-        public void SendOpinionToPublisher(int PaperID, int PublisherID) 
+        public void SendOpinionToPublisher(int PaperID, int isApproved) 
         {
-            DBManager.singleton().SendOpinionToPublisher (PaperID ,this.userID, PublisherID);
+            DBManager.singleton().SendOpinionToPublisher (PaperID ,this.userID, isApproved );
         }
 
 

@@ -9,5 +9,6 @@ namespace BSClass
         public int id;
         public int magazineId;
         public SurveyQuestionary[] surveyQuestionary;
+        public int isActive;
     }
 }

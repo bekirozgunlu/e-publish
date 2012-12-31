@@ -1082,12 +1082,12 @@ namespace EYayincilikPortal
             //Updates a Survey Record with new values...
         }
 
-        
-        public int AddSurveyQuestionary(SVC1.SurveyQuestionary sq, int MagazineID)
+
+        public int AddSurveyQuestionary(SVC1.SurveyQuestionary sq, int SurveyRef)
         {
             try
             {
-                int newID = svc.AddSurveyQuestionary(sq, MagazineID);
+                int newID = svc.AddSurveyQuestionary(sq, SurveyRef);
                 return newID;
             }
             catch (Exception ex)
