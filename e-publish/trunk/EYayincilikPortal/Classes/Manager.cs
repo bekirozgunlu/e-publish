@@ -675,14 +675,14 @@ namespace EYayincilikPortal
         }
 
         
-        public void AnswerSurvey(int SurveyID, SVC1.SurveyQuestionary[] sAnswers)
+        public void AnswerSurvey(SVC1.SurveyAnswer[] sAnswers)
         {
             //Called when a referee answers a set of Question
 
 
             try
             {
-                svc.AnswerSurvey(SurveyID, sAnswers);
+                svc.AnswerSurvey(sAnswers);
                 return;
             }
             catch (Exception ex)
@@ -1358,12 +1358,12 @@ namespace EYayincilikPortal
 
 
         
-        public SVC1.Comment[] GetCommentList(string MagazineIDList, string PaperIDList, int RefereeID, bool onlyActiveRecords)
+        public SVC1.Comment[] GetCommentList(string PaperIDList, int RefereeID, bool onlyActiveRecords)
         {
           
             try
             {
-                return svc.GetCommentList(MagazineIDList, PaperIDList, RefereeID, onlyActiveRecords);
+                return svc.GetCommentList(PaperIDList, RefereeID, onlyActiveRecords);
 
             }
             catch (Exception ex)
@@ -1380,12 +1380,12 @@ namespace EYayincilikPortal
         }
 
         
-        public SVC1.Paper[] GetPaperList(string MagazineIDList, string PaperIDList, int RefereeID, int PublisherID, int AuthorID, string category, string SubCategoryIDlist, bool onlyActiveRecords)
+        public SVC1.Paper[] GetPaperList(string PublishedMagazineIDList,string MagazineIDList, string PaperIDList, int RefereeID, int PublisherID, int AuthorID, string category, string SubCategoryIDlist, bool onlyActiveRecords)
         {
             
             try
             {
-                return svc.GetPaperList(MagazineIDList, PaperIDList, RefereeID, PublisherID,AuthorID, category, SubCategoryIDlist, onlyActiveRecords);
+                return svc.GetPaperList(PublishedMagazineIDList, MagazineIDList, PaperIDList, RefereeID, PublisherID,AuthorID, category, SubCategoryIDlist, onlyActiveRecords);
 
             }
             catch (Exception ex)
@@ -1402,11 +1402,11 @@ namespace EYayincilikPortal
         }
 
         
-        public SVC1.ScienceCategory[] ScienceCategoryList(bool onlyActiveRecords)
+        public SVC1.ScienceCategory[] ScienceCategoryList(bool onlyActiveRecords,int SubCAtegoryID)
         {
             try
             {
-                return svc.ScienceCategoryList(onlyActiveRecords);
+                return svc.GetScienceCategoryList(onlyActiveRecords, SubCAtegoryID);
 
             }
             catch (Exception ex)
@@ -1422,12 +1422,12 @@ namespace EYayincilikPortal
             }
         }
 
-        
-        public SVC1.SubCategory[] GetSubCategoryList(bool onlyActiveRecords)
+
+        public SVC1.SubCategory[] GetSubCategoryList(bool onlyActiveRecords, string scienceCAtegorylist,int MagazineID)
         {
             try
             {
-                return svc.SubCategoryList(onlyActiveRecords);
+                return svc.GetSubCategoryList(onlyActiveRecords,scienceCAtegorylist,MagazineID);
 
             }
             catch (Exception ex)
@@ -1445,12 +1445,12 @@ namespace EYayincilikPortal
 
 
 
-        
+        /*
         public SVC1.Survey[] GetSurveyList(bool onlyActiveRecords, int MagazineID)
         {
             try
             {
-                return svc.GetSurveyList(onlyActiveRecords,MagazineID);
+                //return svc.GetSurveyList(onlyActiveRecords, MagazineID);
 
             }
             catch (Exception ex)
@@ -1465,6 +1465,7 @@ namespace EYayincilikPortal
                 //dispose unused objects...
             }
         }
+         * */
 
 
         
