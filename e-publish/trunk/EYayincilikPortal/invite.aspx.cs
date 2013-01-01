@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using EYayincilikPortal.SVC1;
+using System.Web.Mail;
 
 namespace EYayincilikPortal
 {
@@ -34,10 +35,27 @@ namespace EYayincilikPortal
                 r.isActive = 2;
 
                 Manager m = new Manager();
-                m.AddReferee(r);
+                int RefereeID=m.AddReferee(r);
 
 
-                Response.Redirect("editor.aspx");
+                try
+                {
+
+                    string from = "sagirlibas@gmail.com";
+                    string to = txtMail.Text.Trim();
+                    string subject = "E-Yayıncılık Hakemlik Davetiyesi !";
+                    string body = " Hakemliği kabul etmek için http://eyayincilik/invite.aspx?invitation="+RefereeID.ToString()+" linkine tıklayınız  ";
+                    SmtpMail.SmtpServer = "mail.google.com";
+                    SmtpMail.Send(from, to, subject, body);
+
+                    Response.Redirect("editor.aspx");
+                }
+                catch(Exception ex)
+                {
+                    Label1.Text = "mail gönderilemedi:" + ex.Message;
+                }
+
+                
             
 
 

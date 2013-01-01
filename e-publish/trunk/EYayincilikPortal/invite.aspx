@@ -27,6 +27,9 @@
     <form id="form1" runat="server">
     <div>
     
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/editor.aspx">Ana Sayfa</asp:HyperLink>
+        <br />
+    
         <br />
         <table class="style1">
             <tr>
@@ -89,6 +92,11 @@
             <tr>
                 <td class="style4" colspan="3">
                     <strong>Hakem başarı ile davet edilirse ana sayfaya yönlendirileceksiniz.</strong></td>
+            </tr>
+            <tr>
+                <td class="style4" colspan="3">
+                    <asp:Label ID="Label1" runat="server"></asp:Label>
+                </td>
             </tr>
         </table>
     
