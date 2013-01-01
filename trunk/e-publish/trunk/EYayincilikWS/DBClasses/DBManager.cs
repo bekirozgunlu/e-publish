@@ -42,11 +42,11 @@ namespace BSClass
             try
             {
                 string sSQL = "Select PortalUser.* from PortalUser where ID=" + userID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt=new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 BSClass.User u = new BSClass.User(); ;
 
@@ -71,6 +71,7 @@ namespace BSClass
             }
             finally
             {
+                //if(sc.State==  ConnectionState.Open) if(sc.State==  ConnectionState.Open) {sc.Close();};
                 //dispose unused objects...
             }
         }
@@ -92,12 +93,12 @@ namespace BSClass
 
                         " Select @@IDENTITY " ;
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd= new SqlCommand(sSQL, sc);
                 
                 object o= scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
 
                 return newID;
@@ -111,6 +112,7 @@ namespace BSClass
             }
             finally
             {
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
                 //dispose unused objects...
             }
         }
@@ -123,7 +125,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update magazine SET isActive=2 where ID=" + magazineID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
 
@@ -138,6 +140,7 @@ namespace BSClass
             }
             finally
             {
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
                 //dispose unused objects...
             }
         }
@@ -159,7 +162,7 @@ namespace BSClass
                 WHERE ID=" + m.id.ToString();
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.Int);
                 scmd.Parameters[0].Value = m.publisherId ;
@@ -174,7 +177,7 @@ namespace BSClass
                 
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return;
             }
@@ -188,8 +191,9 @@ namespace BSClass
             }
             finally
             {
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -207,12 +211,12 @@ namespace BSClass
 
                         " Select @@IDENTITY ";
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return newID;
             }
@@ -225,6 +229,7 @@ namespace BSClass
             }
             finally
             {
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
                 //dispose unused objects...
             }
         }
@@ -235,7 +240,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update SubCategory SET isActive=2 where ID=" + SubCategoryID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
                 return;
@@ -250,6 +255,7 @@ namespace BSClass
             }
             finally
             {
+
                 //dispose unused objects...
             }
         }
@@ -266,11 +272,11 @@ namespace BSClass
                 " ,[isActive] = " + scx.isActive.ToString() +
                 " WHERE ID=" + scx.id.ToString();
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
 
                 scmd.ExecuteNonQuery();
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return;
             }
@@ -285,7 +291,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -304,7 +310,7 @@ namespace BSClass
                 
                  Select @@IDENTITY ";                
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = r.userName;
@@ -322,12 +328,12 @@ namespace BSClass
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
 
-                sc.Close();
-                sc.Open();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
                 VALUES(" + newID.ToString() + "," + UserType.hakem.ToString() + ") ";
                 scmd.ExecuteScalar();
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return newID;                
             }
@@ -342,7 +348,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -354,7 +360,7 @@ namespace BSClass
                 //DeleteUser(UserID);
                 
                 string ssQL = " Update PortalUSer SET isActive=2 where ID=" + RefereeID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
                 return;
@@ -395,7 +401,7 @@ namespace BSClass
                  WHERE ID=" + r.userID.ToString();
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = r.userName;
@@ -418,7 +424,7 @@ namespace BSClass
 
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
 
 
@@ -433,7 +439,7 @@ namespace BSClass
             }
             finally
             {
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -453,7 +459,7 @@ namespace BSClass
                  Select @@IDENTITY ";
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = a.userName;
@@ -474,9 +480,9 @@ namespace BSClass
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
                 VALUES(" + newID.ToString() + "," + UserType.yazar.ToString() + ") ";
                 scmd.ExecuteScalar();
@@ -494,7 +500,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -504,7 +510,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update PortalUSer SET isActive=2 where ID=" + AuthorID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
                 return;
@@ -544,7 +550,7 @@ namespace BSClass
                  WHERE ID=" + a.userID.ToString();
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = a.userName;
@@ -567,7 +573,7 @@ namespace BSClass
 
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
 
 
@@ -582,7 +588,7 @@ namespace BSClass
             }
             finally
             {
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -594,7 +600,7 @@ namespace BSClass
                 string sSQL = " UPDATE [SubCategory] SET [approvalState] = 2 " +//onayli
                 " WHERE ID= "+scx.id.ToString();
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 object o = scmd.ExecuteNonQuery();
 
@@ -611,7 +617,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -626,13 +632,13 @@ namespace BSClass
                 VALUES ("+ "'"+scx.name.ToUpper().Trim()+"'"+ ", 1"+ ")" +                
                 " Select @@IDENTITY ";
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
 
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return newID;
             }
@@ -647,7 +653,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -657,7 +663,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update ScienceCategory SET isActive=2 where ID=" + ScienceCategoryID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
                 return;
@@ -686,7 +692,7 @@ namespace BSClass
                           ,[isActive] =@p2
                      WHERE ID=" + scx.id.ToString(); 
                     
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = scx.name.Trim();
@@ -696,7 +702,7 @@ namespace BSClass
 
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
 
 
@@ -711,7 +717,7 @@ namespace BSClass
             }
             finally
             {
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -731,7 +737,7 @@ namespace BSClass
                  Select @@IDENTITY ";
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = pp.userName;
@@ -752,9 +758,9 @@ namespace BSClass
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
                 VALUES(" + newID.ToString() + "," + UserType.editor.ToString() + ") ";
                 scmd.ExecuteScalar();
@@ -772,7 +778,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -783,7 +789,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update PortalUser SET isActive=2 where ID=" + PublisherID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
 
@@ -824,7 +830,7 @@ namespace BSClass
                  WHERE ID=" + pp.userID.ToString();
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = pp.userName;
@@ -847,7 +853,7 @@ namespace BSClass
 
                 scmd.ExecuteNonQuery();
                 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 
 
@@ -862,7 +868,7 @@ namespace BSClass
             }
             finally
             {
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -885,7 +891,7 @@ namespace BSClass
 
                  Select @@IDENTITY ";
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.Int);
                 scmd.Parameters[0].Value = p.authorId;
@@ -909,7 +915,7 @@ namespace BSClass
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
                
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return newID;
             }
@@ -924,7 +930,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -935,7 +941,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update Paper SET isActive=2 where ID=" + PaperID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
 
@@ -977,7 +983,7 @@ namespace BSClass
                       ,[publisherComment] = @p13
                  WHERE ID=" + p.id.ToString();
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
 
 
@@ -1017,7 +1023,7 @@ namespace BSClass
 
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return;
             }
@@ -1032,7 +1038,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -1110,13 +1116,13 @@ namespace BSClass
                    " AND UserRefereeRef=" + RefereeID.ToString();
                    
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
 
 
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
 
                 sSQL = @"if (Select COUNT(ID) from RefereePaper 
@@ -1128,12 +1134,12 @@ namespace BSClass
                     " where ID="+PaperID.ToString()+
                 " end ";
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 scmd = null;
                 scmd = new SqlCommand(sSQL, sc);
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return;
             }
@@ -1148,7 +1154,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
 
         }
@@ -1165,7 +1171,7 @@ namespace BSClass
                 VALUES (@p1,@p2,@p3) " ;
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.Int);
                 scmd.Parameters[0].Value = RefereeID;
@@ -1177,17 +1183,17 @@ namespace BSClass
 
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
 
                 sSQL = @"Update Paper SET approvalState=" + ApprovalState.Hakem_Onayinda.ToString() +
                     " where ID=" + PaperID.ToString();                
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 scmd = null;
                 scmd = new SqlCommand(sSQL, sc);
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return;
             }
@@ -1200,7 +1206,7 @@ namespace BSClass
             }
             finally
             {
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -1217,13 +1223,13 @@ namespace BSClass
                    SET [approvalState] = "+ApprovalState.Yazar_Duzeltme.ToString()+                                                                  
                    " WHERE ID=" + PaperID.ToString();
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
 
 
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return;
             }
@@ -1238,7 +1244,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -1260,7 +1266,7 @@ namespace BSClass
                 
                  Select @@IDENTITY ";
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = passiveRefereeRecord.userName;
@@ -1278,12 +1284,12 @@ namespace BSClass
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
 
-                sc.Close();
-                sc.Open();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
                 VALUES(" + newID.ToString() + "," + UserType.hakem.ToString() + ") ";
                 scmd.ExecuteScalar();
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return ;
             }
@@ -1298,7 +1304,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -1320,10 +1326,10 @@ namespace BSClass
                         sa.PaperRef
                         + ")";
 
-                    sc.Open();
+                    if(sc.State==  ConnectionState.Closed) {sc.Open();}
                     SqlCommand scmd = new SqlCommand(sSQL, sc);
                     object o = scmd.ExecuteScalar();
-                    sc.Close();
+                    if(sc.State==  ConnectionState.Open) {sc.Close();};
                 }
 
                 return;
@@ -1354,7 +1360,7 @@ namespace BSClass
                  Select @@IDENTITY ";
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = u.userName;
@@ -1372,9 +1378,9 @@ namespace BSClass
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
                 VALUES(" + newID.ToString() + "," + UserType.yazar.ToString() + ") ";
                 scmd.ExecuteScalar();
@@ -1392,7 +1398,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -1404,7 +1410,7 @@ namespace BSClass
                 //DeleteUser(UserID);
                 //SystemAdmin(SystemAdmin);
                 string ssQL = " Update PortalUSer SET isActive=2 where ID=" + UserID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
                 return;
@@ -1445,7 +1451,7 @@ namespace BSClass
                  WHERE ID=" + u.userID.ToString();
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = u.userName;
@@ -1468,7 +1474,7 @@ namespace BSClass
 
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
 
 
@@ -1483,7 +1489,7 @@ namespace BSClass
             }
             finally
             {
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -1501,7 +1507,7 @@ namespace BSClass
 //                 Select @@IDENTITY ";
 
 
-//                sc.Open();
+//                if(sc.State==  ConnectionState.Closed) {sc.Open();}
 //                SqlCommand scmd = new SqlCommand(sSQL, sc);
 //                scmd.Parameters.Add("p1", SqlDbType.VarChar);
 //                scmd.Parameters[0].Value = u.userName;
@@ -1522,7 +1528,7 @@ namespace BSClass
 
 //                object o = scmd.ExecuteScalar();
 //                newID = Convert.ToInt32(o.ToString());
-//                sc.Close();
+//                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return newID;
             }
@@ -1537,7 +1543,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -1548,7 +1554,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update PortalUSer SET isActive=2 where ID=" + AnonimUserID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
 
@@ -1589,7 +1595,7 @@ namespace BSClass
 //                 WHERE ID=" + u.userID.ToString();
 
 
-//                sc.Open();
+//                if(sc.State==  ConnectionState.Closed) {sc.Open();}
 //                SqlCommand scmd = new SqlCommand(sSQL, sc);
 //                scmd.Parameters.Add("p1", SqlDbType.VarChar);
 //                scmd.Parameters[0].Value = u.userName;
@@ -1612,7 +1618,7 @@ namespace BSClass
 
 //                scmd.ExecuteNonQuery();
 
-//                sc.Close();
+//                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
 
 
@@ -1627,7 +1633,7 @@ namespace BSClass
             }
             finally
             {
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -1641,7 +1647,7 @@ namespace BSClass
                 //ActivateUser(userID);
                 string sSQL = @"Update [PortalUser]
                 SET isActive=1 where ID=" + userID.ToString();                
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);              
 
                 scmd.ExecuteNonQuery();                
@@ -1669,7 +1675,7 @@ namespace BSClass
                 //DeactivateUser(userID);
                 string sSQL = @"Update [PortalUser]
                 SET isActive=2 where ID=" + userID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
 
                 scmd.ExecuteNonQuery();
@@ -1702,7 +1708,7 @@ namespace BSClass
                 Select @@IDENTITY ";
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.TinyInt);
                 scmd.Parameters[0].Value = c.commentType;
@@ -1721,7 +1727,7 @@ namespace BSClass
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return newID;
             }
@@ -1736,7 +1742,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -1747,7 +1753,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update Comment SET isActive=2 where ID=" + CommentID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
 
@@ -1785,7 +1791,7 @@ namespace BSClass
                  WHERE ID=" + c.id.ToString();
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.TinyInt);
                 scmd.Parameters[0].Value = c.commentType;
@@ -1804,7 +1810,7 @@ namespace BSClass
 
                 scmd.ExecuteNonQuery();
                
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return;
             }
@@ -1819,7 +1825,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -1831,7 +1837,7 @@ namespace BSClass
              
                 string sSQL = "UPDATE [Comment] SET [approvalState] =2 " +
                 " WHERE ID=" + CommentID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 object o = scmd.ExecuteNonQuery();
 
@@ -1848,7 +1854,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -1868,7 +1874,7 @@ namespace BSClass
 
                  Select @@IDENTITY ";
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.Int);
                 scmd.Parameters[0].Value = p.authorId ;
@@ -1892,7 +1898,7 @@ namespace BSClass
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return newID ;
             }
@@ -1907,7 +1913,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
         
@@ -1970,11 +1976,11 @@ namespace BSClass
                     +") "+
                 " Select @@IDENTITY ";
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (s.surveyQuestionary.Length > 0) 
                 {
@@ -1992,9 +1998,9 @@ namespace BSClass
                         scmd2.Parameters.Add("p2", SqlDbType.VarChar);
                         scmd2.Parameters[1].Value = sq.question;
 
-                        sc.Open();
+                        if(sc.State==  ConnectionState.Closed) {sc.Open();}
                         scmd2.ExecuteNonQuery();
-                        sc.Close();                         
+                        if(sc.State==  ConnectionState.Open) {sc.Close();};                         
                     }
                 }
 
@@ -2012,7 +2018,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -2022,7 +2028,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update Survey SET isActive=2 where ID=" + SurveyID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
                 return;
@@ -2052,11 +2058,11 @@ namespace BSClass
                 " ,[isActive] ="+s.isActive.ToString()+ 
                 " WHERE ID="+s.id.ToString() ;
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
 
                 scmd.ExecuteNonQuery();
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return;
             }
@@ -2071,7 +2077,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -2093,7 +2099,7 @@ namespace BSClass
                         sa.PaperRef
                          +")" ;
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 
                 object o = scmd.ExecuteScalar();
@@ -2111,7 +2117,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }        
         public void DeleteSurveyAnswer(int SurveyAnswerID)
@@ -2119,7 +2125,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Delete FROM SurveyAnswer where ID=" + SurveyAnswerID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
                 return;
@@ -2146,11 +2152,11 @@ namespace BSClass
                 string sSQL = @"UPDATE [SurveyAnswer] " +
                    " SET [answer] =" + sa.answer.Trim() +
                    " WHERE ID=" + sa.id.ToString();            
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
 
                 scmd.ExecuteNonQuery();
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return;
             }
@@ -2165,7 +2171,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -2178,7 +2184,7 @@ namespace BSClass
                 string sSQL = "INSERT INTO [SurveyQuestionary]([SurveyRef],[question]) " +
                         " VALUES(@p1,@p2) ";
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.Int);
                 scmd.Parameters[0].Value = SurveyRef;
@@ -2201,7 +2207,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -2211,7 +2217,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update SurveyQuestionary SET isActive=2 where ID=" + SurveyQuestionaryID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
                 return;
@@ -2241,11 +2247,11 @@ namespace BSClass
                     " [isActive] ="+s.isActive.ToString()+ 
                     " WHERE ID= "+s.id ;
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                               
                 scmd.ExecuteNonQuery();                
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return ;
             }
@@ -2260,7 +2266,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -2279,7 +2285,7 @@ namespace BSClass
 
                  Select @@IDENTITY ";
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.Int);
                 scmd.Parameters[0].Value = MagazineID ;
@@ -2298,7 +2304,7 @@ namespace BSClass
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return newID;
             }
@@ -2313,7 +2319,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -2324,7 +2330,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update PublishedMagazine SET isActive=2 where ID=" + PublishedMagazineID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
 
@@ -2357,7 +2363,7 @@ namespace BSClass
                       ,[isActive] = @p4
                  WHERE ID="+pm.id  ;
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.TinyInt);
                 scmd.Parameters[0].Value = pm.MagazinePublishState;
@@ -2370,7 +2376,7 @@ namespace BSClass
                
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
 
 
@@ -2385,7 +2391,7 @@ namespace BSClass
             }
             finally
             {
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -2406,10 +2412,10 @@ namespace BSClass
                 " inner join UserGrant on UserGrant.UserRef=[PortalUser].ID" +                
                 " where PortalUser.isActive=1 "+
                 " and UserGrant.UserType=" + UserType.moderator.ToString();
-                
 
 
-                if (AuthorIDList != "")
+
+                if (AuthorIDList != null && AuthorIDList.Length>0)
                 {
                     sSQL = sSQL + " and [PortalUser].ID in(" + AuthorIDList + ")";
                 }
@@ -2417,11 +2423,11 @@ namespace BSClass
                
                 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (dt.Rows.Count < 0)
                 {
@@ -2473,11 +2479,11 @@ namespace BSClass
                 " from UserGrant " +                
                 " where UserRef="+userID.ToString();
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (dt.Rows.Count < 0)
                 {
@@ -2518,29 +2524,29 @@ namespace BSClass
             {
                 string sSQL = @"SELECT [PortalUser].* , " +
                 " FROM [PortalUser]  " +
-                " where PortalUser.isActive=1 ";              
+                " where PortalUser.isActive=1 ";
 
-                if (UserIDlist != "")
+                if (UserIDlist != null && UserIDlist.Length > 0)
                 {
                     sSQL = sSQL + " and [PortalUser].ID in(" + UserIDlist + ")";
                 }
 
-                if (userName != "")
+                if (userName!= null && userName.Length > 0)
                 {
                     sSQL = sSQL + " and [PortalUser].userName in(" +"'"+ userName+"'" + ")";
                 }
 
 
-                if (Passwd != "")
+                if (Passwd!= null && Passwd.Length > 0)
                 {
                     sSQL = sSQL + " and [PortalUser].passWord =" + "'" + Passwd + "'" ;
                 }
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (dt.Rows.Count < 0)
                 {
@@ -2592,7 +2598,7 @@ namespace BSClass
                 " where PortalUser.isActive=1 " +
                 " and UserGrant.UserType=" + UserType.moderator.ToString();
 
-                if (SystemAdminIDList != "")
+                if (SystemAdminIDList != null && SystemAdminIDList.Length > 0)
                 {
                     sSQL = sSQL + " and [PortalUser].ID in(" + SystemAdminIDList + ")";
                 }
@@ -2600,11 +2606,11 @@ namespace BSClass
 
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (dt.Rows.Count < 0)
                 {
@@ -2656,27 +2662,27 @@ namespace BSClass
                 " where PortalUser.isActive=1 " +
                 " and UserGrant.UserType=" + UserType.hakem.ToString();
 
-                if (RefereeIDList != "")
+                if (RefereeIDList != null && RefereeIDList.Length > 0)
                 {
                     sSQL = sSQL + " and [PortalUser].ID in(" + RefereeIDList + ")";
                 }
 
-                if (MagazineIDList != "")
+                if (MagazineIDList != null && MagazineIDList.Length > 0)
                 {
                     //
                 }
 
-                if (PublishedMagazineList != "")
+                if (PublishedMagazineList != null && PublishedMagazineList.Length > 0)
                 {
                     //
                 }
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (dt.Rows.Count < 0)
                 {
@@ -2731,7 +2737,7 @@ namespace BSClass
                 " where PortalUser.isActive=1 " +                
                 " and UserGrant.UserType=" + UserType.moderator.ToString();
 
-                if (ModeratorIDList != "")
+                if (ModeratorIDList != null && ModeratorIDList.Length > 0)
                 {
                     sSQL = sSQL + " and [PortalUser].ID in(" + ModeratorIDList + ")";
                 }
@@ -2739,11 +2745,11 @@ namespace BSClass
 
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (dt.Rows.Count < 0)
                 {
@@ -2798,16 +2804,18 @@ namespace BSClass
                     sSQL = sSQL + " and  Magazine.isActive=1"; 
                 }
 
-                if (MagazineIDList!="")
+                if (MagazineIDList!=null && MagazineIDList.Length > 0)
                 {
                     sSQL = sSQL + " and ID in(" + MagazineIDList + ")";
                 }
 
-                sc.Open();
+                sSQL = sSQL+" order by Magazine.name ASC ";
+
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
               
                 if (dt.Rows.Count < 0)
                 {
@@ -2820,8 +2828,12 @@ namespace BSClass
                     {
                         Magazine m = new Magazine();
                         m.id = Convert.ToInt32(  dr["ID"].ToString());
-                        m.publisherId = Convert.ToInt32(  dr["PublisherUserRef"].ToString());                        
-                        m.maxPaperCount=Convert.ToInt32(  dr["maxPaperCount"].ToString());                        
+                        m.name = dr["name"].ToString();
+                        if (dr["PublisherUserRef"].ToString() != "")
+                            m.publisherId = Convert.ToInt32(  dr["PublisherUserRef"].ToString());
+
+                        if (dr["maxPaperCount"].ToString() != "")
+                            m.maxPaperCount=Convert.ToInt32(  dr["maxPaperCount"].ToString());                        
                         m.isActive=Convert.ToInt32(  dr["isActive"].ToString());                                                                
                         tList.Add(m);
                     }
@@ -2829,10 +2841,12 @@ namespace BSClass
 
 
 
+                /*
                 foreach (Magazine mm in tList) 
                 {                    
                     mm.publishedMagazines= this.GetPublisheMagazineList(mm.id.ToString(), "", true);
                 }
+                 */ 
 
                 return tList.ToArray(); 
 
@@ -2872,23 +2886,23 @@ namespace BSClass
 
                     if (onlyActiveRecords==true)
                     {
-                        sSQL = sSQL + "  and  Magazine.isActive=1";
+                        sSQL = sSQL + "  and  PublishedMagazine.isActive=1";
                     }
-                    if (MagazineIDList!="")
+                    if (MagazineIDList != null && MagazineIDList.Length > 0)
                     {
                         sSQL = sSQL + "  and  MagazineRef in(" + MagazineIDList + ") ";
                     }
-                    if (PublishedMagazineIDList != "")
+                    if (PublishedMagazineIDList != null && PublishedMagazineIDList.Length > 0)
                     {
                         sSQL = sSQL + "  and  ID in(" + PublishedMagazineIDList + ") ";
                     }
 
 
-                    sc.Open();
+                    if(sc.State==  ConnectionState.Closed) {sc.Open();}
                     SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
-                    sc.Close();
+                    if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                     if (dt.Rows.Count < 0)
                     {
@@ -2902,15 +2916,28 @@ namespace BSClass
                             PublishedMagazine pm = new PublishedMagazine();
                             pm.id = Convert.ToInt32(dr["ID"].ToString());
                             pm.MagazinePublishNo = dr["MagazinePublishNo"].ToString();
-                            pm.MagazinePublishState = Convert.ToInt32(dr["MagazinePublishState"].ToString());
-                            pm.isActive = Convert.ToInt32(dr["isActive"].ToString());
-                            pm.paperCount = Convert.ToInt32(dr["paperCount"].ToString());
-                            pm.PublishDate = Convert.ToDateTime( dr["PublishDate"]);
-                            pm.MagazineRef = Convert.ToInt32(dr["MagazineRef"].ToString());
 
+
+                            if (dr["MagazinePublishState"].ToString() != "")
+                                    pm.MagazinePublishState = Convert.ToInt32(dr["MagazinePublishState"].ToString());
+
+
+                            pm.isActive = Convert.ToInt32(dr["isActive"].ToString());
+
+                            if (dr["paperCount"].ToString() != "")
+                                pm.paperCount = Convert.ToInt32(dr["paperCount"].ToString());
+
+                            if (dr["PublishDate"].ToString().Length>0)
+                                pm.PublishDate = Convert.ToDateTime( dr["PublishDate"]);
+
+
+                            pm.MagazineRef = Convert.ToInt32(dr["MagazineRef"].ToString());
+                            
+
+                            /*
                             pm.mgzn = (this.GetMagazineList(pm.MagazineRef.ToString(), true))[0];
                             pm.paperList=(this.GetPaperList(pm.id.ToString(),"","",-1,-1,-1,"","",true));         
-
+                            */
                             tList.Add(pm);
                         }
                     }                                                  
@@ -2927,7 +2954,7 @@ namespace BSClass
                 }
                 finally
                 {
-                    sc.Close();
+                    if(sc.State==  ConnectionState.Open) {sc.Close();};
                 }
             }
             catch (Exception ex)
@@ -2953,9 +2980,9 @@ namespace BSClass
                 string sSQL = @"Select C.* from Comment C
                 inner join Paper p on p.ID=C.PaperRef
                 inner join PortalUser PU on  PU.ID=C.UserRef " +
-                " where C.isActive=1 ";                                              
+                " where C.isActive=1 ";
 
-                if (PaperIDList != "")
+                if (PaperIDList != null && PaperIDList.Length > 0)
                 {
                     sSQL = sSQL + " and [C].PaperRef in(" + PaperIDList + ")";                    
                 }
@@ -2971,11 +2998,11 @@ namespace BSClass
                 }
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (dt.Rows.Count < 0)
                 {
@@ -2992,7 +3019,9 @@ namespace BSClass
                         c.userId= Convert.ToInt32(dr["UserRef"].ToString());
                         c.content = dr["content"].ToString();
                         c.commentType = Convert.ToInt32(dr["commentType"].ToString());
-                        c.commentDate =Convert.ToDateTime( dr["commentDate"]);
+
+                        if(dr["commentDate"].ToString().Length>0)
+                            c.commentDate =Convert.ToDateTime( dr["commentDate"]);
                         c.approvalState = Convert.ToInt32(dr["approvalState"].ToString());                        
 
                         tList.Add(c);
@@ -3022,15 +3051,49 @@ namespace BSClass
             List<Paper> tList = new List<Paper>();
             try
             {
-                string sSQL = @"SELECT Paper.*  FROM [Paper] ";
+                string sSQL = @"SELECT Paper.*  FROM [Paper] WHERE 1=1 ";
 
 
+                if (PublishedMagazineIDList != null && PublishedMagazineIDList.Length > 0) 
+                {
+                    sSQL = sSQL + " and Paper.PublishedMagazineRef in("+ PublishedMagazineIDList + ") ";
+                }
 
-                sc.Open();
+                if (PaperIDList != null && PaperIDList.Length > 0)
+                {
+                    sSQL = sSQL + " and Paper.ID in(" + PaperIDList + ") ";
+                }
+
+
+                if (AuthorID > 0) 
+                {
+                    sSQL = sSQL + " and Paper.AuthorUserRef in(" + AuthorID + ") ";
+                }
+
+                if (RefereeID > 0)
+                {
+                    //yeni SQL yaz...
+                    sSQL = @"SELECT Paper.*  FROM [Paper] 
+                    
+                    where Paper.isActive=1 " +
+                    " and RP.UserRefereeRef=" + RefereeID.ToString();
+                    //and RP.isApproved=2
+                }
+
+                if (PublisherID > 0) 
+                {
+                    sSQL = @" SELECT Paper.*  FROM [Paper] 
+                    inner join Magazine M on M.ID=Paper.MagazineRef
+                    inner join PortalUser PO on PO.ID=M.PublisherUserRef
+                    where Paper.isActive=1
+                    and PO.ID=" + PublisherID.ToString();
+                }
+
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (dt.Rows.Count < 0)
                 {
@@ -3045,7 +3108,9 @@ namespace BSClass
                         p.id = Convert.ToInt32(dr["ID"].ToString());
                         p.isActive = Convert.ToInt32(dr["isActive"].ToString());
                         p.MagazineID = Convert.ToInt32(dr["MagazineRef"].ToString());
-                        p.approvalDate= Convert.ToDateTime(  dr["approvalDate"].ToString());
+
+                        if (dr["approvalDate"].ToString().Length>0)
+                            p.approvalDate= Convert.ToDateTime(  dr["approvalDate"].ToString());
                         p.approvalState= Convert.ToInt32(  dr["approvalState"].ToString());
 
                         p.authorId= Convert.ToInt32(  dr["AuthorUserRef"].ToString());
@@ -3054,7 +3119,9 @@ namespace BSClass
 
 
                         p.publishedId = dr["publishedId"].ToString();
-                        p.PublishedMagazineID = Convert.ToInt32(dr["PublishedMagazineRef"].ToString());
+
+                        if (dr["PublishedMagazineRef"].ToString().Length>0)
+                            p.PublishedMagazineID = Convert.ToInt32(dr["PublishedMagazineRef"].ToString());
                         p.publisherComment = dr["publisherComment"].ToString();
 
                         p.referencePaperID = null; //TODO...
@@ -3103,11 +3170,11 @@ namespace BSClass
                 }
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (dt.Rows.Count < 0)
                 {
@@ -3160,7 +3227,7 @@ namespace BSClass
                         " where where MSC.MagazineRef =" + MagazineID.ToString();
                 }
 
-                else if (scienceCAtegorylist != "")
+                else if (scienceCAtegorylist != null && scienceCAtegorylist.Length > 0)
                 {
                     sSQL = sSQL + " INNER JOIN ScienceSubCategory SSC on SSC.SubCategoryRef=SubCategory.ID " +
                     " where SSC.ScienceCategoryRef in(" + scienceCAtegorylist + ")";
@@ -3168,11 +3235,11 @@ namespace BSClass
 
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (dt.Rows.Count < 0)
                 {
@@ -3240,11 +3307,11 @@ namespace BSClass
                     sSQL = sSQL + "  and M.ID="+MagazineID.ToString();
                 }
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if (dt.Rows.Count < 0)
                 {
@@ -3293,7 +3360,7 @@ namespace BSClass
                  Select @@IDENTITY ";
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = m.userName;
@@ -3311,9 +3378,9 @@ namespace BSClass
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
                 VALUES(" + newID.ToString() + "," + UserType.moderator.ToString() + ") ";
                 scmd.ExecuteScalar();
@@ -3331,7 +3398,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -3342,7 +3409,7 @@ namespace BSClass
             try
             {
                 string ssQL = " Update PortalUSer SET isActive=2 where ID=" + ModeratorID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
                 return;
@@ -3383,7 +3450,7 @@ namespace BSClass
                  WHERE ID=" + pp.userID.ToString();
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = pp.userName;
@@ -3402,7 +3469,7 @@ namespace BSClass
 
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
 
 
@@ -3417,7 +3484,7 @@ namespace BSClass
             }
             finally
             {
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -3437,7 +3504,7 @@ namespace BSClass
                  Select @@IDENTITY ";
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = sa.userName;
@@ -3454,9 +3521,9 @@ namespace BSClass
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
                 VALUES(" + newID.ToString() + "," + UserType.systemadmin.ToString() + ") ";
                 scmd.ExecuteScalar();
@@ -3474,7 +3541,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -3486,7 +3553,7 @@ namespace BSClass
             {
                 //SystemAdmin(SystemAdmin);
                 string ssQL = " Update PortalUSer SET isActive=2 where ID=" + SystemAdminID.ToString();
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(ssQL, sc);
                 object o = scmd.ExecuteNonQuery();
                 return;
@@ -3526,7 +3593,7 @@ namespace BSClass
                  WHERE ID=" + sa.userID.ToString();
 
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.VarChar);
                 scmd.Parameters[0].Value = sa.userName;
@@ -3546,7 +3613,7 @@ namespace BSClass
 
                 scmd.ExecuteNonQuery();
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
 
 
@@ -3561,7 +3628,7 @@ namespace BSClass
             }
             finally
             {
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 
@@ -3579,12 +3646,12 @@ namespace BSClass
 
                         " Select @@IDENTITY ";
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return ;
             }
@@ -3617,7 +3684,7 @@ namespace BSClass
 
                  Select @@IDENTITY ";
 
-                sc.Open();
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
                 scmd.Parameters.Add("p1", SqlDbType.Int);
                 scmd.Parameters[0].Value = userID;
@@ -3641,7 +3708,7 @@ namespace BSClass
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
 
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 return ;
             }
@@ -3656,7 +3723,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                sc.Close();
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
             }
         }
 

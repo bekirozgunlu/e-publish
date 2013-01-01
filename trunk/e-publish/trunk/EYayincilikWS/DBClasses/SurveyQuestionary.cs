@@ -12,9 +12,9 @@ namespace BSClass
 
 
 
-        public int AddSurveyQuestionary(int MagazineID)
+        public int AddSurveyQuestionary(int SurveyID)
         {
-            return DBManager.singleton().AddSurveyQuestionary(this, MagazineID);
+            return DBManager.singleton().AddSurveyQuestionary(this, SurveyID);
         }
 
         public void DeleteSurveyQuestionary(int SurveyQuestionaryID)
