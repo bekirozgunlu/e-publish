@@ -34,8 +34,13 @@ namespace EYayincilikWS
         public User CheckUserPass(string userName, string Password) 
         {
             //Verilen kullanıcı adı ve parola ile eslesen User kaydını getir...
-            User u = new User();
-            return u;
+
+            User[] Userlist = DBManager.singleton().GetUserList("", userName, Password, true, DateTime.Now);
+
+            if (Userlist.GetLength(0) == 1)
+                return Userlist[0];
+            else
+                return null;
         }
 
         [WebMethod]
@@ -43,9 +48,7 @@ namespace EYayincilikWS
         {
             //SAVE NEW MAGAZINE TO DB
 
-            
-
-            int newID = 0;
+            int newID = m.AddMagazine();            
             return newID;
         }
         
@@ -54,6 +57,7 @@ namespace EYayincilikWS
         public void DeleteMagazine(int magazineID) 
         {
             //SET MAGAZINE STATUS TO PASSIVE 
+            DBManager.singleton().DeleteMagazine(magazineID);
         }
 
         [WebMethod]
@@ -69,7 +73,7 @@ namespace EYayincilikWS
         public int AddSubCategory(SubCategory s) 
         {
             //add news sub category
-            int newID = 0;
+            int newID = s.AddSubCategory();
             return newID;
 
             
@@ -79,6 +83,7 @@ namespace EYayincilikWS
         public void DeleteSubCategory(int SubCategoryID)
         {
             //makes a sub category passive...
+            DBManager.singleton().DeleteSubCategory(SubCategoryID);
         }
 
         [WebMethod]
@@ -91,7 +96,7 @@ namespace EYayincilikWS
         public  int AddReferee(Referee r)
         {
             //add  new Referee
-            int newID = 0;
+            int newID = r.AddReferee();
             return newID;
         }
 
@@ -99,6 +104,7 @@ namespace EYayincilikWS
         public void DeleteReferee(int RefereeID)
         {
             //makes a Referee record  passive...
+            DBManager.singleton().DeleteReferee(RefereeID);
         }
 
         [WebMethod]
@@ -112,7 +118,7 @@ namespace EYayincilikWS
         public int AddAuthor(Author a)
         {
             //add  new Author
-            int newID = 0;
+            int newID = a.AddAuthor();
             return newID;
         }
 
@@ -120,6 +126,7 @@ namespace EYayincilikWS
         public void DeleteAuthor(int AuthorID)
         {
             //makes a Author record  passive...
+            DBManager.singleton().DeleteAuthor(AuthorID);
         }
 
         [WebMethod]
@@ -138,14 +145,15 @@ namespace EYayincilikWS
         public int AddScienceCategory(ScienceCategory sc)
         {
             //adds a  new ScienceCategory
-            int newID = 0;
+            int newID = sc.AddScienceCategory();
             return newID;
         }
 
         [WebMethod]
         public void DeleteScienceCategory(int ScienceCategoryID)
         {
-            //makes a ScienceCategory record  passive...
+            //makes a ScienceCategory record  passive..
+              DBManager.singleton().DeleteScienceCategory(ScienceCategoryID);
         }
 
         [WebMethod]
@@ -159,7 +167,7 @@ namespace EYayincilikWS
         public int AddPublisher(Publisher pp)
         {
             //adds a  new Publisher
-            int newID = 0;
+            int newID = pp.AddPublisher();
             return newID;
         }
 
@@ -167,6 +175,7 @@ namespace EYayincilikWS
         public void DeletePublisher(int PublisherID)
         {
             //makes a Publisher record  passive...
+            DBManager.singleton().DeletePublisher(PublisherID);
         }
 
         [WebMethod]
@@ -179,7 +188,7 @@ namespace EYayincilikWS
         public int  AddPaper(Paper p)
         {
             //adds a  new Paper
-            int newID = 0;
+            int newID = p.AddPaper();
             return newID;
         }
 
@@ -187,6 +196,7 @@ namespace EYayincilikWS
         public void DeletePaper(int PaperID)
         {
             //makes a Paper record  passive...
+            DBManager.singleton().DeletePaper(PaperID);
         }
 
         [WebMethod]
@@ -245,7 +255,7 @@ namespace EYayincilikWS
         public int  AddUser(User u)
         {
             //adds a new User
-            int newID = 0;
+            int newID = u.AddUser();
             return newID;
         }
 
@@ -253,6 +263,7 @@ namespace EYayincilikWS
         public void DeleteUser(int UserID)
         {
             //makes a User record  passive...
+            DBManager.singleton().DeleteUser(UserID);
         }
 
         [WebMethod]
@@ -267,7 +278,7 @@ namespace EYayincilikWS
         public int AddAnonimUser(AnonimUser u)
         {
             //adds a new AnonimUser
-            int newID = 0;
+            int newID = u.AddAnonimUser();
             return newID;
         }
 
@@ -275,6 +286,7 @@ namespace EYayincilikWS
         public void DeleteAnonimUser(int AnonimUserID)
         {
             //makes a AnonimUser record  passive...
+            DBManager.singleton().DeleteAnonimUser(AnonimUserID);
         }
 
         [WebMethod]
@@ -302,7 +314,7 @@ namespace EYayincilikWS
         public int  AddComment(Comment c, int paperID)
         {
             //adds a new Comment to a Paper
-            int newID = 0;
+            int newID = c.AddComment(paperID);
             return newID;
         }
 
@@ -310,6 +322,7 @@ namespace EYayincilikWS
         public void DeleteComment(int CommentID)
         {
             //makes a Comment record  passive...
+            DBManager.singleton().DeleteComment(CommentID);
         }
 
         [WebMethod]
@@ -328,14 +341,15 @@ namespace EYayincilikWS
         public int  AddPaperToMagazine(Paper p, int MagazineID) 
         {
             //Adds a paper to a magazine..
-            int newID = 0;
+            int newID = DBManager.singleton().AddPaperToMagazine(p, MagazineID);
             return newID;
         }
 
         [WebMethod]
         public void PublishMagazine(int MagazineID)
         {
-            //Pubslihes a magazine..
+            //Pubslihes a magazine
+            DBManager.singleton().PublishMagazine(MagazineID);
         }
 
         [WebMethod]
@@ -351,7 +365,7 @@ namespace EYayincilikWS
         public int AddSurvey(Survey s,int MagazineID)
         {
             //adds a new Survey for a Magazine
-            int newID = 0;
+            int newID = s.AddSurvey(MagazineID);
             return newID;
         }
 
@@ -359,6 +373,7 @@ namespace EYayincilikWS
         public void DeleteSurvey(int SurveyID)
         {
             //makes a Survey record  passive...
+            DBManager.singleton().DeleteSurvey(SurveyID);
         }
 
         [WebMethod]
@@ -377,7 +392,7 @@ namespace EYayincilikWS
         public int  AddSurveyQuestionary(SurveyQuestionary sq, int SurveyRef)
         {
             //adds a new SurveyQuestionary for a Survey
-            int newID = 0;
+            int newID = sq.AddSurveyQuestionary(SurveyRef);
             return newID;
         }
 
@@ -385,6 +400,7 @@ namespace EYayincilikWS
         public void DeleteSurveyQuestionary(int SurveyQuestionaryID)
         {
             //makes a SurveyQuestionary record  passive...
+            DBManager.singleton().DeleteSurveyQuestionary(SurveyQuestionaryID);
         }
 
         [WebMethod]
@@ -402,7 +418,7 @@ namespace EYayincilikWS
         public int AddPublishedMagazine(PublishedMagazine pm, int MagazineID)
         {
             //adds a new SurveyQuestionary for a PublishedMagazine
-            int newID =0;
+            int newID = pm.AddPublishedMagazine(MagazineID);
             return newID;
         }
 
@@ -410,6 +426,7 @@ namespace EYayincilikWS
         public void DeletePublishedMagazine(int PublishedMagazineID)
         {
             //makes a PublishedMagazine record  passive...
+            DBManager.singleton().DeletePublishedMagazine(PublishedMagazineID);
         }
 
         [WebMethod]
@@ -423,6 +440,8 @@ namespace EYayincilikWS
         public void AddPaperByAuthor(int userID, Paper p)
         {
             //BSClass.DBManager.singleton().AddPaperByAuthor(userID, p);
+            DBManager.singleton().AddPaperByAuthor(userID, p);
+            return;
         }
 
         //YENI2
@@ -437,56 +456,31 @@ namespace EYayincilikWS
         [WebMethod]
         public Author[] GetAuthorList(string AuthorIDList, string MagazineIDList, string PaperIDList,string PublishedMagazineIDList) 
         {
-            Author a1 = new Author();
-            Author a2= new Author(); 
-            List<Author> tList = new List<Author>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return  DBManager.singleton().GetAuthorList(AuthorIDList, PaperIDList);
         }
 
         [WebMethod]
         public User[] GetUserList(string UserIDlist, bool onlyActiveRecords, DateTime minActivationDate)
         {
-            User a1 = new User();
-            User a2 = new User();
-            List<User> tList = new List<User>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetUserList(UserIDlist, "", "", onlyActiveRecords, DateTime.Now);
         }
 
         [WebMethod]
         public SystemAdmin[] GetSystemAdminList(string SystemAdminIDList, bool onlyActiveRecords, DateTime minActivationDate)
         {
-            SystemAdmin a1 = new SystemAdmin();
-            SystemAdmin a2 = new SystemAdmin();
-            List<SystemAdmin> tList = new List<SystemAdmin>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetSystemAdminList(SystemAdminIDList, onlyActiveRecords, DateTime.Now);
         }
 
         [WebMethod]
         public Referee[] GetRefereeList(string RefereeIDList, bool onlyActiveRecords, string MagazineIDList, string PublishedMagazineList)
         {
-            Referee a1 = new Referee();
-            Referee a2 = new Referee();
-            List<Referee> tList = new List<Referee>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetRefereeList(RefereeIDList, onlyActiveRecords, MagazineIDList, PublishedMagazineList);
         }
 
         [WebMethod]
         public Moderator[] GetModeratorList(string ModeratorIDList, bool onlyActiveRecords)
         {
-            Moderator a1 = new Moderator ();
-            Moderator a2 = new Moderator();
-            List<Moderator> tList = new List<Moderator>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetModeratorList(ModeratorIDList, onlyActiveRecords);
         }
 
         [WebMethod]
@@ -499,82 +493,48 @@ namespace EYayincilikWS
         [WebMethod]
         public PublishedMagazine[] GetPublisheMagazineList(string MagazineIDList, string PublishedMagazineIDList, bool onlyActiveRecords)
         {
-            PublishedMagazine a1 = new PublishedMagazine();
-            PublishedMagazine a2 = new PublishedMagazine();
-            List<PublishedMagazine> tList = new List<PublishedMagazine>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetPublisheMagazineList(MagazineIDList, PublishedMagazineIDList,onlyActiveRecords);
         }
 
 
         [WebMethod]
-        public Comment[] GetCommentList(string MagazineIDList, string PaperIDList,int RefereeID, bool onlyActiveRecords)
+        public Comment[] GetCommentList(string PaperIDList,int RefereeID, bool onlyActiveRecords)
         {
-            Comment a1 = new Comment();
-            Comment a2 = new Comment();
-            List<Comment> tList = new List<Comment>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetCommentList(PaperIDList, RefereeID, onlyActiveRecords);
         }
 
         [WebMethod]
         public Paper[] GetPaperList(string PublishedMagazineIDList,string MagazineIDList, string PaperIDList, int RefereeID, int PublisherID, int AuthorID, string category, string subCategory, bool onlyActiveRecords)
         {
-            Paper a1 = new Paper();            
-            Paper a2 = new Paper();
-            List<Paper> tList = new List<Paper>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetPaperList(PublishedMagazineIDList, MagazineIDList, PaperIDList, RefereeID, PublisherID, AuthorID, category, subCategory, onlyActiveRecords);
         }
 
         [WebMethod]
-        public ScienceCategory[] ScienceCategoryList(bool onlyActiveRecords)
+        public ScienceCategory[] GetScienceCategoryList(bool onlyActiveRecords, int SubCategoryID)
         {
-            ScienceCategory a1 = new ScienceCategory();
-            ScienceCategory a2 = new ScienceCategory();
-            List<ScienceCategory> tList = new List<ScienceCategory>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetScienceCategoryList(onlyActiveRecords,SubCategoryID);
         }
 
         [WebMethod]
-        public SubCategory[] SubCategoryList(bool onlyActiveRecords)
+        public SubCategory[] GetSubCategoryList(bool onlyActiveRecords,string scienceCAtegorylist,int MagazineID)
         {
-            SubCategory a1 = new SubCategory();
-            SubCategory a2 = new SubCategory();
-            List<SubCategory> tList = new List<SubCategory>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetSubCategoryList(onlyActiveRecords, scienceCAtegorylist, MagazineID);
         }
 
 
-
+        /*
         [WebMethod]
         public Survey[] GetSurveyList(bool onlyActiveRecords,int MagazineID)
         {
-            Survey a1 = new Survey();            
-            Survey a2 = new Survey();
-            List<Survey> tList = new List<Survey>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetSurveyQuestionaryList(onlyActiveRecords, scienceCAtegorylist, MagazineID);
         }
+         * */
 
 
         [WebMethod]
         public SurveyQuestionary[] GetSSurveyQuestionaryList(bool onlyActiveRecords, int MagazineID,int SurveyID)
         {
-            SurveyQuestionary a1 = new SurveyQuestionary();
-            SurveyQuestionary a2 = new SurveyQuestionary();
-            List<SurveyQuestionary> tList = new List<SurveyQuestionary>();
-            tList.Add(a1);
-            tList.Add(a2);
-            return tList.ToArray();
+            return DBManager.singleton().GetSurveyQuestionaryList(onlyActiveRecords, MagazineID, SurveyID);
         }
 
 
@@ -594,7 +554,7 @@ namespace EYayincilikWS
 
         public void UpdateSurveyAnswer(SurveyAnswer sa)
         {
-            DBManager.singleton().UpdateSurveyAnswer(sa) ;
+            sa.UpdateSurveyAnswer() ;
         }
 
 
