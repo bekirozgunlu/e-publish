@@ -26,7 +26,7 @@ namespace EYayincilikPortal.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:14957/EYayinWS.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/EYayincilikWS/EYayinWS.asmx")]
         public string EYayincilikPortal_SVC1_Service1 {
             get {
                 return ((string)(this["EYayincilikPortal_SVC1_Service1"]));
