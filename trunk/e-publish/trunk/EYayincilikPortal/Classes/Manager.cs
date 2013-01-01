@@ -6,6 +6,11 @@ using System.Text;
 namespace EYayincilikPortal
 {
 
+    enum UserType { anonim, standard, yazar, hakem, editor, moderator, systemadmin } ;
+    enum ApprovalState { YeniYuklendi, Editor_Onayinda, Hakem_Onayinda, Yazar_Duzeltme, Hakem_Onayli, Editor_Onayli } ;
+
+    
+
     public class Manager
     {
 
@@ -1312,12 +1317,12 @@ namespace EYayincilikPortal
         }
 
         
-        public SVC1.Magazine[] GetMagazineList(string MagazineIDList, bool onlyActiveRecords)
+        public SVC1.Magazine[] GetMagazineList(string MagazineIDList, int PublisherID,bool onlyActiveRecords)
         {
            
             try
             {
-                return svc.GetMagazineList(MagazineIDList, onlyActiveRecords);
+                return svc.GetMagazineList(MagazineIDList, PublisherID, onlyActiveRecords);
 
             }
             catch (Exception ex)
@@ -1467,7 +1472,25 @@ namespace EYayincilikPortal
         }
          * */
 
+        public SVC1.User CheckUserPass(string userName, string PassWord) 
+        {
+            try
+            {
+                return svc.CheckUserPass(userName,PassWord);
 
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return null;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
         
         public SVC1.SurveyQuestionary[] GetSurveyQuestionaryList(bool onlyActiveRecords, int MagazineID, int SurveyID)
         {

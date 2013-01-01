@@ -5,6 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .style1
+        {
+            text-align: center;
+            color: #FF3300;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -21,7 +28,7 @@
             <br />
             <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
                 DataSourceID="objDergiler" DataTextField="name" DataValueField="id" 
-                Width="200px" DataTextFormatString="{0}">
+                Width="300px" DataTextFormatString="{0}">
             </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <br />
@@ -38,7 +45,7 @@
         &nbsp;
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AutoGenerateColumns="False" CellPadding="4" DataSourceID="objPapers" 
-            ForeColor="#333333" Width="736px">
+            ForeColor="#333333" Width="943px" Caption="DERGİYE AİT MAKALELER">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:HyperLinkField DataNavigateUrlFields="id" 
@@ -46,6 +53,10 @@
                     DataTextFormatString="OKU" NavigateUrl="makale.aspx?id={0}" Text="OKU" />
                 <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" 
                     Visible="False" />
+                <asp:BoundField DataField="MagazineName" HeaderText="Dergi" 
+                    SortExpression="MagazineName" />
+                <asp:BoundField DataField="AuthorName" HeaderText="Yazar" 
+                    SortExpression="AuthorName" />
                 <asp:BoundField DataField="title" HeaderText="title" SortExpression="title" />
                 <asp:BoundField DataField="authorId" HeaderText="authorId" 
                     SortExpression="authorId" Visible="False" />
@@ -70,6 +81,10 @@
                     SortExpression="isActive" Visible="False" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
+            <EmptyDataTemplate>
+                <div class="style1">
+                    <strong>İLGİLİ DERGİ BASIMA AİT MAKALE YOK</strong></div>
+            </EmptyDataTemplate>
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
@@ -99,13 +114,13 @@
         <br />
         <br />
         <br />
-        <br />
        
         <asp:ObjectDataSource ID="objDergiler" runat="server" 
             SelectMethod="GetMagazineList" TypeName="EYayincilikPortal.Manager">
             <SelectParameters>
                 <asp:Parameter Name="MagazineIDList" 
                     Type="String" DefaultValue="" />
+                <asp:Parameter DefaultValue="-1" Name="PublisherID" Type="Int32" />
                 <asp:Parameter DefaultValue="true" Name="onlyActiveRecords" Type="Boolean" />
             </SelectParameters>
         </asp:ObjectDataSource>

@@ -51,13 +51,19 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="detay.aspx" />
+    <Content Include="editor.aspx" />
+    <Content Include="hakem.aspx" />
+    <Content Include="invite.aspx" />
+    <Content Include="makale.aspx" />
     <Content Include="login.aspx" />
-    <Content Include="sayfa2.aspx" />
+    <Content Include="moderator.aspx" />
+    <Content Include="publish.aspx" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="yazar.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -113,6 +119,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin.aspx.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin.aspx.designer.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -121,12 +134,33 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\Manager.cs" />
-    <Compile Include="detay.aspx.cs">
-      <DependentUpon>detay.aspx</DependentUpon>
+    <Compile Include="editor.aspx.cs">
+      <DependentUpon>editor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="detay.aspx.designer.cs">
-      <DependentUpon>detay.aspx</DependentUpon>
+    <Compile Include="editor.aspx.designer.cs">
+      <DependentUpon>editor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hakem.aspx.cs">
+      <DependentUpon>hakem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hakem.aspx.designer.cs">
+      <DependentUpon>hakem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="invite.aspx.cs">
+      <DependentUpon>invite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="invite.aspx.designer.cs">
+      <DependentUpon>invite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="makale.aspx.cs">
+      <DependentUpon>makale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="makale.aspx.designer.cs">
+      <DependentUpon>makale.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -135,23 +169,37 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="moderator.aspx.cs">
+      <DependentUpon>moderator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="moderator.aspx.designer.cs">
+      <DependentUpon>moderator.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="sayfa2.aspx.cs">
-      <DependentUpon>sayfa2.aspx</DependentUpon>
+    <Compile Include="publish.aspx.cs">
+      <DependentUpon>publish.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="sayfa2.aspx.designer.cs">
-      <DependentUpon>sayfa2.aspx</DependentUpon>
+    <Compile Include="publish.aspx.designer.cs">
+      <DependentUpon>publish.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web References\SVC1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="yazar.aspx.cs">
+      <DependentUpon>yazar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="yazar.aspx.designer.cs">
+      <DependentUpon>yazar.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
