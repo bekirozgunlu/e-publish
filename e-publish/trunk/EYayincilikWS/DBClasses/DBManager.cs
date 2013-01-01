@@ -323,15 +323,18 @@ namespace BSClass
                 scmd.Parameters.Add("p5", SqlDbType.TinyInt);
                 scmd.Parameters[4].Value = r.isActive.ToString();
                 scmd.Parameters.Add("p6", SqlDbType.VarChar);
-                scmd.Parameters[5].Value = r.photoFilePath.ToString();
+                scmd.Parameters[5].Value = "";  //r.photoFilePath.ToString();
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
 
                 if(sc.State==  ConnectionState.Open) {sc.Close();};
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
+
+                
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
-                VALUES(" + newID.ToString() + "," + UserType.hakem.ToString() + ") ";
+                VALUES(" + newID.ToString() + "," + (Convert.ToInt32 (UserType.hakem)).ToString() + ") ";
+                scmd.CommandText = sSQL;
                 scmd.ExecuteScalar();
                 if(sc.State==  ConnectionState.Open) {sc.Close();};
 
@@ -414,7 +417,7 @@ namespace BSClass
                 scmd.Parameters.Add("p5", SqlDbType.TinyInt);
                 scmd.Parameters[4].Value = r.isActive.ToString();
                 scmd.Parameters.Add("p6", SqlDbType.VarChar);
-                scmd.Parameters[5].Value = r.photoFilePath.ToString();
+                scmd.Parameters[5].Value = "";// r.photoFilePath.ToString();
                 scmd.Parameters.Add("p7", SqlDbType.VarChar);
                 scmd.Parameters[6].Value = r.profession.ToString();
                 scmd.Parameters.Add("p8", SqlDbType.VarChar);
@@ -472,19 +475,33 @@ namespace BSClass
                 scmd.Parameters.Add("p5", SqlDbType.TinyInt);
                 scmd.Parameters[4].Value = a.isActive.ToString();
                 scmd.Parameters.Add("p6", SqlDbType.VarChar);
-                scmd.Parameters[5].Value = a.photoFilePath.ToString();
+                scmd.Parameters[5].Value = "";// a.photoFilePath.ToString();
                 scmd.Parameters.Add("p7", SqlDbType.VarChar);
-                scmd.Parameters[6].Value = a.profession.ToString();
+
+                if (a.profession != null)
+                    scmd.Parameters[6].Value = a.profession.ToString();
+                else
+                    scmd.Parameters[6].Value = "";
+
                 scmd.Parameters.Add("p8", SqlDbType.VarChar);
-                scmd.Parameters[7].Value = a.resume.ToString();
+                 if (a.resume != null)
+                 {                   
+                     scmd.Parameters[7].Value = a.resume ;
+                 }
+                 else
+                     scmd.Parameters[7].Value = "" ;
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
                 if(sc.State==  ConnectionState.Open) {sc.Close();};
 
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
+
+                
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
-                VALUES(" + newID.ToString() + "," + UserType.yazar.ToString() + ") ";
+                VALUES(" + newID.ToString() + "," + Convert.ToInt32 (UserType.yazar) + ") ";
+
+                scmd.CommandText = sSQL;
                 scmd.ExecuteScalar();
 
                 return newID;
@@ -563,11 +580,11 @@ namespace BSClass
                 scmd.Parameters.Add("p5", SqlDbType.TinyInt);
                 scmd.Parameters[4].Value = a.isActive.ToString();
                 scmd.Parameters.Add("p6", SqlDbType.VarChar);
-                scmd.Parameters[5].Value = a.photoFilePath.ToString();
+                scmd.Parameters[5].Value = "";// a.photoFilePath.ToString();
                 scmd.Parameters.Add("p7", SqlDbType.VarChar);
-                scmd.Parameters[6].Value = a.profession.ToString();
+                scmd.Parameters[6].Value = a.profession;
                 scmd.Parameters.Add("p8", SqlDbType.VarChar);
-                scmd.Parameters[7].Value = a.resume.ToString();
+                scmd.Parameters[7].Value = a.resume;
                 scmd.Parameters.Add("p9", SqlDbType.DateTime);
                 scmd.Parameters[8].Value = DateTime.Now;
 
@@ -750,7 +767,7 @@ namespace BSClass
                 scmd.Parameters.Add("p5", SqlDbType.TinyInt);
                 scmd.Parameters[4].Value = pp.isActive.ToString();
                 scmd.Parameters.Add("p6", SqlDbType.VarChar);
-                scmd.Parameters[5].Value = pp.photoFilePath.ToString();
+                scmd.Parameters[5].Value = "";// pp.photoFilePath.ToString();
                 scmd.Parameters.Add("p7", SqlDbType.VarChar);
                 scmd.Parameters[6].Value = pp.profession.ToString();
                 scmd.Parameters.Add("p8", SqlDbType.VarChar);
@@ -762,7 +779,9 @@ namespace BSClass
 
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
-                VALUES(" + newID.ToString() + "," + UserType.editor.ToString() + ") ";
+                VALUES(" + newID.ToString() + "," + Convert.ToInt32 (UserType.editor) + ") ";
+
+                scmd.CommandText = sSQL;
                 scmd.ExecuteScalar();
 
                 return newID;
@@ -843,7 +862,7 @@ namespace BSClass
                 scmd.Parameters.Add("p5", SqlDbType.TinyInt);
                 scmd.Parameters[4].Value = pp.isActive.ToString();
                 scmd.Parameters.Add("p6", SqlDbType.VarChar);
-                scmd.Parameters[5].Value = pp.photoFilePath.ToString();
+                scmd.Parameters[5].Value = "";//pp.photoFilePath.ToString();
                 scmd.Parameters.Add("p7", SqlDbType.VarChar);
                 scmd.Parameters[6].Value = pp.profession.ToString();
                 scmd.Parameters.Add("p8", SqlDbType.VarChar);
@@ -993,8 +1012,8 @@ namespace BSClass
                 scmd.Parameters[1].Value = p.approvalState;
                 scmd.Parameters.Add("p5", SqlDbType.VarChar);
                 scmd.Parameters[2].Value = p.contentPath;
-                scmd.Parameters.Add("p6", SqlDbType.TinyInt);
-                scmd.Parameters[3].Value = p.approvalState;
+                scmd.Parameters.Add("p6", SqlDbType.DateTime);
+                scmd.Parameters[3].Value = p.approvalDate;
                 scmd.Parameters.Add("p7", SqlDbType.VarChar);
                 scmd.Parameters[4].Value = p.publishedId;
                 scmd.Parameters.Add("p8", SqlDbType.VarChar);
@@ -1279,7 +1298,7 @@ namespace BSClass
                 scmd.Parameters.Add("p5", SqlDbType.TinyInt);
                 scmd.Parameters[4].Value = 2; //pasif ;
                 scmd.Parameters.Add("p6", SqlDbType.VarChar);
-                scmd.Parameters[5].Value = passiveRefereeRecord.photoFilePath.ToString();
+                scmd.Parameters[5].Value = "";// passiveRefereeRecord.photoFilePath.ToString();
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
@@ -1287,7 +1306,9 @@ namespace BSClass
                 if(sc.State==  ConnectionState.Open) {sc.Close();};
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
-                VALUES(" + newID.ToString() + "," + UserType.hakem.ToString() + ") ";
+                VALUES(" + newID.ToString() + "," + Convert.ToInt32 (UserType.hakem) + ") ";
+
+                scmd.CommandText = sSQL;
                 scmd.ExecuteScalar();
                 if(sc.State==  ConnectionState.Open) {sc.Close();};
 
@@ -1371,9 +1392,9 @@ namespace BSClass
                 scmd.Parameters.Add("p4", SqlDbType.VarChar);
                 scmd.Parameters[3].Value = u.surName;
                 scmd.Parameters.Add("p5", SqlDbType.TinyInt);
-                scmd.Parameters[4].Value = u.isActive.ToString();
+                scmd.Parameters[4].Value = u.isActive ;
                 scmd.Parameters.Add("p6", SqlDbType.VarChar);
-                scmd.Parameters[5].Value = u.photoFilePath.ToString();
+                scmd.Parameters[5].Value = ""; //u.photoFilePath.ToString();
 
 
                 object o = scmd.ExecuteScalar();
@@ -1382,7 +1403,9 @@ namespace BSClass
 
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
-                VALUES(" + newID.ToString() + "," + UserType.yazar.ToString() + ") ";
+                VALUES(" + newID.ToString() + "," + Convert.ToInt32 (UserType.yazar) + ") ";
+
+                scmd.CommandText = sSQL;
                 scmd.ExecuteScalar();
 
                 return newID;
@@ -1462,9 +1485,9 @@ namespace BSClass
                 scmd.Parameters.Add("p4", SqlDbType.VarChar);
                 scmd.Parameters[3].Value = u.surName;
                 scmd.Parameters.Add("p5", SqlDbType.TinyInt);
-                scmd.Parameters[4].Value = u.isActive.ToString();
+                scmd.Parameters[4].Value = u.isActive;
                 scmd.Parameters.Add("p6", SqlDbType.VarChar);
-                scmd.Parameters[5].Value = u.photoFilePath.ToString();
+                scmd.Parameters[5].Value = ""; // u.photoFilePath.ToString();
                 scmd.Parameters.Add("p7", SqlDbType.VarChar);
                 scmd.Parameters[6].Value = "";
                 scmd.Parameters.Add("p8", SqlDbType.VarChar);
@@ -2411,7 +2434,7 @@ namespace BSClass
                 " FROM [PortalUser]  "+
                 " inner join UserGrant on UserGrant.UserRef=[PortalUser].ID" +                
                 " where PortalUser.isActive=1 "+
-                " and UserGrant.UserType=" + UserType.moderator.ToString();
+                " and UserGrant.UserType=" + Convert.ToInt32 (UserType.moderator);
 
 
 
@@ -2446,7 +2469,9 @@ namespace BSClass
                         a.paperList = this.GetPaperList("", "", "", -1, -1, a.userID, "", "", true);
                         a.surName = dr["surName"].ToString();
                         a.name= dr["name"].ToString();
-                        a.photoFilePath = dr["photoFilePath"].ToString();
+
+                        if (dr["photoFilePath"]!=null)
+                                a.photoFilePath = dr["photoFilePath"].ToString();
                         a.profession = dr["profession"].ToString();
                         a.resume = dr["resume"].ToString();
                         tList.Add(a);
@@ -2522,7 +2547,7 @@ namespace BSClass
             List<User> tList = new List<User>();
             try
             {
-                string sSQL = @"SELECT [PortalUser].* , " +
+                string sSQL = @"SELECT [PortalUser].*  " +
                 " FROM [PortalUser]  " +
                 " where PortalUser.isActive=1 ";
 
@@ -2563,7 +2588,9 @@ namespace BSClass
                         a.isActive = Convert.ToInt32(dr["isActive"].ToString());
                         a.surName = dr["surName"].ToString();
                         a.name = dr["name"].ToString();
-                        a.photoFilePath = dr["photoFilePath"].ToString();
+
+                        if (dr["photoFilePath"] != null)
+                                a.photoFilePath = dr["photoFilePath"].ToString();
                         a.userType= this.GetUserTypes(a.userID);
                         tList.Add(a);
                     }
@@ -2596,7 +2623,7 @@ namespace BSClass
                 " FROM [PortalUser]  " +
                 " inner join UserGrant on UserGrant.UserRef=[PortalUser].ID" +
                 " where PortalUser.isActive=1 " +
-                " and UserGrant.UserType=" + UserType.moderator.ToString();
+                " and UserGrant.UserType=" + (Convert.ToInt32 (UserType.moderator)).ToString();
 
                 if (SystemAdminIDList != null && SystemAdminIDList.Length > 0)
                 {
@@ -2627,7 +2654,9 @@ namespace BSClass
                         a.isActive = Convert.ToInt32(dr["isActive"].ToString());
                         a.surName = dr["surName"].ToString();
                         a.name = dr["name"].ToString();
-                        a.photoFilePath = dr["photoFilePath"].ToString();
+
+                        if (dr["photoFilePath"] != null)
+                                a.photoFilePath = dr["photoFilePath"].ToString();
 
                         tList.Add(a);
                     }
@@ -2660,7 +2689,7 @@ namespace BSClass
                 " FROM [PortalUser]  " +
                 " inner join UserGrant on UserGrant.UserRef=[PortalUser].ID" +
                 " where PortalUser.isActive=1 " +
-                " and UserGrant.UserType=" + UserType.hakem.ToString();
+                " and UserGrant.UserType=" + (Convert.ToInt32 (UserType.hakem)).ToString();
 
                 if (RefereeIDList != null && RefereeIDList.Length > 0)
                 {
@@ -2701,7 +2730,9 @@ namespace BSClass
                         a.paperList = this.GetPaperList("", "", "", -1, -1, a.userID, "", "", true);
                         a.surName = dr["surName"].ToString();
                         a.name = dr["name"].ToString();
-                        a.photoFilePath = dr["photoFilePath"].ToString();
+
+                        if (dr["photoFilePath"] != null)
+                            a.photoFilePath = dr["photoFilePath"].ToString();
                         a.profession = dr["profession"].ToString();
                         a.resume = dr["resume"].ToString();
                         tList.Add(a);
@@ -2735,7 +2766,7 @@ namespace BSClass
                 " FROM [PortalUser]  " +
                 " inner join UserGrant on UserGrant.UserRef=[PortalUser].ID" +
                 " where PortalUser.isActive=1 " +                
-                " and UserGrant.UserType=" + UserType.moderator.ToString();
+                " and UserGrant.UserType=" + (Convert.ToInt32 (UserType.moderator)).ToString();
 
                 if (ModeratorIDList != null && ModeratorIDList.Length > 0)
                 {
@@ -2766,7 +2797,9 @@ namespace BSClass
                         a.isActive = Convert.ToInt32(dr["isActive"].ToString());                       
                         a.surName = dr["surName"].ToString();
                         a.name = dr["name"].ToString();
-                        a.photoFilePath = dr["photoFilePath"].ToString();
+
+                        if (dr["photoFilePath"] != null)
+                            a.photoFilePath = dr["photoFilePath"].ToString();
 
                         tList.Add(a);
                     }
@@ -2789,7 +2822,7 @@ namespace BSClass
         }
 
 
-        public BSClass.Magazine[] GetMagazineList(string MagazineIDList, bool onlyActiveRecords)
+        public BSClass.Magazine[] GetMagazineList(string MagazineIDList,int  PublisherID, bool onlyActiveRecords)
         {
             List<Magazine> tList = new List<Magazine>();
             try
@@ -2807,6 +2840,12 @@ namespace BSClass
                 if (MagazineIDList!=null && MagazineIDList.Length > 0)
                 {
                     sSQL = sSQL + " and ID in(" + MagazineIDList + ")";
+                }
+
+
+                if (PublisherID > 0) 
+                {
+                    sSQL = sSQL + " and PublisherUserRef =" + PublisherID.ToString();
                 }
 
                 sSQL = sSQL+" order by Magazine.name ASC ";
@@ -3051,7 +3090,10 @@ namespace BSClass
             List<Paper> tList = new List<Paper>();
             try
             {
-                string sSQL = @"SELECT Paper.*  FROM [Paper] WHERE 1=1 ";
+                string sSQL = @"SELECT Paper.*,M.name as MagazineName ,UPPER(PO1.name+' '+PO1.surName) as Yazar  FROM [Paper] 
+                    inner join Magazine M on M.ID=Paper.MagazineRef
+                    LEFT join PortalUser PO1 on PO1.ID=Paper.AuthorUserRef
+                    WHERE 1=1 ";
 
 
                 if (PublishedMagazineIDList != null && PublishedMagazineIDList.Length > 0) 
@@ -3073,8 +3115,10 @@ namespace BSClass
                 if (RefereeID > 0)
                 {
                     //yeni SQL yaz...
-                    sSQL = @"SELECT Paper.*  FROM [Paper] 
-                    
+                    sSQL = @"SELECT Paper.*,M.name as MagazineName ,UPPER(PO1.name+' '+PO1.surName) as Yazar  FROM [Paper] 
+                    inner join RefereePaper RP  on RP.PaperRef=Paper.ID
+                    inner join Magazine M on M.ID=Paper.MagazineRef
+                    LEFT join PortalUser PO1 on PO1.ID=Paper.AuthorUserRef
                     where Paper.isActive=1 " +
                     " and RP.UserRefereeRef=" + RefereeID.ToString();
                     //and RP.isApproved=2
@@ -3082,9 +3126,10 @@ namespace BSClass
 
                 if (PublisherID > 0) 
                 {
-                    sSQL = @" SELECT Paper.*  FROM [Paper] 
+                    sSQL = @" SELECT Paper.*,M.name as MagazineName,UPPER(PO1.name+' '+PO1.surName) as Yazar    FROM [Paper] 
                     inner join Magazine M on M.ID=Paper.MagazineRef
                     inner join PortalUser PO on PO.ID=M.PublisherUserRef
+                    LEFT join PortalUser PO1 on PO1.ID=Paper.AuthorUserRef
                     where Paper.isActive=1
                     and PO.ID=" + PublisherID.ToString();
                 }
@@ -3116,7 +3161,9 @@ namespace BSClass
                         p.authorId= Convert.ToInt32(  dr["AuthorUserRef"].ToString());
                         p.comments= this.GetCommentList(p.id.ToString(),-1,true);
                         p.contentPath=dr["contentPath"].ToString();
+                        p.MagazineName = dr["MagazineName"].ToString();
 
+                        p.AuthorName= dr["Yazar"].ToString();
 
                         p.publishedId = dr["publishedId"].ToString();
 
@@ -3382,7 +3429,9 @@ namespace BSClass
 
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
-                VALUES(" + newID.ToString() + "," + UserType.moderator.ToString() + ") ";
+                VALUES(" + newID.ToString() + "," + (Convert.ToInt32 (UserType.moderator)).ToString() + ") ";
+
+                scmd.CommandText = sSQL;
                 scmd.ExecuteScalar();
 
                 return newID;
@@ -3525,7 +3574,9 @@ namespace BSClass
 
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
-                VALUES(" + newID.ToString() + "," + UserType.systemadmin.ToString() + ") ";
+                VALUES(" + newID.ToString() + "," + (Convert.ToInt32 (UserType.systemadmin)).ToString() + ") ";
+
+                scmd.CommandText = sSQL;
                 scmd.ExecuteScalar();
 
                 return newID;

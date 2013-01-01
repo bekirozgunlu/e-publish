@@ -484,9 +484,9 @@ namespace EYayincilikWS
         }
 
         [WebMethod]
-        public Magazine[] GetMagazineList(string MagazineIDList, bool onlyActiveRecords)
+        public Magazine[] GetMagazineList(string MagazineIDList,int PublisherID, bool onlyActiveRecords)
         {
-            return DBManager.singleton().GetMagazineList(MagazineIDList, onlyActiveRecords);
+            return DBManager.singleton().GetMagazineList(MagazineIDList, PublisherID ,onlyActiveRecords);
         }
 
 
