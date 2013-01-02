@@ -3198,12 +3198,12 @@ namespace BSClass
         }
 
 
-        public ScienceCategory[] GetScienceCategoryList(bool onlyActiveRecords,int SubCategoryID)
+        public ScienceCategory[] GetScienceCategoryList(bool onlyActiveRecords,int SubCategoryID , int MagazineID)
         {
             List<ScienceCategory> tList = new List<ScienceCategory>();
             try
             {
-                string sSQL = @"SELECT [ScienceCategory].*  FROM [ScienceCategory] ";
+                string sSQL = @"SELECT distinct  [ScienceCategory].*  FROM [ScienceCategory] ";
 
 
                 if (SubCategoryID > 0)
@@ -3211,10 +3211,16 @@ namespace BSClass
                     sSQL = sSQL + " INNER JOIN ScienceSubCategory SSC on SSC.ScienceCategoryRef=ScienceCategory.ID " +
                     " where SSC.SubCategoryRef=" + SubCategoryID.ToString() + " and ScienceCategory.isActive=1 ";
                 }
-                else
+                else if (MagazineID > 0)
                 {
-                    sSQL = sSQL + "  where ScienceCategory.isActive=1 ";
+                    sSQL = @" SELECT distinct  [ScienceCategory].*  FROM [ScienceCategory]
+                        LEFT join ScienceSubCategory SSC on SSC.ScienceCategoryRef=ScienceCategory.ID
+                        LEFT join MagazineSubCategory MSC on MSC.SubCategoryRef=SSC.SubCategoryRef
+                        where MSC.MagazineRef="+MagazineID.ToString()+" and ScienceCategory.isActive=1 ";               
                 }
+         
+
+               
 
 
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
@@ -3263,21 +3269,23 @@ namespace BSClass
             List<SubCategory> tList = new List<SubCategory>();
             try
             {
-                string sSQL = @"SELECT [SubCategory].* " +
-                " FROM [SubCategory] ";
+                string sSQL = @"SELECT distinct [SubCategory].* 
+                FROM [SubCategory] 
+                LEFT JOIN MagazineSubCategory MSC on MSC.SubCategoryRef=SubCategory.ID 
+                LEFT JOIN ScienceSubCategory SSC on SSC.SubCategoryRef=SubCategory.ID  
+                WHERE 1=1 ";
 
 
 
                 if (MagazineID > 0)
                 {
-                    sSQL = sSQL + "INNER JOIN MagazineSubCategory MSC on MSC.SubCategoryRef=SubCategory.ID " +
-                        " where where MSC.MagazineRef =" + MagazineID.ToString();
+                    sSQL = sSQL + 
+                        "  AND MSC.MagazineRef =" + MagazineID.ToString();
                 }
 
-                else if (scienceCAtegorylist != null && scienceCAtegorylist.Length > 0)
+                if (scienceCAtegorylist != null && scienceCAtegorylist.Length > 0)
                 {
-                    sSQL = sSQL + " INNER JOIN ScienceSubCategory SSC on SSC.SubCategoryRef=SubCategory.ID " +
-                    " where SSC.ScienceCategoryRef in(" + scienceCAtegorylist + ")";
+                    sSQL = sSQL + "  AND SSC.ScienceCategoryRef in(" + scienceCAtegorylist + ")";
                 }
 
 
@@ -3302,7 +3310,7 @@ namespace BSClass
                         c.isActive = Convert.ToInt32(dr["isActive"].ToString());
                         c.approvalState = Convert.ToInt32(dr["approvalState"].ToString());
                         c.name = dr["name"].ToString();
-                        c.scienceCategoryList = this.GetScienceCategoryList(true, c.id);
+                        c.scienceCategoryList = this.GetScienceCategoryList(true, c.id,-1);
                         tList.Add(c);
                     }
                 }
