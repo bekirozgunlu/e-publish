@@ -1407,11 +1407,11 @@ namespace EYayincilikPortal
         }
 
         
-        public SVC1.ScienceCategory[] ScienceCategoryList(bool onlyActiveRecords,int SubCAtegoryID)
+        public SVC1.ScienceCategory[] ScienceCategoryList(bool onlyActiveRecords,int SubCAtegoryID,int MagazineID)
         {
             try
             {
-                return svc.GetScienceCategoryList(onlyActiveRecords, SubCAtegoryID);
+                return svc.GetScienceCategoryList(onlyActiveRecords, SubCAtegoryID, MagazineID);
 
             }
             catch (Exception ex)

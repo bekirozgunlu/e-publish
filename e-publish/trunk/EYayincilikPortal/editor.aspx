@@ -14,6 +14,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:LinkButton ID="btnPublish" runat="server" onclick="btnPublish_Click">DERGİ YAYINLA</asp:LinkButton>
         <br />
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
+        <br />
         <br />
         <br />
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 

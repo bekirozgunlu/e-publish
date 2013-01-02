@@ -10,6 +10,10 @@
     <form id="form1" runat="server">
     <div>
     
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
+        <br />
+        <br />
+    
     </div>
     </form>
 </body>

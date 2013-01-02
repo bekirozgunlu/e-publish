@@ -2377,26 +2377,28 @@ namespace EYayincilikPortal.SVC1 {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetScienceCategoryList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ScienceCategory[] GetScienceCategoryList(bool onlyActiveRecords, int SubCategoryID) {
+        public ScienceCategory[] GetScienceCategoryList(bool onlyActiveRecords, int SubCategoryID, int MagazineID) {
             object[] results = this.Invoke("GetScienceCategoryList", new object[] {
                         onlyActiveRecords,
-                        SubCategoryID});
+                        SubCategoryID,
+                        MagazineID});
             return ((ScienceCategory[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetScienceCategoryListAsync(bool onlyActiveRecords, int SubCategoryID) {
-            this.GetScienceCategoryListAsync(onlyActiveRecords, SubCategoryID, null);
+        public void GetScienceCategoryListAsync(bool onlyActiveRecords, int SubCategoryID, int MagazineID) {
+            this.GetScienceCategoryListAsync(onlyActiveRecords, SubCategoryID, MagazineID, null);
         }
         
         /// <remarks/>
-        public void GetScienceCategoryListAsync(bool onlyActiveRecords, int SubCategoryID, object userState) {
+        public void GetScienceCategoryListAsync(bool onlyActiveRecords, int SubCategoryID, int MagazineID, object userState) {
             if ((this.GetScienceCategoryListOperationCompleted == null)) {
                 this.GetScienceCategoryListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetScienceCategoryListOperationCompleted);
             }
             this.InvokeAsync("GetScienceCategoryList", new object[] {
                         onlyActiveRecords,
-                        SubCategoryID}, this.GetScienceCategoryListOperationCompleted, userState);
+                        SubCategoryID,
+                        MagazineID}, this.GetScienceCategoryListOperationCompleted, userState);
         }
         
         private void OnGetScienceCategoryListOperationCompleted(object arg) {

@@ -56,7 +56,7 @@
     <Content Include="editor.aspx" />
     <Content Include="hakem.aspx" />
     <Content Include="invite.aspx" />
-    <Content Include="makale.aspx" />
+    <Content Include="makaleEkle.aspx" />
     <Content Include="login.aspx" />
     <Content Include="moderator.aspx" />
     <Content Include="publish.aspx" />
@@ -155,12 +155,12 @@
     <Compile Include="invite.aspx.designer.cs">
       <DependentUpon>invite.aspx</DependentUpon>
     </Compile>
-    <Compile Include="makale.aspx.cs">
-      <DependentUpon>makale.aspx</DependentUpon>
+    <Compile Include="makaleEkle.aspx.cs">
+      <DependentUpon>makaleEkle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="makale.aspx.designer.cs">
-      <DependentUpon>makale.aspx</DependentUpon>
+    <Compile Include="makaleEkle.aspx.designer.cs">
+      <DependentUpon>makaleEkle.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

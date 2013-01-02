@@ -45,8 +45,8 @@ namespace EYayincilikPortal
                     string to = txtMail.Text.Trim();
                     string subject = "E-Yayıncılık Hakemlik Davetiyesi !";
                     string body = " Hakemliği kabul etmek için http://eyayincilik/invite.aspx?invitation="+RefereeID.ToString()+" linkine tıklayınız  ";
-                    SmtpMail.SmtpServer = "mail.google.com";
-                    SmtpMail.Send(from, to, subject, body);
+                    System.Web.Mail.SmtpMail.SmtpServer = "LocalHost";
+                    System.Web.Mail.SmtpMail.Send(from, to, subject, body);
 
                     Response.Redirect("editor.aspx");
                 }

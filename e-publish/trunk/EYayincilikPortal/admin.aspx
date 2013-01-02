@@ -8,6 +8,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
+    <p>
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
+    </p>
     <div>
     
     </div>

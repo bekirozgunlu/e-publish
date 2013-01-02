@@ -35,34 +35,43 @@ namespace EYayincilikPortal
 
                     if (u.userType[0] == Convert.ToInt32(UserType.editor) ) 
                     {
-                        Response.Redirect("editor.aspx");
+                        Session["isEditor"] = "1";
+                        //Response.Redirect("editor.aspx");
                     }
                     else if (u.userType[0] == Convert.ToInt32(UserType.hakem))
                     {
-                        Response.Redirect("hakem.aspx");
+                        Session["isReferee"] = "1";
+                        //Response.Redirect("hakem.aspx");
                     }
                     else if (u.userType[0] == Convert.ToInt32(UserType.yazar))
                     {
-                        Response.Redirect("yazar.aspx");
+                        Session["isAuthor"] = "1";
+                        //Response.Redirect("yazar.aspx");
                     }
                     else if (u.userType[0] == Convert.ToInt32(UserType.moderator))
                     {
-                        Response.Redirect("moderator.aspx");
+                        Session["isModerator"] = "1";
+                        //Response.Redirect("moderator.aspx");
                     }
                    
                     else if (u.userType[0] == Convert.ToInt32(UserType.systemadmin))
                     {
-                        Response.Redirect("admin.aspx");
+                        Session["isAdmin"] = "1";
+                        //Response.Redirect("admin.aspx");
                     }
                     else if (u.userType[0] == Convert.ToInt32(UserType.standard))
                     {
-                        Response.Redirect("default.aspx");
+                        Session["isStandardUser"] = "1";
+                        //Response.Redirect("default.aspx");
                     }
 
                     if (u.userType[0] == Convert.ToInt32(UserType.anonim))
                     {
-                        Response.Redirect("default.aspx");
+                        Session["isAnonimUser"] = "1";
+                        //Response.Redirect("default.aspx");
                     }
+
+                    Response.Redirect("default.aspx");
                 }
             }
             m = null;
