@@ -17,8 +17,37 @@
     <form id="form1" runat="server">
     <div>
     
-        <div style="text-align: right">
-            <asp:HyperLink ID="loginlink" runat="server" NavigateUrl="~/login.aspx">Login</asp:HyperLink>
+        <div style="text-align: left">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+            <br />
+            <asp:LinkButton ID="btnYazar" runat="server" PostBackUrl="~/yazar.aspx" 
+                Visible="False">Yazar Ana Sayfa</asp:LinkButton>
+&nbsp;&nbsp;&nbsp;
+            <asp:LinkButton ID="btnEditor" runat="server" PostBackUrl="~/editor.aspx" 
+                Visible="False">Editör İşlemleri</asp:LinkButton>
+&nbsp;&nbsp;
+            <asp:LinkButton ID="btnModerator" runat="server" PostBackUrl="~/moderator.aspx" 
+                Visible="False">Moderator İşlemleri</asp:LinkButton>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:LinkButton ID="btnAdmin" runat="server" 
+                PostBackUrl="~/admin.aspx" Visible="False">Admin</asp:LinkButton>
+&nbsp;
+            <asp:LinkButton ID="btnHakem" runat="server" PostBackUrl="~/hakem.aspx" 
+                Visible="False">Hakem İşlemleri</asp:LinkButton>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+
+<div style="text-align: right">
+            <asp:HyperLink ID="loginlink" runat="server" NavigateUrl="~/login.aspx" 
+                style="text-align: right; font-weight: 700; color: #FF3300;">Login</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+
+<div>
+    <asp:Label ID="Label1" runat="server" 
+        style="font-weight: 700; font-style: italic; text-decoration: underline"></asp:Label>
+</div>
+
         </div>
         <br />
         <br />

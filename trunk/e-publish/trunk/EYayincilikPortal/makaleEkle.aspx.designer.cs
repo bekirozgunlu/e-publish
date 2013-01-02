@@ -10,7 +10,7 @@
 namespace EYayincilikPortal {
     
     
-    public partial class _Default {
+    public partial class detay {
         
         /// <summary>
         /// form1 control.
@@ -22,58 +22,85 @@ namespace EYayincilikPortal {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// btnYazar control.
+        /// txtYazarAdi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnYazar;
+        protected global::System.Web.UI.WebControls.TextBox txtYazarAdi;
         
         /// <summary>
-        /// btnEditor control.
+        /// txtBaslik control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnEditor;
+        protected global::System.Web.UI.WebControls.TextBox txtBaslik;
         
         /// <summary>
-        /// btnModerator control.
+        /// cmbDergi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnModerator;
+        protected global::System.Web.UI.WebControls.DropDownList cmbDergi;
         
         /// <summary>
-        /// btnAdmin control.
+        /// cmbAnaKat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAdmin;
+        protected global::System.Web.UI.WebControls.DropDownList cmbAnaKat;
         
         /// <summary>
-        /// btnHakem control.
+        /// ListAltKategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnHakem;
+        protected global::System.Web.UI.WebControls.ListBox ListAltKategory;
         
         /// <summary>
-        /// loginlink control.
+        /// btnAnaKategoriEkle1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink loginlink;
+        protected global::System.Web.UI.WebControls.Button btnAnaKategoriEkle1;
+        
+        /// <summary>
+        /// btnAnaKategoriSil control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAnaKategoriSil;
+        
+        /// <summary>
+        /// ListSecimAltKategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ListSecimAltKategory;
+        
+        /// <summary>
+        /// FileUpload1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
         /// Label1 control.
@@ -85,58 +112,22 @@ namespace EYayincilikPortal {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// lblDergi control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDergi;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-        
-        /// <summary>
-        /// lblDergi0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDergi0;
-        
-        /// <summary>
-        /// DropDownList2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// objPapers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource objPapers;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
         /// objDergiler control.
@@ -148,12 +139,21 @@ namespace EYayincilikPortal {
         protected global::System.Web.UI.WebControls.ObjectDataSource objDergiler;
         
         /// <summary>
-        /// objPublishedMagazine control.
+        /// objAnaBilimDali control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource objPublishedMagazine;
+        protected global::System.Web.UI.WebControls.ObjectDataSource objAnaBilimDali;
+        
+        /// <summary>
+        /// objAltBilimDali control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource objAltBilimDali;
     }
 }

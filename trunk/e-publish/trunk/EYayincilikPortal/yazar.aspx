@@ -10,6 +10,20 @@
     <form id="form1" runat="server">
     <div>
     
+        <asp:HyperLink ID="MakaleEkleLink" runat="server" 
+            NavigateUrl="~/makaleEkle.aspx">Yeni Makale Ekle</asp:HyperLink>
+&nbsp;
+        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
+        <br />
+        <br />
+        <br />
+        <br />
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
+        <br />
+        <br />
+        <br />
+        <br />
+    
     </div>
     </form>
 </body>
