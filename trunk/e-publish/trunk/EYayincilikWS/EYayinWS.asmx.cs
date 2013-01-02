@@ -510,9 +510,9 @@ namespace EYayincilikWS
         }
 
         [WebMethod]
-        public ScienceCategory[] GetScienceCategoryList(bool onlyActiveRecords, int SubCategoryID)
+        public ScienceCategory[] GetScienceCategoryList(bool onlyActiveRecords, int SubCategoryID, int MagazineID)
         {
-            return DBManager.singleton().GetScienceCategoryList(onlyActiveRecords,SubCategoryID);
+            return DBManager.singleton().GetScienceCategoryList(onlyActiveRecords,SubCategoryID,MagazineID);
         }
 
         [WebMethod]
