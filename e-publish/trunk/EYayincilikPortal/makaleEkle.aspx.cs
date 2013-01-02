@@ -61,7 +61,23 @@ namespace EYayincilikPortal
                     p.isActive = 1;
 
 
+                    List<SubCategory> scList = new List<SubCategory>(); 
+                    foreach (ListItem lt in ListSecimAltKategory.Items) 
+                    {
+                        SubCategory scx=new SubCategory();
+                        scx.id=Convert.ToInt32(lt.Value.ToString()) ;
+                        scx.name=lt.Text ;
+
+
+                        scList.Add(scx);
+                    }
+
+
+
                     Manager m = new Manager();
+
+                    p.subCategories = scList.ToArray();
+
                     int newID= m.AddPaper(p);
                     
 
@@ -70,6 +86,9 @@ namespace EYayincilikPortal
                     p.contentPath = p.title + "_" + newID.ToString() + ".pdf";
                     m.UpdatePaper(p);
                     m = null;
+
+
+                    
 
                     Label1.Text = "Makale Gönderildi : " + FileUpload1.PostedFile.FileName;
                   
