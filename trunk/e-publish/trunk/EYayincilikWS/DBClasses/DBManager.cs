@@ -13,6 +13,7 @@ namespace BSClass
     {
 
         private static DBManager p_singleton;
+
         private static SqlConnection sc;
 
         private DBManager()
@@ -933,6 +934,33 @@ namespace BSClass
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
+
+
+                if (p.subCategories.Length > 0) 
+                {
+
+                    foreach (SubCategory scxx in p.subCategories) 
+                    {
+
+
+                        if(sc.State==  ConnectionState.Open) {sc.Close();}
+                        if(sc.State==  ConnectionState.Closed) {sc.Open();}
+
+                        sSQL="INSERT INTO [PaperSubCategory]([PaperRef],[SubCategoryRef]) "+
+                             " VALUES ("+newID.ToString()+","+scxx.id.ToString()  +") " ;
+
+
+                        scmd.CommandText = sSQL;
+                        scmd.ExecuteNonQuery();
+
+                        if(sc.State==  ConnectionState.Open) {sc.Close();}
+
+
+                    }
+
+
+                }
+
                
                 if(sc.State==  ConnectionState.Open) {sc.Close();};
 
