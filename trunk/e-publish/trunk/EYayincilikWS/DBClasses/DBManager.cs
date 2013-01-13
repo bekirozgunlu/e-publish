@@ -1885,7 +1885,7 @@ namespace BSClass
             try
             {
              
-                string sSQL = "UPDATE [Comment] SET [approvalState] =2 " +
+                string sSQL = "UPDATE [Comment] SET [approvalState] =2 , isActive=1 " +
                 " WHERE ID=" + CommentID.ToString();
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
@@ -2574,9 +2574,16 @@ namespace BSClass
             List<User> tList = new List<User>();
             try
             {
-                string sSQL = @"SELECT [PortalUser].*  " +
-                " FROM [PortalUser]  " +
-                " where PortalUser.isActive=1 ";
+
+                string sSQL;
+                if(onlyActiveRecords==true)
+                    sSQL = @"SELECT [PortalUser].*  " +
+                    " FROM [PortalUser]  " +
+                    " where PortalUser.isActive=1 ";
+                else
+                     sSQL = @"SELECT [PortalUser].*  " +
+                    " FROM [PortalUser]  " +
+                    " where 1=1 ";
 
                 if (UserIDlist != null && UserIDlist.Length > 0)
                 {
@@ -3043,10 +3050,22 @@ namespace BSClass
             List<Comment> tList = new List<Comment>();
             try
             {
-                string sSQL = @"Select C.* from Comment C
-                inner join Paper p on p.ID=C.PaperRef
-                inner join PortalUser PU on  PU.ID=C.UserRef " +
-                " where C.isActive=1 ";
+                string sSQL;
+
+                if (onlyActiveRecords == true)
+                {
+                    sSQL = @"Select C.* from Comment C
+                    inner join Paper p on p.ID=C.PaperRef
+                    inner join PortalUser PU on  PU.ID=C.UserRef " +
+                    " where C.isActive=1 ";
+                }
+                else
+                {
+                    sSQL = @"Select C.* from Comment C
+                    inner join Paper p on p.ID=C.PaperRef
+                    inner join PortalUser PU on  PU.ID=C.UserRef " +
+                    " where C.isActive=2 ";
+                }
 
                 if (PaperIDList != null && PaperIDList.Length > 0)
                 {
@@ -3083,7 +3102,7 @@ namespace BSClass
                         c.id= Convert.ToInt32(dr["ID"].ToString());
                         c.paperId= Convert.ToInt32(dr["PaperRef"].ToString());
                         c.userId= Convert.ToInt32(dr["UserRef"].ToString());
-                        c.content = dr["content"].ToString();
+                        c.content = dr["commentContent"].ToString();
                         c.commentType = Convert.ToInt32(dr["commentType"].ToString());
 
                         if(dr["commentDate"].ToString().Length>0)
