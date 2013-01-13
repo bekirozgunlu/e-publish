@@ -57,8 +57,7 @@
                 SelectMethod="GetSubCategoryList" TypeName="EYayincilikPortal.Manager">
                 <SelectParameters>
                     <asp:Parameter DefaultValue="true" Name="onlyActiveRecords" Type="Boolean" />
-                    <asp:Parameter DefaultValue="&quot;&quot;" Name="scienceCAtegorylist" 
-                        Type="String" />
+                    <asp:Parameter DefaultValue="" Name="scienceCAtegorylist" Type="String" />
                     <asp:Parameter DefaultValue="-1" Name="MagazineID" Type="Int32" />
                 </SelectParameters>
             </asp:ObjectDataSource>
@@ -182,7 +181,7 @@
                 SelectMethod="GetSubCategoryList" TypeName="EYayincilikPortal.Manager">
                 <SelectParameters>
                     <asp:Parameter DefaultValue="true" Name="onlyActiveRecords" Type="Boolean" />
-                    <asp:Parameter DefaultValue="-1" Name="scienceCAtegorylist" Type="String" />
+                    <asp:Parameter DefaultValue="" Name="scienceCAtegorylist" Type="String" />
                     <asp:Parameter DefaultValue="-1" Name="MagazineID" Type="Int32" />
                 </SelectParameters>
             </asp:ObjectDataSource>
