@@ -33,6 +33,49 @@ namespace EYayincilikPortal
             
         }
 
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int rIndex = Convert.ToInt32 (e.CommandArgument) ;
+
+            string id = GridView1.DataKeys[rIndex].Value.ToString();
+
+            Manager m = new Manager();
+            m.ApproveComment(Convert.ToInt32( id));
+            m = null;
+
+            DataBind();
+        }
+
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            if (e.CommandName == "onay")
+            {
+                            
+                 int rIndex = Convert.ToInt32 (e.CommandArgument) ;
+                  string id = GridView2.DataKeys[rIndex].Value.ToString();
+
+                  Manager m = new Manager();
+                  m.ActivateUser(Convert.ToInt32( id));
+                  m = null;
+                  DataBind();
+            }
+            else if (e.CommandName == "red")
+            {
+                 int rIndex = Convert.ToInt32 (e.CommandArgument) ;
+                 string id = GridView2.DataKeys[rIndex].Value.ToString();
+
+                  Manager m = new Manager();
+                  m.DeactivateUser(Convert.ToInt32( id));
+                  m = null;
+                  DataBind();
+            }
+
+        }
+
+      
+        
+
         
     }
 }
