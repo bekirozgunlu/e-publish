@@ -35,11 +35,11 @@ namespace EYayincilikPortal
 
                 if (Session["isAdmin"] != null && Session["isAdmin"].ToString() == "1")
                 {
-                    btnYazar.Visible = true;
+                    btnAdmin.Visible = true;
                 }
                 if (Session["isReferee"] != null && Session["isReferee"].ToString() == "1")
                 {
-                    btnYazar.Visible = true;
+                    btnHakem.Visible = true;
                 }
             }
            

@@ -444,6 +444,45 @@
       <s:element name="UpdatePublisherResponse">
         <s:complexType />
       </s:element>
+      <s:element name="AddModerator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pp" type="tns:Moderator" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Moderator">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:User" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AddModeratorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddModeratorResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteModerator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ModeratorID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteModeratorResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateModerator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pp" type="tns:Moderator" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateModeratorResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="AddPaper">
         <s:complexType>
           <s:sequence>
@@ -856,6 +895,20 @@
       <s:element name="AddPaperByAuthorResponse">
         <s:complexType />
       </s:element>
+      <s:element name="GetUserTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserTypesResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetAuthorList">
         <s:complexType>
           <s:sequence>
@@ -961,11 +1014,6 @@
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="Moderator" nillable="true" type="tns:Moderator" />
         </s:sequence>
-      </s:complexType>
-      <s:complexType name="Moderator">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:User" />
-        </s:complexContent>
       </s:complexType>
       <s:element name="GetMagazineList">
         <s:complexType>
@@ -1109,6 +1157,48 @@
       <s:element name="DeleteSurveyAnswerResponse">
         <s:complexType />
       </s:element>
+      <s:element name="AddSubCategoryToScienceCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubCategoryId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScienceCategoryId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSubCategoryToScienceCategoryResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddSubCategoryToMagazine">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubCategoryId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MagazineId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSubCategoryToMagazineResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPublisherList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PublisherIDList" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="onlyActiveRecords" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublisherListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPublisherListResult" type="tns:ArrayOfPublisher" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPublisher">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Publisher" nillable="true" type="tns:Publisher" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -1242,6 +1332,24 @@
   </wsdl:message>
   <wsdl:message name="UpdatePublisherSoapOut">
     <wsdl:part name="parameters" element="tns:UpdatePublisherResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddModeratorSoapIn">
+    <wsdl:part name="parameters" element="tns:AddModerator" />
+  </wsdl:message>
+  <wsdl:message name="AddModeratorSoapOut">
+    <wsdl:part name="parameters" element="tns:AddModeratorResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteModeratorSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteModerator" />
+  </wsdl:message>
+  <wsdl:message name="DeleteModeratorSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteModeratorResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateModeratorSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateModerator" />
+  </wsdl:message>
+  <wsdl:message name="UpdateModeratorSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateModeratorResponse" />
   </wsdl:message>
   <wsdl:message name="AddPaperSoapIn">
     <wsdl:part name="parameters" element="tns:AddPaper" />
@@ -1453,6 +1561,12 @@
   <wsdl:message name="AddPaperByAuthorSoapOut">
     <wsdl:part name="parameters" element="tns:AddPaperByAuthorResponse" />
   </wsdl:message>
+  <wsdl:message name="GetUserTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetUserTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserTypesResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAuthorListSoapIn">
     <wsdl:part name="parameters" element="tns:GetAuthorList" />
   </wsdl:message>
@@ -1536,6 +1650,24 @@
   </wsdl:message>
   <wsdl:message name="DeleteSurveyAnswerSoapOut">
     <wsdl:part name="parameters" element="tns:DeleteSurveyAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSubCategoryToScienceCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:AddSubCategoryToScienceCategory" />
+  </wsdl:message>
+  <wsdl:message name="AddSubCategoryToScienceCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:AddSubCategoryToScienceCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSubCategoryToMagazineSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSubCategoryToMagazine" />
+  </wsdl:message>
+  <wsdl:message name="AddSubCategoryToMagazineSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSubCategoryToMagazineResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPublisherListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPublisherList" />
+  </wsdl:message>
+  <wsdl:message name="GetPublisherListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPublisherListResponse" />
   </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="HelloWorld">
@@ -1625,6 +1757,18 @@
     <wsdl:operation name="UpdatePublisher">
       <wsdl:input message="tns:UpdatePublisherSoapIn" />
       <wsdl:output message="tns:UpdatePublisherSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddModerator">
+      <wsdl:input message="tns:AddModeratorSoapIn" />
+      <wsdl:output message="tns:AddModeratorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteModerator">
+      <wsdl:input message="tns:DeleteModeratorSoapIn" />
+      <wsdl:output message="tns:DeleteModeratorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateModerator">
+      <wsdl:input message="tns:UpdateModeratorSoapIn" />
+      <wsdl:output message="tns:UpdateModeratorSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="AddPaper">
       <wsdl:input message="tns:AddPaperSoapIn" />
@@ -1766,6 +1910,10 @@
       <wsdl:input message="tns:AddPaperByAuthorSoapIn" />
       <wsdl:output message="tns:AddPaperByAuthorSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetUserTypes">
+      <wsdl:input message="tns:GetUserTypesSoapIn" />
+      <wsdl:output message="tns:GetUserTypesSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAuthorList">
       <wsdl:input message="tns:GetAuthorListSoapIn" />
       <wsdl:output message="tns:GetAuthorListSoapOut" />
@@ -1821,6 +1969,18 @@
     <wsdl:operation name="DeleteSurveyAnswer">
       <wsdl:input message="tns:DeleteSurveyAnswerSoapIn" />
       <wsdl:output message="tns:DeleteSurveyAnswerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSubCategoryToScienceCategory">
+      <wsdl:input message="tns:AddSubCategoryToScienceCategorySoapIn" />
+      <wsdl:output message="tns:AddSubCategoryToScienceCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSubCategoryToMagazine">
+      <wsdl:input message="tns:AddSubCategoryToMagazineSoapIn" />
+      <wsdl:output message="tns:AddSubCategoryToMagazineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPublisherList">
+      <wsdl:input message="tns:GetPublisherListSoapIn" />
+      <wsdl:output message="tns:GetPublisherListSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -2016,6 +2176,33 @@
     </wsdl:operation>
     <wsdl:operation name="UpdatePublisher">
       <soap:operation soapAction="http://tempuri.org/UpdatePublisher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddModerator">
+      <soap:operation soapAction="http://tempuri.org/AddModerator" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteModerator">
+      <soap:operation soapAction="http://tempuri.org/DeleteModerator" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateModerator">
+      <soap:operation soapAction="http://tempuri.org/UpdateModerator" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2338,6 +2525,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUserTypes">
+      <soap:operation soapAction="http://tempuri.org/GetUserTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAuthorList">
       <soap:operation soapAction="http://tempuri.org/GetAuthorList" style="document" />
       <wsdl:input>
@@ -2457,6 +2653,33 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteSurveyAnswer">
       <soap:operation soapAction="http://tempuri.org/DeleteSurveyAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSubCategoryToScienceCategory">
+      <soap:operation soapAction="http://tempuri.org/AddSubCategoryToScienceCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSubCategoryToMagazine">
+      <soap:operation soapAction="http://tempuri.org/AddSubCategoryToMagazine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublisherList">
+      <soap:operation soapAction="http://tempuri.org/GetPublisherList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2658,6 +2881,33 @@
     </wsdl:operation>
     <wsdl:operation name="UpdatePublisher">
       <soap12:operation soapAction="http://tempuri.org/UpdatePublisher" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddModerator">
+      <soap12:operation soapAction="http://tempuri.org/AddModerator" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteModerator">
+      <soap12:operation soapAction="http://tempuri.org/DeleteModerator" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateModerator">
+      <soap12:operation soapAction="http://tempuri.org/UpdateModerator" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2980,6 +3230,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUserTypes">
+      <soap12:operation soapAction="http://tempuri.org/GetUserTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAuthorList">
       <soap12:operation soapAction="http://tempuri.org/GetAuthorList" style="document" />
       <wsdl:input>
@@ -3099,6 +3358,33 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteSurveyAnswer">
       <soap12:operation soapAction="http://tempuri.org/DeleteSurveyAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSubCategoryToScienceCategory">
+      <soap12:operation soapAction="http://tempuri.org/AddSubCategoryToScienceCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSubCategoryToMagazine">
+      <soap12:operation soapAction="http://tempuri.org/AddSubCategoryToMagazine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublisherList">
+      <soap12:operation soapAction="http://tempuri.org/GetPublisherList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

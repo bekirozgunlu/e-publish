@@ -1431,7 +1431,7 @@ namespace BSClass
 
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 sSQL = @"INSERT INTO [UserGrant]([userRef],[userType])
-                VALUES(" + newID.ToString() + "," + Convert.ToInt32 (UserType.yazar) + ") ";
+                VALUES(" + newID.ToString() + "," + Convert.ToInt32 (UserType.standard) + ") ";
 
                 scmd.CommandText = sSQL;
                 scmd.ExecuteScalar();
@@ -2651,7 +2651,7 @@ namespace BSClass
                 " FROM [PortalUser]  " +
                 " inner join UserGrant on UserGrant.UserRef=[PortalUser].ID" +
                 " where PortalUser.isActive=1 " +
-                " and UserGrant.UserType=" + (Convert.ToInt32 (UserType.moderator)).ToString();
+                " and UserGrant.UserType=" + (Convert.ToInt32 (UserType.systemadmin)).ToString();
 
                 if (SystemAdminIDList != null && SystemAdminIDList.Length > 0)
                 {
@@ -3438,8 +3438,8 @@ namespace BSClass
                 int newID = 0;
 
                 string sSQL = @"INSERT INTO [PortalUser]
-                ([userName],[passWord],[name],[surName],[isActive],[photoFilePath])                
-                VALUES(@p1,@p2,@p3,@p4,@p5,@p6)  ;
+                ([userName],[passWord],[name],[surName],[isActive])                
+                VALUES(@p1,@p2,@p3,@p4,@p5)  ;
                  Select @@IDENTITY ";
 
 
@@ -3455,8 +3455,6 @@ namespace BSClass
                 scmd.Parameters[3].Value = m.surName;
                 scmd.Parameters.Add("p5", SqlDbType.TinyInt);
                 scmd.Parameters[4].Value = m.isActive.ToString();
-                scmd.Parameters.Add("p6", SqlDbType.VarChar);
-                scmd.Parameters[5].Value = m.photoFilePath.ToString();
 
 
                 object o = scmd.ExecuteScalar();
@@ -3814,5 +3812,145 @@ namespace BSClass
             }
         }
 
+         public void AddSubCategoryToScienceCategory(int SubCategoryId, int ScienceCategoryId)
+        {
+            try
+            {
+                
+                int newID = 0;
+                string sSQL =  @"INSERT INTO [ScienceSubCategory]([SubCategoryRef],[ScienceCategoryRef])
+                                 VALUES(" + SubCategoryId.ToString() + "," + ScienceCategoryId.ToString() + ");" + 
+                                 "Select @@IDENTITY ";
+                
+
+                if(sc.State==  ConnectionState.Closed) {sc.Open();}
+                SqlCommand scmd = new SqlCommand(sSQL, sc);
+
+                object o = scmd.ExecuteScalar();
+                newID = Convert.ToInt32(o.ToString());
+
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
+
+                return ;
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+
+                //LOG ERROR
+                //RETURN NULL
+                return;
+            }
+            finally
+            {
+                 //dispose unused objects...
+                if(sc.State==  ConnectionState.Open) {sc.Close();};
+            }
+        }
+
+         public void AddSubCategoryToMagazine(int SubCategoryId, int MagazineId)
+         {
+             try
+             {
+
+                 int newID = 0;
+                 string sSQL = @"INSERT INTO [MagazineSubCategory]([SubCategoryRef],[MagazineRef])
+                                 VALUES(" + SubCategoryId.ToString() + "," + MagazineId.ToString() + ");" +
+                                  "Select @@IDENTITY ";
+
+
+                 if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                 SqlCommand scmd = new SqlCommand(sSQL, sc);
+
+                 object o = scmd.ExecuteScalar();
+                 newID = Convert.ToInt32(o.ToString());
+
+                 if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                 return;
+             }
+             catch (Exception ex)
+             {
+                 string error = ex.Message;
+
+                 //LOG ERROR
+                 //RETURN NULL
+                 return;
+             }
+             finally
+             {
+                 //dispose unused objects...
+                 if (sc.State == ConnectionState.Open) { sc.Close(); };
+             }
+         }
+
+         public BSClass.Publisher[] GetPublisherList(string PublisherIDList, bool onlyActiveRecords)
+         {
+
+             List<Publisher> tList = new List<Publisher>();
+             try
+             {
+                 string sSQL = @"SELECT [PortalUser].* , " +
+                 " FROM [PortalUser]  " +
+                 " inner join UserGrant on UserGrant.UserRef=[PortalUser].ID" +
+                 " where PortalUser.isActive=1 " +
+                 " and UserGrant.UserType=" + (Convert.ToInt32(UserType.editor)).ToString();
+
+                 if (PublisherIDList != null && PublisherIDList.Length > 0)
+                 {
+                     sSQL = sSQL + " and [PortalUser].ID in(" + PublisherIDList + ")";
+                 }
+
+
+
+
+                 if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
+                 DataTable dt = new DataTable();
+                 sda.Fill(dt);
+                 if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                 if (dt.Rows.Count < 0)
+                 {
+                     return null;
+                 }
+                 else
+                 {
+
+                     foreach (DataRow dr in dt.Rows)
+                     {
+                         Publisher a = new Publisher();
+                         a.userID = Convert.ToInt32(dr["ID"].ToString());
+                         a.userName = dr["userName"].ToString();
+                         a.isActive = Convert.ToInt32(dr["isActive"].ToString());
+                         a.surName = dr["surName"].ToString();
+                         a.name = dr["name"].ToString();
+
+                         if (dr["photoFilePath"] != null)
+                             a.photoFilePath = dr["photoFilePath"].ToString();
+
+                         tList.Add(a);
+                     }
+                 }
+
+                 return tList.ToArray();
+
+             }
+             catch (Exception ex)
+             {
+                 string error = ex.Message;
+                 //LOG ERROR
+                 //RETURN 
+                 return null;
+             }
+             finally
+             {
+                 //dispose unused objects...
+             }
+         }
+
     }
+
+
+   
 }

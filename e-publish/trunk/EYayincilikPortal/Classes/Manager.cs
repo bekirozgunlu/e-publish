@@ -31,7 +31,32 @@ namespace EYayincilikPortal
         //}
 
 
+
+        public int[] GetUserTypes(int userID)
+        {
+
+            try
+            {
+                SVC1.Service1 svc = new SVC1.Service1();
+                return svc.GetUserTypes(userID);
+                
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN NULL
+                return null;
+            }
+            finally 
+            {
+                //dispose unused objects...
+            }
+        }
+
         
+
+
         public SVC1.User GetUserByID(int userID)
         {
 
@@ -1505,6 +1530,134 @@ namespace EYayincilikPortal
                 //LOG ERROR
                 //RETURN 
                 return null;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+        public void AddSubCategoryToScienceCategory(int SubCategoryId, int ScienceCategoryId)
+        {
+            try
+            {
+                svc.AddSubCategoryToScienceCategory(SubCategoryId, ScienceCategoryId);
+
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+        public void AddSubCategoryToMagazine(int SubCategoryId, int MagazineId)
+        {
+            try
+            {
+                svc.AddSubCategoryToMagazine(SubCategoryId, MagazineId);
+
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+
+        public SVC1.Publisher[] GetPublisherList(string PublisherIDList, bool onlyActiveRecords)
+        {
+
+            try
+            {
+                return svc.GetPublisherList(PublisherIDList, onlyActiveRecords);
+
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return null;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+
+        public int AddModerator(SVC1.Moderator pp)
+        {
+            try
+            {
+                int newID = svc.AddModerator(pp);
+                return newID;
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN NULL
+                return 0;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+
+        public void DeleteModerator(int ModeratorID)
+        {
+            //makes a SVC1.Moderator record  passive...
+            try
+            {
+                svc.DeletePublisher(ModeratorID);
+                return;
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+
+        public void UpdateModerator(SVC1.Moderator pp)
+        {
+            //Updates a Moderator Record with new values...
+
+            try
+            {
+                svc.UpdateModerator(pp);
+                return;
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return;
             }
             finally
             {
