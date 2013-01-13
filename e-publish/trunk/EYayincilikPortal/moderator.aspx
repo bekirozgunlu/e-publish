@@ -11,7 +11,13 @@
     <div>
     
     </div>
+&nbsp;<asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
+        Text="Yorumları listele" />
+    <asp:GridView ID="GridView1" runat="server">
+    </asp:GridView>
+=======
     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
+>>>>>>> .r33
     </form>
 </body>
 </html>
