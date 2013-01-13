@@ -2646,7 +2646,7 @@ namespace BSClass
             List<SystemAdmin> tList = new List<SystemAdmin>();
             try
             {
-                string sSQL = @"SELECT [PortalUser].* , " +
+                string sSQL = @"SELECT [PortalUser].*  " +
                 " FROM [PortalUser]  " +
                 " inner join UserGrant on UserGrant.UserRef=[PortalUser].ID" +
                 " where PortalUser.isActive=1 " +
@@ -2712,7 +2712,7 @@ namespace BSClass
             List<Referee> tList = new List<Referee>();
             try
             {
-                string sSQL = @"SELECT [PortalUser].* , " +
+                string sSQL = @"SELECT [PortalUser].* " +
                 " FROM [PortalUser]  " +
                 " inner join UserGrant on UserGrant.UserRef=[PortalUser].ID" +
                 " where PortalUser.isActive=1 " +
@@ -2789,7 +2789,7 @@ namespace BSClass
             List<Moderator> tList = new List<Moderator>();
             try
             {
-                string sSQL = @"SELECT [PortalUser].* , " +
+                string sSQL = @"SELECT [PortalUser].*  " +
                 " FROM [PortalUser]  " +
                 " inner join UserGrant on UserGrant.UserRef=[PortalUser].ID" +
                 " where PortalUser.isActive=1 " +                
@@ -3310,7 +3310,7 @@ namespace BSClass
                         "  AND MSC.MagazineRef =" + MagazineID.ToString();
                 }
 
-                if (scienceCAtegorylist != null && scienceCAtegorylist.Length > 0)
+                if (scienceCAtegorylist != null && scienceCAtegorylist.Length > 0 && scienceCAtegorylist!="\"\"")
                 {
                     sSQL = sSQL + "  AND SSC.ScienceCategoryRef in(" + scienceCAtegorylist + ")";
                 }
@@ -3889,7 +3889,7 @@ namespace BSClass
              List<Publisher> tList = new List<Publisher>();
              try
              {
-                 string sSQL = @"SELECT [PortalUser].* , " +
+                 string sSQL = @"SELECT [PortalUser].*  " +
                  " FROM [PortalUser]  " +
                  " inner join UserGrant on UserGrant.UserRef=[PortalUser].ID" +
                  " where PortalUser.isActive=1 " +
