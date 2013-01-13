@@ -2819,6 +2819,8 @@ namespace EYayincilikPortal.SVC1 {
         
         private int[] userTypeField;
         
+        private string isActiveTextField;
+        
         /// <remarks/>
         public int userID {
             get {
@@ -2896,6 +2898,16 @@ namespace EYayincilikPortal.SVC1 {
             }
             set {
                 this.userTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string isActiveText {
+            get {
+                return this.isActiveTextField;
+            }
+            set {
+                this.isActiveTextField = value;
             }
         }
     }
@@ -3782,6 +3794,10 @@ namespace EYayincilikPortal.SVC1 {
         
         private System.DateTime commentDateField;
         
+        private string yorumuYazanField;
+        
+        private string makaleAdiField;
+        
         private string approvalStateTextField;
         
         /// <remarks/>
@@ -3851,6 +3867,26 @@ namespace EYayincilikPortal.SVC1 {
             }
             set {
                 this.commentDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string YorumuYazan {
+            get {
+                return this.yorumuYazanField;
+            }
+            set {
+                this.yorumuYazanField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MakaleAdi {
+            get {
+                return this.makaleAdiField;
+            }
+            set {
+                this.makaleAdiField = value;
             }
         }
         
