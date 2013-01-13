@@ -38,6 +38,9 @@
             <br />
 
 <div style="text-align: right">
+            <asp:HyperLink ID="loginlink0" runat="server" NavigateUrl="~/kayit.aspx" 
+                style="text-align: right; font-weight: 700; color: #FF3300;">Üye Ol</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:HyperLink ID="loginlink" runat="server" NavigateUrl="~/login.aspx" 
                 style="text-align: right; font-weight: 700; color: #FF3300;">Login</asp:HyperLink>
 &nbsp;&nbsp;&nbsp;&nbsp;
