@@ -14,6 +14,28 @@ namespace BSClass
         //public int approvalState;
         //public DateTime commentDate;
 
+        public string YorumuYazan
+        {
+            get
+            {
+                return DBManager.singleton().GetUserByID(this.userId).userName; 
+            }
+            set
+            {
+            }
+        }
+
+
+        public string MakaleAdi
+        {
+            get
+            {
+                return DBManager.singleton().GetPaperList("", "", this.paperId.ToString(), -1, -1, -1, "", "", true)[0].title;
+            }
+            set
+            {
+            }
+        }
 
 
         public int AddComment(int paperID)
