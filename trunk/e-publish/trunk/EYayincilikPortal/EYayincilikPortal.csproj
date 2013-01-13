@@ -95,6 +95,9 @@
     <None Include="Web References\SVC1\PublishedMagazine.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\SVC1\Publisher.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\SVC1\Referee.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

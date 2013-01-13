@@ -29,43 +29,47 @@ namespace EYayincilikPortal
                 }
                 if (u.userType.Length >0 )
                 {
+                    int []GrantList = m.GetUserTypes(u.userID);
+
+                    
+
 
                     Session["user"] = u;
                     Session["userid"] = u.userID;
 
-                    if (u.userType[0] == Convert.ToInt32(UserType.editor) ) 
+                    if (GrantList.Contains<int>( Convert.ToInt32(UserType.editor)) ) 
                     {
                         Session["isEditor"] = "1";
                         //Response.Redirect("editor.aspx");
                     }
-                    else if (u.userType[0] == Convert.ToInt32(UserType.hakem))
+                     if (GrantList.Contains<int>( Convert.ToInt32(UserType.hakem)))
                     {
                         Session["isReferee"] = "1";
                         //Response.Redirect("hakem.aspx");
                     }
-                    else if (u.userType[0] == Convert.ToInt32(UserType.yazar))
+                     if (GrantList.Contains<int>( Convert.ToInt32(UserType.yazar)))
                     {
                         Session["isAuthor"] = "1";
                         //Response.Redirect("yazar.aspx");
                     }
-                    else if (u.userType[0] == Convert.ToInt32(UserType.moderator))
+                     if (GrantList.Contains<int>( Convert.ToInt32(UserType.moderator)))
                     {
                         Session["isModerator"] = "1";
                         //Response.Redirect("moderator.aspx");
                     }
                    
-                    else if (u.userType[0] == Convert.ToInt32(UserType.systemadmin))
+                     if (GrantList.Contains<int>( Convert.ToInt32(UserType.systemadmin)))
                     {
                         Session["isAdmin"] = "1";
                         //Response.Redirect("admin.aspx");
                     }
-                    else if (u.userType[0] == Convert.ToInt32(UserType.standard))
+                     if (GrantList.Contains<int>( Convert.ToInt32(UserType.standard)))
                     {
                         Session["isStandardUser"] = "1";
                         //Response.Redirect("default.aspx");
                     }
 
-                    if (u.userType[0] == Convert.ToInt32(UserType.anonim))
+                    if (GrantList.Contains<int>( Convert.ToInt32(UserType.anonim)))
                     {
                         Session["isAnonimUser"] = "1";
                         //Response.Redirect("default.aspx");

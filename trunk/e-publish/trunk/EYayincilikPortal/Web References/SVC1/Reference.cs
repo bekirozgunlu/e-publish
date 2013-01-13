@@ -73,6 +73,12 @@ namespace EYayincilikPortal.SVC1 {
         
         private System.Threading.SendOrPostCallback UpdatePublisherOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AddModeratorOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteModeratorOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateModeratorOperationCompleted;
+        
         private System.Threading.SendOrPostCallback AddPaperOperationCompleted;
         
         private System.Threading.SendOrPostCallback DeletePaperOperationCompleted;
@@ -143,6 +149,8 @@ namespace EYayincilikPortal.SVC1 {
         
         private System.Threading.SendOrPostCallback AddPaperByAuthorOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetUserTypesOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAuthorListOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetUserListOperationCompleted;
@@ -170,6 +178,12 @@ namespace EYayincilikPortal.SVC1 {
         private System.Threading.SendOrPostCallback AddSurveyAnswerOperationCompleted;
         
         private System.Threading.SendOrPostCallback DeleteSurveyAnswerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddSubCategoryToScienceCategoryOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddSubCategoryToMagazineOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPublisherListOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -274,6 +288,15 @@ namespace EYayincilikPortal.SVC1 {
         
         /// <remarks/>
         public event UpdatePublisherCompletedEventHandler UpdatePublisherCompleted;
+        
+        /// <remarks/>
+        public event AddModeratorCompletedEventHandler AddModeratorCompleted;
+        
+        /// <remarks/>
+        public event DeleteModeratorCompletedEventHandler DeleteModeratorCompleted;
+        
+        /// <remarks/>
+        public event UpdateModeratorCompletedEventHandler UpdateModeratorCompleted;
         
         /// <remarks/>
         public event AddPaperCompletedEventHandler AddPaperCompleted;
@@ -381,6 +404,9 @@ namespace EYayincilikPortal.SVC1 {
         public event AddPaperByAuthorCompletedEventHandler AddPaperByAuthorCompleted;
         
         /// <remarks/>
+        public event GetUserTypesCompletedEventHandler GetUserTypesCompleted;
+        
+        /// <remarks/>
         public event GetAuthorListCompletedEventHandler GetAuthorListCompleted;
         
         /// <remarks/>
@@ -421,6 +447,15 @@ namespace EYayincilikPortal.SVC1 {
         
         /// <remarks/>
         public event DeleteSurveyAnswerCompletedEventHandler DeleteSurveyAnswerCompleted;
+        
+        /// <remarks/>
+        public event AddSubCategoryToScienceCategoryCompletedEventHandler AddSubCategoryToScienceCategoryCompleted;
+        
+        /// <remarks/>
+        public event AddSubCategoryToMagazineCompletedEventHandler AddSubCategoryToMagazineCompleted;
+        
+        /// <remarks/>
+        public event GetPublisherListCompletedEventHandler GetPublisherListCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1044,6 +1079,91 @@ namespace EYayincilikPortal.SVC1 {
             if ((this.UpdatePublisherCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UpdatePublisherCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddModerator", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int AddModerator(Moderator pp) {
+            object[] results = this.Invoke("AddModerator", new object[] {
+                        pp});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddModeratorAsync(Moderator pp) {
+            this.AddModeratorAsync(pp, null);
+        }
+        
+        /// <remarks/>
+        public void AddModeratorAsync(Moderator pp, object userState) {
+            if ((this.AddModeratorOperationCompleted == null)) {
+                this.AddModeratorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddModeratorOperationCompleted);
+            }
+            this.InvokeAsync("AddModerator", new object[] {
+                        pp}, this.AddModeratorOperationCompleted, userState);
+        }
+        
+        private void OnAddModeratorOperationCompleted(object arg) {
+            if ((this.AddModeratorCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddModeratorCompleted(this, new AddModeratorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeleteModerator", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DeleteModerator(int ModeratorID) {
+            this.Invoke("DeleteModerator", new object[] {
+                        ModeratorID});
+        }
+        
+        /// <remarks/>
+        public void DeleteModeratorAsync(int ModeratorID) {
+            this.DeleteModeratorAsync(ModeratorID, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteModeratorAsync(int ModeratorID, object userState) {
+            if ((this.DeleteModeratorOperationCompleted == null)) {
+                this.DeleteModeratorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteModeratorOperationCompleted);
+            }
+            this.InvokeAsync("DeleteModerator", new object[] {
+                        ModeratorID}, this.DeleteModeratorOperationCompleted, userState);
+        }
+        
+        private void OnDeleteModeratorOperationCompleted(object arg) {
+            if ((this.DeleteModeratorCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteModeratorCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateModerator", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateModerator(Moderator pp) {
+            this.Invoke("UpdateModerator", new object[] {
+                        pp});
+        }
+        
+        /// <remarks/>
+        public void UpdateModeratorAsync(Moderator pp) {
+            this.UpdateModeratorAsync(pp, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateModeratorAsync(Moderator pp, object userState) {
+            if ((this.UpdateModeratorOperationCompleted == null)) {
+                this.UpdateModeratorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateModeratorOperationCompleted);
+            }
+            this.InvokeAsync("UpdateModerator", new object[] {
+                        pp}, this.UpdateModeratorOperationCompleted, userState);
+        }
+        
+        private void OnUpdateModeratorOperationCompleted(object arg) {
+            if ((this.UpdateModeratorCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateModeratorCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2065,6 +2185,35 @@ namespace EYayincilikPortal.SVC1 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetUserTypes", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] GetUserTypes(int userID) {
+            object[] results = this.Invoke("GetUserTypes", new object[] {
+                        userID});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetUserTypesAsync(int userID) {
+            this.GetUserTypesAsync(userID, null);
+        }
+        
+        /// <remarks/>
+        public void GetUserTypesAsync(int userID, object userState) {
+            if ((this.GetUserTypesOperationCompleted == null)) {
+                this.GetUserTypesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserTypesOperationCompleted);
+            }
+            this.InvokeAsync("GetUserTypes", new object[] {
+                        userID}, this.GetUserTypesOperationCompleted, userState);
+        }
+        
+        private void OnGetUserTypesOperationCompleted(object arg) {
+            if ((this.GetUserTypesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUserTypesCompleted(this, new GetUserTypesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAuthorList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Author[] GetAuthorList(string AuthorIDList, string MagazineIDList, string PaperIDList, string PublishedMagazineIDList) {
             object[] results = this.Invoke("GetAuthorList", new object[] {
@@ -2532,6 +2681,97 @@ namespace EYayincilikPortal.SVC1 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddSubCategoryToScienceCategory", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AddSubCategoryToScienceCategory(int SubCategoryId, int ScienceCategoryId) {
+            this.Invoke("AddSubCategoryToScienceCategory", new object[] {
+                        SubCategoryId,
+                        ScienceCategoryId});
+        }
+        
+        /// <remarks/>
+        public void AddSubCategoryToScienceCategoryAsync(int SubCategoryId, int ScienceCategoryId) {
+            this.AddSubCategoryToScienceCategoryAsync(SubCategoryId, ScienceCategoryId, null);
+        }
+        
+        /// <remarks/>
+        public void AddSubCategoryToScienceCategoryAsync(int SubCategoryId, int ScienceCategoryId, object userState) {
+            if ((this.AddSubCategoryToScienceCategoryOperationCompleted == null)) {
+                this.AddSubCategoryToScienceCategoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddSubCategoryToScienceCategoryOperationCompleted);
+            }
+            this.InvokeAsync("AddSubCategoryToScienceCategory", new object[] {
+                        SubCategoryId,
+                        ScienceCategoryId}, this.AddSubCategoryToScienceCategoryOperationCompleted, userState);
+        }
+        
+        private void OnAddSubCategoryToScienceCategoryOperationCompleted(object arg) {
+            if ((this.AddSubCategoryToScienceCategoryCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddSubCategoryToScienceCategoryCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddSubCategoryToMagazine", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AddSubCategoryToMagazine(int SubCategoryId, int MagazineId) {
+            this.Invoke("AddSubCategoryToMagazine", new object[] {
+                        SubCategoryId,
+                        MagazineId});
+        }
+        
+        /// <remarks/>
+        public void AddSubCategoryToMagazineAsync(int SubCategoryId, int MagazineId) {
+            this.AddSubCategoryToMagazineAsync(SubCategoryId, MagazineId, null);
+        }
+        
+        /// <remarks/>
+        public void AddSubCategoryToMagazineAsync(int SubCategoryId, int MagazineId, object userState) {
+            if ((this.AddSubCategoryToMagazineOperationCompleted == null)) {
+                this.AddSubCategoryToMagazineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddSubCategoryToMagazineOperationCompleted);
+            }
+            this.InvokeAsync("AddSubCategoryToMagazine", new object[] {
+                        SubCategoryId,
+                        MagazineId}, this.AddSubCategoryToMagazineOperationCompleted, userState);
+        }
+        
+        private void OnAddSubCategoryToMagazineOperationCompleted(object arg) {
+            if ((this.AddSubCategoryToMagazineCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddSubCategoryToMagazineCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPublisherList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Publisher[] GetPublisherList(string PublisherIDList, bool onlyActiveRecords) {
+            object[] results = this.Invoke("GetPublisherList", new object[] {
+                        PublisherIDList,
+                        onlyActiveRecords});
+            return ((Publisher[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPublisherListAsync(string PublisherIDList, bool onlyActiveRecords) {
+            this.GetPublisherListAsync(PublisherIDList, onlyActiveRecords, null);
+        }
+        
+        /// <remarks/>
+        public void GetPublisherListAsync(string PublisherIDList, bool onlyActiveRecords, object userState) {
+            if ((this.GetPublisherListOperationCompleted == null)) {
+                this.GetPublisherListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPublisherListOperationCompleted);
+            }
+            this.InvokeAsync("GetPublisherList", new object[] {
+                        PublisherIDList,
+                        onlyActiveRecords}, this.GetPublisherListOperationCompleted, userState);
+        }
+        
+        private void OnGetPublisherListOperationCompleted(object arg) {
+            if ((this.GetPublisherListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPublisherListCompleted(this, new GetPublisherListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -2551,8 +2791,8 @@ namespace EYayincilikPortal.SVC1 {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Moderator))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SystemAdmin))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Moderator))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Author))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Publisher))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Referee))]
@@ -2662,8 +2902,8 @@ namespace EYayincilikPortal.SVC1 {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(User))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Moderator))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SystemAdmin))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Moderator))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Author))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Publisher))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Referee))]
@@ -3631,7 +3871,7 @@ namespace EYayincilikPortal.SVC1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Moderator : User {
+    public partial class SystemAdmin : User {
     }
     
     /// <remarks/>
@@ -3640,7 +3880,7 @@ namespace EYayincilikPortal.SVC1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class SystemAdmin : User {
+    public partial class Moderator : User {
     }
     
     /// <remarks/>
@@ -3928,6 +4168,40 @@ namespace EYayincilikPortal.SVC1 {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void UpdatePublisherCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void AddModeratorCompletedEventHandler(object sender, AddModeratorCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddModeratorCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddModeratorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void DeleteModeratorCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void UpdateModeratorCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
@@ -4266,6 +4540,32 @@ namespace EYayincilikPortal.SVC1 {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void AddPaperByAuthorCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetUserTypesCompletedEventHandler(object sender, GetUserTypesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUserTypesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUserTypesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
@@ -4608,6 +4908,40 @@ namespace EYayincilikPortal.SVC1 {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void DeleteSurveyAnswerCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void AddSubCategoryToScienceCategoryCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void AddSubCategoryToMagazineCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetPublisherListCompletedEventHandler(object sender, GetPublisherListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPublisherListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPublisherListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Publisher[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Publisher[])(this.results[0]));
+            }
+        }
+    }
 }
 
 #pragma warning restore 1591

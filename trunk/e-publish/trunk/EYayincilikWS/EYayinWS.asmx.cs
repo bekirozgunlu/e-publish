@@ -181,7 +181,31 @@ namespace EYayincilikWS
         [WebMethod]
         public void UpdatePublisher(Publisher pp)
         {
-            //Updates a ScienceCategory Record with new values...
+            //Updates a Publisher Record with new values...
+            DBManager.singleton().UpdatePublisher(pp);
+        }
+
+
+        [WebMethod]
+        public int AddModerator(Moderator pp)
+        {
+            //adds a  new Moderator
+            int newID = pp.AddModerator();
+            return newID;
+        }
+
+        [WebMethod]
+        public void DeleteModerator(int ModeratorID)
+        {
+            //makes a Moderator record  passive...
+            DBManager.singleton().DeleteModerator(ModeratorID);
+        }
+
+        [WebMethod]
+        public void UpdateModerator(Moderator pp)
+        {
+            //Updates a Moderator Record with new values...
+            DBManager.singleton().UpdateModerator(pp);
         }
 
         [WebMethod]
@@ -448,7 +472,7 @@ namespace EYayincilikWS
         //GET METHODS...
 
         [WebMethod]
-        int[] GetUserTypes(int userID) 
+        public int[] GetUserTypes(int userID) 
         {
             return DBManager.singleton().GetUserTypes(userID);
         }
@@ -556,6 +580,26 @@ namespace EYayincilikWS
         {
             sa.UpdateSurveyAnswer() ;
         }
+
+
+        [WebMethod]
+        public void AddSubCategoryToScienceCategory(int SubCategoryId, int ScienceCategoryId)
+        {
+            DBManager.singleton().AddSubCategoryToScienceCategory(SubCategoryId, ScienceCategoryId);
+        }
+
+        [WebMethod]
+        public void AddSubCategoryToMagazine(int SubCategoryId, int MagazineId)
+        {
+            DBManager.singleton().AddSubCategoryToMagazine(SubCategoryId, MagazineId);
+        }
+
+        [WebMethod]
+        public Publisher[] GetPublisherList(string PublisherIDList, bool onlyActiveRecords)
+        {
+            return DBManager.singleton().GetPublisherList(PublisherIDList, onlyActiveRecords);
+        }
+
 
 
     }
