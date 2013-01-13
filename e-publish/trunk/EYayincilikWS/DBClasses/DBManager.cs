@@ -1773,7 +1773,7 @@ namespace BSClass
                 scmd.Parameters.Add("p6", SqlDbType.DateTime);
                 scmd.Parameters[5].Value = DateTime.Now ;
                 scmd.Parameters.Add("p7", SqlDbType.TinyInt);
-                scmd.Parameters[5].Value = c.approvalState;
+                scmd.Parameters[6].Value = c.approvalState;
 
                 object o = scmd.ExecuteScalar();
                 newID = Convert.ToInt32(o.ToString());
