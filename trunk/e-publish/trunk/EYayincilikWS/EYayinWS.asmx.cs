@@ -324,6 +324,7 @@ namespace EYayincilikWS
         public void ActivateUser(int userID)
         {
             //Activates  a User Record 
+            DBManager.singleton().ActivateUser(userID);
             return;
         }
 
@@ -332,6 +333,7 @@ namespace EYayincilikWS
         public void DeactivateUser(int userID)
         {
             //Makes  a User Record passive
+            DBManager.singleton().DeactivateUser(userID);
         }
 
         [WebMethod]
@@ -359,6 +361,7 @@ namespace EYayincilikWS
         public void ApproveComment(int CommentID)
         {
             //Updates a Comment Record with new values...
+            DBManager.singleton().ApproveComment(CommentID);
         }
 
         [WebMethod]
