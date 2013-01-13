@@ -38,6 +38,7 @@
               <s:element minOccurs="1" maxOccurs="1" name="isActive" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="photoFilePath" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="userType" type="tns:ArrayOfInt" />
+              <s:element minOccurs="0" maxOccurs="1" name="isActiveText" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -220,6 +221,8 @@
           <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="approvalState" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="commentDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="YorumuYazan" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MakaleAdi" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ApprovalStateText" type="s:string" />
         </s:sequence>
       </s:complexType>
