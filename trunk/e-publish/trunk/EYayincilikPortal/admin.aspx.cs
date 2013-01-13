@@ -177,7 +177,8 @@ namespace EYayincilikPortal
                     }
                     foreach (int SubScienceId in checkedId)
                     {
-                        mngr.AddSubCategoryToScienceCategory(SubScienceId, i);
+                        mngr.AddSubCategoryToMagazine(SubScienceId,i);
+                        //mngr.AddSubCategoryToScienceCategory(SubScienceId, i);
                     }
                     if (i > 0)
                     {
