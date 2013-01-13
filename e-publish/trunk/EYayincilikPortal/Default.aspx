@@ -32,7 +32,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:LinkButton ID="btnAdmin" runat="server" 
                 PostBackUrl="~/admin.aspx" Visible="False">Admin</asp:LinkButton>
 &nbsp;
-            <asp:LinkButton ID="btnHakem" runat="server" PostBackUrl="~/hakem.aspx" 
+            <asp:LinkButton ID="btnHakem" runat="server" PostBackUrl="~/Refree.aspx" 
                 Visible="False">Hakem İşlemleri</asp:LinkButton>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <br />
