@@ -16,5 +16,21 @@ namespace BSClass
         public int []userType;
 
 
+        public string isActiveText
+        {
+            get
+            {
+                //1 Aktif ,2 pasif
+                if (isActive == 1) return "Aktif";
+                else return "Pasif";                
+             
+            }
+            set
+            {
+
+            }
+        }
+
+
     }
 }
