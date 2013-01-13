@@ -15,9 +15,7 @@
         Text="Yorumları listele" />
     <asp:GridView ID="GridView1" runat="server">
     </asp:GridView>
-=======
-    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
->>>>>>> .r33
+&nbsp;<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
     </form>
 </body>
 </html>
