@@ -167,6 +167,18 @@ namespace EYayincilikPortal
                     m.maxPaperCount = Convert.ToInt32(MaxMakaleTextBox.Text.Trim());
                     m.publisherId = Convert.ToInt32(EditorIdTextBox.Text.Trim());
                     int i = mngr.AddMagazine(m);
+                    List<int> checkedId = new List<int>();
+                    foreach (ListItem item in DergiEkleAltKategoriCheckBoxList.Items)
+                    {
+                        if (item.Selected)
+                        {
+                            checkedId.Add(Convert.ToInt32(item.Value));
+                        }
+                    }
+                    foreach (int SubScienceId in checkedId)
+                    {
+                        mngr.AddSubCategoryToScienceCategory(SubScienceId, i);
+                    }
                     if (i > 0)
                     {
                         MesajLabel.Text = "Dergi ekleme işlemi başarılı!";

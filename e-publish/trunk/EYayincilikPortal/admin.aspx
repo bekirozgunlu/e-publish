@@ -35,7 +35,7 @@
         <br />
         <br />
         <br />
-        <asp:Panel ID="DergiEklePanel" runat="server" Height="134px" Visible="False" 
+        <asp:Panel ID="DergiEklePanel" runat="server" Height="224px" Visible="False" 
             Width="352px">
             <asp:Label ID="DergiAdiLabel" runat="server" Text="Dergi adı:"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -48,6 +48,20 @@
             <asp:Label ID="EditorIdLabel" runat="server" Text="Editör ID: "></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="EditorIdTextBox" runat="server"></asp:TextBox>
+            <br />
+            Bağlı olan alt kategorileri seçin:<asp:CheckBoxList 
+                ID="DergiEkleAltKategoriCheckBoxList" runat="server" 
+                DataSourceID="ObjectDataSource1" DataTextField="name" DataValueField="id">
+            </asp:CheckBoxList>
+            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
+                SelectMethod="GetSubCategoryList" TypeName="EYayincilikPortal.Manager">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="true" Name="onlyActiveRecords" Type="Boolean" />
+                    <asp:Parameter DefaultValue="&quot;&quot;" Name="scienceCAtegorylist" 
+                        Type="String" />
+                    <asp:Parameter DefaultValue="-1" Name="MagazineID" Type="Int32" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
         </asp:Panel>
         <asp:Panel 
             ID="AltKategoriEklePanel" runat="server" Height="112px" Visible="False" 
