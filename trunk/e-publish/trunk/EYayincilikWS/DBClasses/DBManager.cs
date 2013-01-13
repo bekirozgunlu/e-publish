@@ -1149,8 +1149,6 @@ namespace BSClass
             }
 
         }
-
-
         public void SendOpinionToPublisher(int PaperID, int RefereeID, int isApproved)
         {
             //Called when a referee Wants to send his/her opinion to a a publisher...
@@ -1161,32 +1159,33 @@ namespace BSClass
                    " sendBackDate=getdate() " +
                    " WHERE PaperRef=" + PaperID.ToString() +
                    " AND UserRefereeRef=" + RefereeID.ToString();
-                   
 
-                if(sc.State==  ConnectionState.Closed) {sc.Open();}
+
+                if (sc.State == ConnectionState.Closed) { sc.Open(); }
                 SqlCommand scmd = new SqlCommand(sSQL, sc);
 
 
                 scmd.ExecuteNonQuery();
 
-                if(sc.State==  ConnectionState.Open) {sc.Close();};
+                if (sc.State == ConnectionState.Open) { sc.Close(); };
 
 
                 sSQL = @"if (Select COUNT(ID) from RefereePaper 
-                where RefereePaper.PaperRef=1 
-                and RefereePaper.isApproved=2
-                ) =0
+                where RefereePaper.PaperRef="+PaperID.ToString()+ 
+                " and RefereePaper.isApproved<>2  "+
+                " ) <= 0 "+
+                @"
                 begin
-	                Update Paper SET approvalState="+ApprovalState.Hakem_Onayli.ToString()+
-                    " where ID="+PaperID.ToString()+
+	                Update Paper SET approvalState= "+ Convert.ToInt32 (ApprovalState.Hakem_Onayli.ToString()) +
+                    " where ID=" + PaperID.ToString() +
                 " end ";
 
-                if(sc.State==  ConnectionState.Closed) {sc.Open();}
+                if (sc.State == ConnectionState.Closed) { sc.Open(); }
                 scmd = null;
                 scmd = new SqlCommand(sSQL, sc);
                 scmd.ExecuteNonQuery();
 
-                if(sc.State==  ConnectionState.Open) {sc.Close();};
+                if (sc.State == ConnectionState.Open) { sc.Close(); };
 
                 return;
             }
@@ -1201,7 +1200,7 @@ namespace BSClass
             finally
             {
                 //dispose unused objects...
-                if(sc.State==  ConnectionState.Open) {sc.Close();};
+                if (sc.State == ConnectionState.Open) { sc.Close(); };
             }
 
         }
