@@ -19,8 +19,13 @@ namespace EYayincilikPortal
                txtYazarAdi.Text = sessionUser.name + " " + sessionUser.surName;
                txtBaslik.Text = paper.title;
                TextBox1.Text = paper.MagazineName;
-               
-               
+
+               SubCategory[] s = m.GetSubCategoriesofPaperList((Session["currentPaperId"]).ToString());
+               ListBox1.DataSource = s;
+               ListBox1.DataBind();
+               Paper[] p2 = m.GetReferencesofPaperList(Convert.ToInt32((Session["currentPaperId"]).ToString()));
+               ListBox2.DataSource = p2;
+               ListBox2.DataBind();
           }
 
            protected void Button1_Click(object sender, EventArgs e)

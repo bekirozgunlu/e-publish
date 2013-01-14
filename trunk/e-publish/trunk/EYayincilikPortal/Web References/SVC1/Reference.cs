@@ -196,6 +196,14 @@ namespace EYayincilikPortal.SVC1 {
         
         private System.Threading.SendOrPostCallback GetReferenceListOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetReferencedPapersListOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetReferencesofPaperListOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetSubCategoryNameListOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetSubCategoriesofPaperListOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -482,6 +490,18 @@ namespace EYayincilikPortal.SVC1 {
         
         /// <remarks/>
         public event GetReferenceListCompletedEventHandler GetReferenceListCompleted;
+        
+        /// <remarks/>
+        public event GetReferencedPapersListCompletedEventHandler GetReferencedPapersListCompleted;
+        
+        /// <remarks/>
+        public event GetReferencesofPaperListCompletedEventHandler GetReferencesofPaperListCompleted;
+        
+        /// <remarks/>
+        public event GetSubCategoryNameListCompletedEventHandler GetSubCategoryNameListCompleted;
+        
+        /// <remarks/>
+        public event GetSubCategoriesofPaperListCompletedEventHandler GetSubCategoriesofPaperListCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -2955,6 +2975,124 @@ namespace EYayincilikPortal.SVC1 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetReferencedPapersList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Paper[] GetReferencedPapersList(int PaperID) {
+            object[] results = this.Invoke("GetReferencedPapersList", new object[] {
+                        PaperID});
+            return ((Paper[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetReferencedPapersListAsync(int PaperID) {
+            this.GetReferencedPapersListAsync(PaperID, null);
+        }
+        
+        /// <remarks/>
+        public void GetReferencedPapersListAsync(int PaperID, object userState) {
+            if ((this.GetReferencedPapersListOperationCompleted == null)) {
+                this.GetReferencedPapersListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetReferencedPapersListOperationCompleted);
+            }
+            this.InvokeAsync("GetReferencedPapersList", new object[] {
+                        PaperID}, this.GetReferencedPapersListOperationCompleted, userState);
+        }
+        
+        private void OnGetReferencedPapersListOperationCompleted(object arg) {
+            if ((this.GetReferencedPapersListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetReferencedPapersListCompleted(this, new GetReferencedPapersListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetReferencesofPaperList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Paper[] GetReferencesofPaperList(int PaperID) {
+            object[] results = this.Invoke("GetReferencesofPaperList", new object[] {
+                        PaperID});
+            return ((Paper[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetReferencesofPaperListAsync(int PaperID) {
+            this.GetReferencesofPaperListAsync(PaperID, null);
+        }
+        
+        /// <remarks/>
+        public void GetReferencesofPaperListAsync(int PaperID, object userState) {
+            if ((this.GetReferencesofPaperListOperationCompleted == null)) {
+                this.GetReferencesofPaperListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetReferencesofPaperListOperationCompleted);
+            }
+            this.InvokeAsync("GetReferencesofPaperList", new object[] {
+                        PaperID}, this.GetReferencesofPaperListOperationCompleted, userState);
+        }
+        
+        private void OnGetReferencesofPaperListOperationCompleted(object arg) {
+            if ((this.GetReferencesofPaperListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetReferencesofPaperListCompleted(this, new GetReferencesofPaperListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSubCategoryNameList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public SubCategory[] GetSubCategoryNameList(string subCategoryId, bool onlyActiveRecords) {
+            object[] results = this.Invoke("GetSubCategoryNameList", new object[] {
+                        subCategoryId,
+                        onlyActiveRecords});
+            return ((SubCategory[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSubCategoryNameListAsync(string subCategoryId, bool onlyActiveRecords) {
+            this.GetSubCategoryNameListAsync(subCategoryId, onlyActiveRecords, null);
+        }
+        
+        /// <remarks/>
+        public void GetSubCategoryNameListAsync(string subCategoryId, bool onlyActiveRecords, object userState) {
+            if ((this.GetSubCategoryNameListOperationCompleted == null)) {
+                this.GetSubCategoryNameListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSubCategoryNameListOperationCompleted);
+            }
+            this.InvokeAsync("GetSubCategoryNameList", new object[] {
+                        subCategoryId,
+                        onlyActiveRecords}, this.GetSubCategoryNameListOperationCompleted, userState);
+        }
+        
+        private void OnGetSubCategoryNameListOperationCompleted(object arg) {
+            if ((this.GetSubCategoryNameListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSubCategoryNameListCompleted(this, new GetSubCategoryNameListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSubCategoriesofPaperList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public SubCategory[] GetSubCategoriesofPaperList(string PaperID) {
+            object[] results = this.Invoke("GetSubCategoriesofPaperList", new object[] {
+                        PaperID});
+            return ((SubCategory[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSubCategoriesofPaperListAsync(string PaperID) {
+            this.GetSubCategoriesofPaperListAsync(PaperID, null);
+        }
+        
+        /// <remarks/>
+        public void GetSubCategoriesofPaperListAsync(string PaperID, object userState) {
+            if ((this.GetSubCategoriesofPaperListOperationCompleted == null)) {
+                this.GetSubCategoriesofPaperListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSubCategoriesofPaperListOperationCompleted);
+            }
+            this.InvokeAsync("GetSubCategoriesofPaperList", new object[] {
+                        PaperID}, this.GetSubCategoriesofPaperListOperationCompleted, userState);
+        }
+        
+        private void OnGetSubCategoriesofPaperListOperationCompleted(object arg) {
+            if ((this.GetSubCategoriesofPaperListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSubCategoriesofPaperListCompleted(this, new GetSubCategoriesofPaperListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -5312,6 +5450,110 @@ namespace EYayincilikPortal.SVC1 {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetReferencedPapersListCompletedEventHandler(object sender, GetReferencedPapersListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetReferencedPapersListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetReferencedPapersListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Paper[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Paper[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetReferencesofPaperListCompletedEventHandler(object sender, GetReferencesofPaperListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetReferencesofPaperListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetReferencesofPaperListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Paper[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Paper[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetSubCategoryNameListCompletedEventHandler(object sender, GetSubCategoryNameListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSubCategoryNameListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSubCategoryNameListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public SubCategory[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((SubCategory[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetSubCategoriesofPaperListCompletedEventHandler(object sender, GetSubCategoriesofPaperListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSubCategoriesofPaperListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSubCategoriesofPaperListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public SubCategory[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((SubCategory[])(this.results[0]));
             }
         }
     }

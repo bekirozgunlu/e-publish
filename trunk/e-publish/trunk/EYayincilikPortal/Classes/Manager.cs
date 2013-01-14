@@ -1771,5 +1771,90 @@ namespace EYayincilikPortal
             }
         }
 
+        public SVC1.SubCategory[] GetSubCategoryNameList(string subCategoryId, bool onlyActiveRecords)
+        {
+
+            try
+            {
+                return svc.GetSubCategoryNameList(subCategoryId, onlyActiveRecords);
+
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return null;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+        public SVC1.SubCategory[] GetSubCategoriesofPaperList(string PaperID)
+        {
+
+            try
+            {
+                return svc.GetSubCategoriesofPaperList(PaperID);
+
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return null;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+
+        public SVC1.Paper[] GetReferencesofPaperList(int PaperID)
+        {
+
+            try
+            {
+                return svc.GetReferencesofPaperList(PaperID);
+
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return null;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+        public SVC1.Paper[] GetReferencedPapersList(int PaperID)
+        {
+
+            try
+            {
+                //svc.GetReferencedPapersList
+                return svc.GetReferencedPapersList(PaperID);
+
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return null;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
     }
 }
