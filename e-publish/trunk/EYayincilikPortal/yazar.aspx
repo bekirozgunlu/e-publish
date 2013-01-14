@@ -32,14 +32,10 @@
                    <asp:BoundField DataField="AuthorName" HeaderText="Yazar" 
                         SortExpression="AuthorName" />
                    <asp:BoundField DataField="title" HeaderText="Başlık" SortExpression="title" />
-                   <asp:BoundField DataField="contentPath" HeaderText="contentPath" 
-                        SortExpression="contentPath" />
-                   <asp:BoundField DataField="version" HeaderText="Versiyon" 
-                        SortExpression="version" />
-                   <asp:BoundField DataField="approvalDate" HeaderText="Onay Tarihi" 
-                        SortExpression="approvalDate" />
                    <asp:BoundField DataField="MagazineName" HeaderText="Dergi" 
                         SortExpression="MagazineName" />
+                   <asp:BoundField DataField="publisherComment" HeaderText="Editör Yorumu" 
+                        SortExpression="publisherComment" />
                    <asp:BoundField DataField="PublishedMagazineID" 
                         HeaderText="ISBN" SortExpression="PublishedMagazineID" />
                    <asp:BoundField DataField="ApprovalStateText" HeaderText="Onay Durum" 
@@ -128,6 +124,15 @@
               CellPadding="4" ForeColor="#333333" 
               GridLines="None">
               <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+              <Columns>
+                   <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" 
+                        SortExpression="AuthorName" />
+                   <asp:BoundField DataField="title" HeaderText="title" SortExpression="title" />
+                   <asp:BoundField DataField="MagazineName" HeaderText="MagazineName" 
+                        SortExpression="MagazineName" />
+                   <asp:BoundField DataField="publisherName" HeaderText="publisherName" 
+                        SortExpression="publisherName" />
+              </Columns>
               <EditRowStyle BackColor="#999999" />
               <EmptyDataTemplate>
                    Referans bulunamadı.
@@ -142,6 +147,20 @@
               <SortedDescendingCellStyle BackColor="#FFFDF8" />
               <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
          </asp:GridView>
+         <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" 
+              SelectMethod="GetPaperList" TypeName="EYayincilikPortal.Manager">
+              <SelectParameters>
+                   <asp:Parameter Name="PublishedMagazineIDList" Type="String" />
+                   <asp:Parameter Name="MagazineIDList" Type="String" />
+                   <asp:Parameter DefaultValue="" Name="PaperIDList" Type="String" />
+                   <asp:Parameter Name="RefereeID" Type="Int32" />
+                   <asp:Parameter Name="PublisherID" Type="Int32" />
+                   <asp:Parameter Name="AuthorID" Type="Int32" />
+                   <asp:Parameter Name="category" Type="String" />
+                   <asp:Parameter Name="SubCategoryIDlist" Type="String" />
+                   <asp:Parameter DefaultValue="true" Name="onlyActiveRecords" Type="Boolean" />
+              </SelectParameters>
+         </asp:ObjectDataSource>
 &nbsp;&nbsp;&nbsp;
          <br />
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
