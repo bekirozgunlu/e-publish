@@ -89,13 +89,13 @@ namespace EYayincilikPortal
 
 
                     int newID= m.AddPaper(p);
+                    Paper p2 = m.GetPaperList("", "", newID.ToString(), -1, -1, -1, "", "", true)[0] ;
 
 
-
-                    FileUpload1.SaveAs(uploadFolder + p.id + "_" + p.version.ToString() + ".pdf");
-                    p.contentPath = p.id + "_" + p.version.ToString() + ".pdf";
+                    FileUpload1.SaveAs(uploadFolder + p2.id + "_" + p2.version.ToString() + ".pdf");
+                    p2.contentPath = p2.id + "_" + p2.version.ToString() + ".pdf";
                     m.UpdatePaper(p);
-                    p.id = newID;
+                    p2.id = newID;
 
                     foreach (ListItem lt in ListSecimAltKategory.Items)
                     {
@@ -142,6 +142,7 @@ namespace EYayincilikPortal
             Manager m = new Manager();
 
             ScienceCategory[] sList = m.ScienceCategoryList(true, -1, Convert.ToInt32(cmbDergi.SelectedValue));
+            cmbAnaKat.DataSourceID = null; //as
             cmbAnaKat.DataSource = sList;
             cmbAnaKat.DataBind();
             m = null;
