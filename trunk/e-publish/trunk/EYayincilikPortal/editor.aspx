@@ -13,17 +13,23 @@
         <asp:LinkButton ID="btnInvite" runat="server" onclick="btnInvite_Click">HAKEM DAVET ET</asp:LinkButton>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:LinkButton ID="btnPublish" runat="server" onclick="btnPublish_Click">DERGİ YAYINLA</asp:LinkButton>
-        <br />
+        &nbsp;&nbsp;
+        <asp:HyperLink ID="linkDergiSoru" runat="server" NavigateUrl="~/dergisoru.aspx">Dergi soru Tanımla</asp:HyperLink>
+        &nbsp;&nbsp;&nbsp;
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
         <br />
         <br />
         <br />
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
             AutoGenerateColumns="False" Caption="ONAY BEKLEYEN MAKALELER" CellPadding="4" 
-            DataSourceID="ObjectPaper" ForeColor="#333333" Width="974px">
+            DataSourceID="ObjectPaper" ForeColor="#333333" Width="1054px" 
+            DataKeyNames="id">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:CommandField ShowSelectButton="True" />
+                <asp:HyperLinkField DataNavigateUrlFields="id" 
+                    DataNavigateUrlFormatString="~/editordetay.aspx?id={0}" DataTextField="id" 
+                    DataTextFormatString="Detay" HeaderText="Detay" 
+                    NavigateUrl="editordetay.aspx?id={0}" Text="Detay" />
                 <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" 
                     Visible="False" />
                 <asp:BoundField DataField="AuthorName" HeaderText="Yazar" 
@@ -39,6 +45,8 @@
                     SortExpression="version" />
                 <asp:BoundField DataField="approvalDate" HeaderText="Onay Tarihi" 
                     SortExpression="approvalDate" />
+                <asp:BoundField DataField="publisherComment" HeaderText="Editor Yorum" 
+                    SortExpression="publisherComment" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <EmptyDataTemplate>

@@ -1202,6 +1202,36 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="Publisher" nillable="true" type="tns:Publisher" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetSurvey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="onlyActiveRecords" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="MagazineID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SurveyID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSurveyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSurveyResult" type="tns:ArrayOfSurvey" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRefereeNotesOnPaper">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PaperID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRefereeNotesOnPaperResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRefereeNotesOnPaperResult" type="tns:ArrayOfPaper" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -1672,6 +1702,18 @@
   <wsdl:message name="GetPublisherListSoapOut">
     <wsdl:part name="parameters" element="tns:GetPublisherListResponse" />
   </wsdl:message>
+  <wsdl:message name="GetSurveySoapIn">
+    <wsdl:part name="parameters" element="tns:GetSurvey" />
+  </wsdl:message>
+  <wsdl:message name="GetSurveySoapOut">
+    <wsdl:part name="parameters" element="tns:GetSurveyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRefereeNotesOnPaperSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRefereeNotesOnPaper" />
+  </wsdl:message>
+  <wsdl:message name="GetRefereeNotesOnPaperSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRefereeNotesOnPaperResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -1984,6 +2026,14 @@
     <wsdl:operation name="GetPublisherList">
       <wsdl:input message="tns:GetPublisherListSoapIn" />
       <wsdl:output message="tns:GetPublisherListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSurvey">
+      <wsdl:input message="tns:GetSurveySoapIn" />
+      <wsdl:output message="tns:GetSurveySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRefereeNotesOnPaper">
+      <wsdl:input message="tns:GetRefereeNotesOnPaperSoapIn" />
+      <wsdl:output message="tns:GetRefereeNotesOnPaperSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -2690,6 +2740,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetSurvey">
+      <soap:operation soapAction="http://tempuri.org/GetSurvey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRefereeNotesOnPaper">
+      <soap:operation soapAction="http://tempuri.org/GetRefereeNotesOnPaper" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -3388,6 +3456,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetPublisherList">
       <soap12:operation soapAction="http://tempuri.org/GetPublisherList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSurvey">
+      <soap12:operation soapAction="http://tempuri.org/GetSurvey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRefereeNotesOnPaper">
+      <soap12:operation soapAction="http://tempuri.org/GetRefereeNotesOnPaper" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

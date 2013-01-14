@@ -81,8 +81,9 @@
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:HyperLinkField DataNavigateUrlFields="id" 
-                    DataNavigateUrlFormatString="makale.aspx?id={0}" DataTextField="id" 
-                    DataTextFormatString="OKU" NavigateUrl="makale.aspx?id={0}" Text="OKU" />
+                    DataNavigateUrlFormatString="../../upload/{0}.pdf" DataTextField="id" 
+                    DataTextFormatString="OKU" NavigateUrl="../../upload/{0}.pdf" Text="OKU" 
+                    Target="_blank" />
                 <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" 
                     Visible="False" />
                 <asp:BoundField DataField="MagazineName" HeaderText="Dergi" 
