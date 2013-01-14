@@ -37,6 +37,20 @@
         {
             height: 23px;
         }
+         .style11
+         {
+              width: 103px;
+              height: 176px;
+         }
+         .style12
+         {
+              width: 8px;
+              height: 176px;
+         }
+         .style13
+         {
+              height: 176px;
+         }
     </style>
 </head>
 <body>
@@ -94,7 +108,8 @@
             <asp:DropDownList ID="cmbAnaKat" runat="server" AutoPostBack="True" 
                         DataTextField="name" DataValueField="id" 
                 Width="300px" DataTextFormatString="{0}" 
-                        onselectedindexchanged="cmbAnaKat_SelectedIndexChanged">
+                        onselectedindexchanged="cmbAnaKat_SelectedIndexChanged" 
+                          DataSourceID="objAnaBilimDali">
             </asp:DropDownList>
                 </td>
             </tr>
@@ -116,8 +131,42 @@
                 </td>
             </tr>
             <tr>
+                <td class="style11">
+                    Referanslar</td>
+                <td class="style12">
+                    :</td>
+                <td class="style13">
+                    
+                     <asp:ListBox ID="ListMakaleler" runat="server" DataSourceID="ObjectDataSource1" 
+                          DataTextField="title" DataValueField="id" Rows="8" SelectionMode="Multiple" Width="200px">
+                     </asp:ListBox>
+                     <asp:Button ID="btnReferansEkle" runat="server" 
+                          onclick="btnReferansEkle_Click1" Text="Ekle &gt;" />
+                     <asp:Button ID="btnReferansSil" runat="server" onclick="btnReferansSil_Click1" 
+                          Text="&lt; Çıkar" />
+                     <asp:ListBox ID="ListSecimMakaleler" runat="server" Rows="8" 
+                        SelectionMode="Multiple" Width="215px"></asp:ListBox>
+                     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
+                          SelectMethod="GetPaperList" TypeName="EYayincilikPortal.Manager">
+                          <SelectParameters>
+                               <asp:QueryStringParameter DefaultValue="" Name="PublishedMagazineIDList" 
+                                    QueryStringField="&gt;0" Type="String" />
+                               <asp:Parameter Name="MagazineIDList" Type="String" />
+                               <asp:Parameter Name="PaperIDList" Type="String" />
+                               <asp:Parameter Name="RefereeID" Type="Int32" />
+                               <asp:Parameter Name="PublisherID" Type="Int32" />
+                               <asp:Parameter Name="AuthorID" Type="Int32" />
+                               <asp:Parameter Name="category" Type="String" />
+                               <asp:Parameter Name="SubCategoryIDlist" Type="String" />
+                               <asp:Parameter DefaultValue="true" Name="onlyActiveRecords" Type="Boolean" />
+                          </SelectParameters>
+                     </asp:ObjectDataSource>
+                    
+                </td>
+            </tr>
+            <tr>
                 <td class="style2">
-                    Makale Dosyası</td>
+                     Makale Dosyası</td>
                 <td class="style3">
                     :</td>
                 <td>
@@ -168,6 +217,8 @@
                 <td>
                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
+                &nbsp;<br />
+                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/yazar.aspx">Yazar Ana Sayfa</asp:HyperLink>
                 </td>
             </tr>
         </table>

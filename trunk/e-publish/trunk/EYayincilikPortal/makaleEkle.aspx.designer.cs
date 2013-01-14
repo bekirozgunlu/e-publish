@@ -94,6 +94,51 @@ namespace EYayincilikPortal {
         protected global::System.Web.UI.WebControls.ListBox ListSecimAltKategory;
         
         /// <summary>
+        /// ListMakaleler control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ListMakaleler;
+        
+        /// <summary>
+        /// btnReferansEkle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReferansEkle;
+        
+        /// <summary>
+        /// btnReferansSil control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReferansSil;
+        
+        /// <summary>
+        /// ListSecimMakaleler control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ListSecimMakaleler;
+        
+        /// <summary>
+        /// ObjectDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        
+        /// <summary>
         /// FileUpload1 control.
         /// </summary>
         /// <remarks>
@@ -128,6 +173,15 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// HyperLink1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
         
         /// <summary>
         /// objDergiler control.
