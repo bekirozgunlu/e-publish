@@ -20,6 +20,7 @@ namespace EYayincilikPortal.SVC1 {
     using System.Web.Services.Protocols;
     using System.ComponentModel;
     using System.Xml.Serialization;
+    using System.Data;
     
     
     /// <remarks/>
@@ -62,6 +63,10 @@ namespace EYayincilikPortal.SVC1 {
         private System.Threading.SendOrPostCallback ApproveSubCategoryOperationCompleted;
         
         private System.Threading.SendOrPostCallback AddScienceCategoryOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddSubCategorytoPaperOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddReferencetoPaperOperationCompleted;
         
         private System.Threading.SendOrPostCallback DeleteScienceCategoryOperationCompleted;
         
@@ -189,6 +194,8 @@ namespace EYayincilikPortal.SVC1 {
         
         private System.Threading.SendOrPostCallback GetRefereeNotesOnPaperOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetReferenceListOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -277,6 +284,12 @@ namespace EYayincilikPortal.SVC1 {
         
         /// <remarks/>
         public event AddScienceCategoryCompletedEventHandler AddScienceCategoryCompleted;
+        
+        /// <remarks/>
+        public event AddSubCategorytoPaperCompletedEventHandler AddSubCategorytoPaperCompleted;
+        
+        /// <remarks/>
+        public event AddReferencetoPaperCompletedEventHandler AddReferencetoPaperCompleted;
         
         /// <remarks/>
         public event DeleteScienceCategoryCompletedEventHandler DeleteScienceCategoryCompleted;
@@ -466,6 +479,9 @@ namespace EYayincilikPortal.SVC1 {
         
         /// <remarks/>
         public event GetRefereeNotesOnPaperCompletedEventHandler GetRefereeNotesOnPaperCompleted;
+        
+        /// <remarks/>
+        public event GetReferenceListCompletedEventHandler GetReferenceListCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -948,6 +964,68 @@ namespace EYayincilikPortal.SVC1 {
             if ((this.AddScienceCategoryCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AddScienceCategoryCompleted(this, new AddScienceCategoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddSubCategorytoPaper", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int AddSubCategorytoPaper(int sId, int PaperId) {
+            object[] results = this.Invoke("AddSubCategorytoPaper", new object[] {
+                        sId,
+                        PaperId});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddSubCategorytoPaperAsync(int sId, int PaperId) {
+            this.AddSubCategorytoPaperAsync(sId, PaperId, null);
+        }
+        
+        /// <remarks/>
+        public void AddSubCategorytoPaperAsync(int sId, int PaperId, object userState) {
+            if ((this.AddSubCategorytoPaperOperationCompleted == null)) {
+                this.AddSubCategorytoPaperOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddSubCategorytoPaperOperationCompleted);
+            }
+            this.InvokeAsync("AddSubCategorytoPaper", new object[] {
+                        sId,
+                        PaperId}, this.AddSubCategorytoPaperOperationCompleted, userState);
+        }
+        
+        private void OnAddSubCategorytoPaperOperationCompleted(object arg) {
+            if ((this.AddSubCategorytoPaperCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddSubCategorytoPaperCompleted(this, new AddSubCategorytoPaperCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddReferencetoPaper", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int AddReferencetoPaper(int rId, int PaperId) {
+            object[] results = this.Invoke("AddReferencetoPaper", new object[] {
+                        rId,
+                        PaperId});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddReferencetoPaperAsync(int rId, int PaperId) {
+            this.AddReferencetoPaperAsync(rId, PaperId, null);
+        }
+        
+        /// <remarks/>
+        public void AddReferencetoPaperAsync(int rId, int PaperId, object userState) {
+            if ((this.AddReferencetoPaperOperationCompleted == null)) {
+                this.AddReferencetoPaperOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddReferencetoPaperOperationCompleted);
+            }
+            this.InvokeAsync("AddReferencetoPaper", new object[] {
+                        rId,
+                        PaperId}, this.AddReferencetoPaperOperationCompleted, userState);
+        }
+        
+        private void OnAddReferencetoPaperOperationCompleted(object arg) {
+            if ((this.AddReferencetoPaperCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddReferencetoPaperCompleted(this, new AddReferencetoPaperCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2844,6 +2922,37 @@ namespace EYayincilikPortal.SVC1 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetReferenceList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataTable GetReferenceList(int MainPaperID, int ReferencedPaperId) {
+            object[] results = this.Invoke("GetReferenceList", new object[] {
+                        MainPaperID,
+                        ReferencedPaperId});
+            return ((System.Data.DataTable)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetReferenceListAsync(int MainPaperID, int ReferencedPaperId) {
+            this.GetReferenceListAsync(MainPaperID, ReferencedPaperId, null);
+        }
+        
+        /// <remarks/>
+        public void GetReferenceListAsync(int MainPaperID, int ReferencedPaperId, object userState) {
+            if ((this.GetReferenceListOperationCompleted == null)) {
+                this.GetReferenceListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetReferenceListOperationCompleted);
+            }
+            this.InvokeAsync("GetReferenceList", new object[] {
+                        MainPaperID,
+                        ReferencedPaperId}, this.GetReferenceListOperationCompleted, userState);
+        }
+        
+        private void OnGetReferenceListOperationCompleted(object arg) {
+            if ((this.GetReferenceListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetReferenceListCompleted(this, new GetReferenceListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -4237,6 +4346,58 @@ namespace EYayincilikPortal.SVC1 {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void AddSubCategorytoPaperCompletedEventHandler(object sender, AddSubCategorytoPaperCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddSubCategorytoPaperCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddSubCategorytoPaperCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void AddReferencetoPaperCompletedEventHandler(object sender, AddReferencetoPaperCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddReferencetoPaperCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddReferencetoPaperCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void DeleteScienceCategoryCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
@@ -5099,6 +5260,32 @@ namespace EYayincilikPortal.SVC1 {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Paper[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetReferenceListCompletedEventHandler(object sender, GetReferenceListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetReferenceListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetReferenceListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataTable Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataTable)(this.results[0]));
             }
         }
     }

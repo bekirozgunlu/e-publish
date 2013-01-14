@@ -379,6 +379,36 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AddSubCategorytoPaper">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PaperId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSubCategorytoPaperResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddSubCategorytoPaperResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddReferencetoPaper">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PaperId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddReferencetoPaperResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddReferencetoPaperResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="DeleteScienceCategory">
         <s:complexType>
           <s:sequence>
@@ -1232,6 +1262,28 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetReferenceList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MainPaperID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReferencedPaperId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReferenceListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReferenceListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -1335,6 +1387,18 @@
   </wsdl:message>
   <wsdl:message name="AddScienceCategorySoapOut">
     <wsdl:part name="parameters" element="tns:AddScienceCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSubCategorytoPaperSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSubCategorytoPaper" />
+  </wsdl:message>
+  <wsdl:message name="AddSubCategorytoPaperSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSubCategorytoPaperResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddReferencetoPaperSoapIn">
+    <wsdl:part name="parameters" element="tns:AddReferencetoPaper" />
+  </wsdl:message>
+  <wsdl:message name="AddReferencetoPaperSoapOut">
+    <wsdl:part name="parameters" element="tns:AddReferencetoPaperResponse" />
   </wsdl:message>
   <wsdl:message name="DeleteScienceCategorySoapIn">
     <wsdl:part name="parameters" element="tns:DeleteScienceCategory" />
@@ -1714,6 +1778,12 @@
   <wsdl:message name="GetRefereeNotesOnPaperSoapOut">
     <wsdl:part name="parameters" element="tns:GetRefereeNotesOnPaperResponse" />
   </wsdl:message>
+  <wsdl:message name="GetReferenceListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReferenceList" />
+  </wsdl:message>
+  <wsdl:message name="GetReferenceListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReferenceListResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -1782,6 +1852,14 @@
     <wsdl:operation name="AddScienceCategory">
       <wsdl:input message="tns:AddScienceCategorySoapIn" />
       <wsdl:output message="tns:AddScienceCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSubCategorytoPaper">
+      <wsdl:input message="tns:AddSubCategorytoPaperSoapIn" />
+      <wsdl:output message="tns:AddSubCategorytoPaperSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReferencetoPaper">
+      <wsdl:input message="tns:AddReferencetoPaperSoapIn" />
+      <wsdl:output message="tns:AddReferencetoPaperSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="DeleteScienceCategory">
       <wsdl:input message="tns:DeleteScienceCategorySoapIn" />
@@ -2035,6 +2113,10 @@
       <wsdl:input message="tns:GetRefereeNotesOnPaperSoapIn" />
       <wsdl:output message="tns:GetRefereeNotesOnPaperSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetReferenceList">
+      <wsdl:input message="tns:GetReferenceListSoapIn" />
+      <wsdl:output message="tns:GetReferenceListSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -2184,6 +2266,24 @@
     </wsdl:operation>
     <wsdl:operation name="AddScienceCategory">
       <soap:operation soapAction="http://tempuri.org/AddScienceCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSubCategorytoPaper">
+      <soap:operation soapAction="http://tempuri.org/AddSubCategorytoPaper" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReferencetoPaper">
+      <soap:operation soapAction="http://tempuri.org/AddReferencetoPaper" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2758,6 +2858,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetReferenceList">
+      <soap:operation soapAction="http://tempuri.org/GetReferenceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -2907,6 +3016,24 @@
     </wsdl:operation>
     <wsdl:operation name="AddScienceCategory">
       <soap12:operation soapAction="http://tempuri.org/AddScienceCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSubCategorytoPaper">
+      <soap12:operation soapAction="http://tempuri.org/AddSubCategorytoPaper" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReferencetoPaper">
+      <soap12:operation soapAction="http://tempuri.org/AddReferencetoPaper" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -3474,6 +3601,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetRefereeNotesOnPaper">
       <soap12:operation soapAction="http://tempuri.org/GetRefereeNotesOnPaper" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReferenceList">
+      <soap12:operation soapAction="http://tempuri.org/GetReferenceList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

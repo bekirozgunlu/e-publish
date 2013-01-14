@@ -19,13 +19,8 @@ namespace EYayincilikPortal
             string paperID = Request.QueryString["pid"].ToString();
             Manager m = new Manager();        
             p = m.GetPaperList("","",paperID,-1,-1,-1,"","",true);           
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        protected void Button2_Click(object sender, EventArgs e)
+        }     
+        protected void Add_Comment_Click(object sender, EventArgs e)
         {
             int paperID = Convert.ToInt32(Request.QueryString["pid"].ToString());
             Manager m = new Manager();           
@@ -37,34 +32,20 @@ namespace EYayincilikPortal
             c.userId = refreeid;
             c.approvalState = 1;
             c.commentType = 1;
-            clist.Add(c);                        
-            m.ExaminePaper(null,clist.ToArray(),-1,null);
-            Response.Redirect("Default.aspx?code=200");         
+            clist.Add(c);
+            SVC1.Paper p = new SVC1.Paper();
+            p.id = paperID;
+            m.ExaminePaper(p,clist.ToArray(),refreeid,null);            
         }  
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Send_Publisher_Click(object sender, EventArgs e)
         {
             int paperID = Convert.ToInt32(Request.QueryString["pid"].ToString());
             Manager m = new Manager();
             int refreeid = Convert.ToInt32(Session["userid"]);
-            m.SendOpinionToPublisher(paperID, refreeid, 2);
-            Response.Redirect("Default.aspx?code=200");   
-        }
-
-        protected void Button5_Click(object sender, EventArgs e)
-        {
-            int paperID = Convert.ToInt32(Request.QueryString["pid"].ToString());
-            Manager m = new Manager();
-            //int magazineid = p[0].MagazineID;
-            int magazineid = 0;
-            for ( int i = 0 ; i < p.Length;  i++){
-                if (p[i].id == paperID)
-                    magazineid = p[i].MagazineID;
-            }
-            Response.Redirect("Survey.aspx?mid=" + magazineid+"&pid="+paperID);
-        }
-
-        protected void Button4_Click(object sender, EventArgs e)
+            m.SendOpinionToPublisher(paperID, refreeid, 2);           
+        }      
+        protected void Download_Click(object sender, EventArgs e)
         {
             string filename = p[0].title + ".pdf";            
             Response.ContentType = "application/octet-stream";
@@ -72,6 +53,20 @@ namespace EYayincilikPortal
             string path = p[0].contentPath;
             Response.TransmitFile(Server.MapPath(path));
             Response.End();            
-        }               
+        }
+
+        protected void Survey_Click(object sender, EventArgs e)
+        {
+            int paperID = Convert.ToInt32(Request.QueryString["pid"].ToString());
+            Manager m = new Manager();
+            //int magazineid = p[0].MagazineID;
+            int magazineid = 0;
+            for (int i = 0; i < p.Length; i++)
+            {
+                if (p[i].id == paperID)
+                    magazineid = p[i].MagazineID;
+            }
+            Response.Redirect("Survey.aspx?mid=" + magazineid + "&pid=" + paperID);
+        }                       
     }
 }

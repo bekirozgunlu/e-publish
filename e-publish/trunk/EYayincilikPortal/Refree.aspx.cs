@@ -17,7 +17,6 @@ namespace EYayincilikPortal
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
             if (Session["userid"] == null)
             {
                 Response.Redirect("Default.aspx");
@@ -26,9 +25,7 @@ namespace EYayincilikPortal
             refreeID = Convert.ToInt32( Session["userid"].ToString() ) ;
             Manager m = new Manager();
             SVC1.User r = m.GetUserByID(refreeID);            
-            TextBox1.Text = r.userName.ToString();
-            TextBox2.Text = r.name.ToString();
-            TextBox3.Text = r.surName.ToString();                      
+            TextBox1.Text = r.userName.ToString();            
         }
     }
 }
