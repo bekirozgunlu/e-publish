@@ -19,6 +19,9 @@ namespace EYayincilikPortal
             string paperID = Request.QueryString["pid"].ToString();
             Manager m = new Manager();        
             p = m.GetPaperList("","",paperID,-1,-1,-1,"","",true);           
+
+
+
         }     
         protected void Add_Comment_Click(object sender, EventArgs e)
         {
