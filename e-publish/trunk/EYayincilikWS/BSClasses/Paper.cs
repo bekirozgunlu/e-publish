@@ -28,11 +28,11 @@ namespace BSClass
             }
             set {
 
-                if (value=="Yeni Yüklendi") approvalState = 0;
-                else if (value=="Editor Onayında") approvalState = 1 ;
-                else if (value == "Hakem Onayında") approvalState = 2;
-                else if (value == "Yazar Düzeltme") approvalState = 3;
-                else if (value == "Onaylı") approvalState = 4;        
+                //if (value=="Yeni Yüklendi") approvalState = 0;
+                //else if (value=="Editor Onayında") approvalState = 1 ;
+                //else if (value == "Hakem Onayında") approvalState = 2;
+                //else if (value == "Yazar Düzeltme") approvalState = 3;
+                //else if (value == "Onaylı") approvalState = 4;        
 
             }
         }
