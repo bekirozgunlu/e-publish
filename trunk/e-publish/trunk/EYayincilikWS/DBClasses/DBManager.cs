@@ -1250,7 +1250,7 @@ namespace BSClass
 
                 sSQL = @"if (Select COUNT(ID) from RefereePaper 
                 where RefereePaper.PaperRef="+PaperID.ToString()+ 
-                " and RefereePaper.isApproved<>2  "+
+                //" and RefereePaper.isApproved<>2  "+
                 " ) <= 0 "+
                 @"
                 begin
