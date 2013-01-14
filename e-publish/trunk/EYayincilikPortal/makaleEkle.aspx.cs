@@ -59,7 +59,7 @@ namespace EYayincilikPortal
                     p.MagazineID = Convert.ToInt32( cmbDergi.SelectedValue.ToString());
                     p.title = txtBaslik.Text.Trim();
                     p.isActive = 1;
-
+                    p.version = 0;
 
                     List<SubCategory> scList = new List<SubCategory>(); 
                     foreach (ListItem lt in ListSecimAltKategory.Items) 
@@ -72,23 +72,43 @@ namespace EYayincilikPortal
                         scList.Add(scx);
                     }
 
+                    List<Paper> scList2 = new List<Paper>();
+                    foreach (ListItem lt in ListSecimMakaleler.Items)
+                    {
+                         Paper scx2 = new Paper();
+                         scx2.id = Convert.ToInt32(lt.Value.ToString());
+                         scx2.title = lt.Text;
 
+
+                         scList2.Add(scx2);
+                    }
 
                     Manager m = new Manager();
 
                     p.subCategories = scList.ToArray();
 
+
                     int newID= m.AddPaper(p);
-                    
 
 
-                    FileUpload1.SaveAs(uploadFolder + newID.ToString()+".pdf" );
-                    p.contentPath =  newID.ToString() + ".pdf";
+
+                    FileUpload1.SaveAs(uploadFolder + p.id + "_" + p.version.ToString() + ".pdf");
+                    p.contentPath = p.id + "_" + p.version.ToString() + ".pdf";
                     m.UpdatePaper(p);
+                    p.id = newID;
+
+                    foreach (ListItem lt in ListSecimAltKategory.Items)
+                    {
+                         m.AddSubCategorytoPaper(Convert.ToInt32(lt.Value), newID);
+                    }
+
+
+                    foreach (ListItem lt in ListSecimMakaleler.Items)
+                    {
+                         m.AddReferencetoPaper(Convert.ToInt32(lt.Value), newID);
+                    }
+
                     m = null;
-
-
-                    
 
                     Label1.Text = "Makale Gönderildi : " + FileUpload1.PostedFile.FileName;
                   
@@ -141,6 +161,22 @@ namespace EYayincilikPortal
             {
                 ListSecimAltKategory.Items.Remove(ListSecimAltKategory.SelectedItem);
             }
+        }
+
+        protected void btnReferansEkle_Click1(object sender, EventArgs e)
+        {
+             if (ListMakaleler.SelectedIndex >= 0 && ListSecimMakaleler.Items.IndexOf(ListMakaleler.SelectedItem) < 0)
+             {
+                  ListSecimMakaleler.Items.Add(ListMakaleler.SelectedItem);
+             }
+        }
+
+        protected void btnReferansSil_Click1(object sender, EventArgs e)
+        {
+             if (ListSecimMakaleler.SelectedIndex >= 0)
+             {
+                  ListSecimMakaleler.Items.Remove(ListSecimMakaleler.SelectedItem);
+             }
         }
     }
 }
