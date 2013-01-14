@@ -43,7 +43,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:HyperLink ID="loginlink" runat="server" NavigateUrl="~/login.aspx" 
                 style="text-align: right; font-weight: 700; color: #FF3300;">Login</asp:HyperLink>
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;
+            <asp:HyperLink ID="loginlink1" runat="server" NavigateUrl="~/logout.aspx" 
+                style="text-align: right; font-weight: 700; color: #FF3300;">Logout</asp:HyperLink>
+            &nbsp;&nbsp;&nbsp;
 </div>
 
 <div>
