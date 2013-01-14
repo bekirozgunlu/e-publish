@@ -2047,26 +2047,68 @@ namespace BSClass
         
 
 
-        public void PublishMagazine(int MagazineID)
+        public void PublishMagazine(int MagazineID,string PaperIDList)
         {
             //Pubslihes a agazine..
 
             try
             {
-                //PublishMagazine(MagazineID);
-                return;
+                int newID = 0;               
+                string sSQL =@"Declare @magazineID int
+                    Declare @publishedmagazineID int
+                    Declare @BasimNo int
+
+                    SET @magazineID ="+MagazineID.ToString()+
+                    @" SET @BasimNo=0
+                    SET @publishedmagazineID =0
+
+
+                    Select @BasimNo=COUNT(ID)+1
+                    from [PublishedMagazine] where MagazineRef=@magazineID
+
+                    INSERT INTO [PublishedMagazine]
+                    ([MagazineRef],[MagazinePublishState],[PublishDate],[MagazinePublishNo],[isActive])
+                    VALUES
+                    (
+                    @magazineID,2,GETDATE(),LTRIM( RTRIM(STR(YEAR(GETDATE())))+'/'+LTRIM(RTRIM(STR(@BasimNo))) ),1
+                    )
+                    Select @publishedmagazineID =@@IDENTITY
+           
+
+                    Update Paper SET Paper.PublishedMagazineRef=@publishedmagazineID ,
+                    Paper.publishedId=LTRIM(RTRIM(STR(YEAR(GETDATE())))+'/'+LTRIM(RTRIM(STR(@BasimNo))))
+                    where Paper.MagazineRef=@magazineID ";
+
+
+                sSQL += @" and Paper.ID in(
+                            Select TOP 10 P.ID from Paper P
+                            where P.MagazineRef=@magazineID and P.PublishedMagazineRef is Null
+                            order by P.ID asc  ) ";
+
+
+
+                if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                SqlCommand scmd = new SqlCommand(sSQL, sc);
+                object o = scmd.ExecuteNonQuery();
+                newID = Convert.ToInt32(o.ToString());
+
+                if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                return ;
             }
             catch (Exception ex)
             {
                 string error = ex.Message;
+
                 //LOG ERROR
-                //RETURN 
-                return;
+                //RETURN NULL
+                return ;
             }
             finally
             {
                 //dispose unused objects...
-            }
+                if (sc.State == ConnectionState.Open) { sc.Close(); };
+            }         
         }
 
 
@@ -3254,7 +3296,20 @@ namespace BSClass
                     //and RP.isApproved=2
                 }
 
-                if (PublisherID > 0) 
+                if (PublisherID > 0 && MagazineIDList!=null && MagazineIDList.Length>0 &&  MagazineIDList!=""  )
+                {
+                    sSQL = @" SELECT Paper.*,M.name as MagazineName,UPPER(PO1.name+' '+PO1.surName) as Yazar ,
+                    PPX.name+' '+PPX.surName  as  publisherName
+                    FROM [Paper] 
+                    inner join Magazine M on M.ID=Paper.MagazineRef
+                    inner join PortalUser PO on PO.ID=M.PublisherUserRef
+                    LEFT join PortalUser PO1 on PO1.ID=Paper.AuthorUserRef
+                    LEFT join PortalUser PPX on M.PublisherUserRef=PPX.ID
+                    where Paper.isActive=1 and Paper.PublishedMagazineRef is Null 
+                    and PO.ID=" + PublisherID.ToString() +
+                    " and M.ID in(" + MagazineIDList + ")";
+                }
+                else if (PublisherID > 0) 
                 {
                     sSQL = @" SELECT Paper.*,M.name as MagazineName,UPPER(PO1.name+' '+PO1.surName) as Yazar ,
                     PPX.name+' '+PPX.surName  as  publisherName
@@ -3266,6 +3321,9 @@ namespace BSClass
                     where Paper.isActive=1
                     and PO.ID=" + PublisherID.ToString();
                 }
+
+
+               
 
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);

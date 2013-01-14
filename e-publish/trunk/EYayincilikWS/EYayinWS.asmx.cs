@@ -267,6 +267,7 @@ namespace EYayincilikWS
         public void SendOpinionToPublisher(int PaperID, int RefereeID, int PublisherID)
         {
             //Called when a referee Wants to send his/her opinion to a a publisher...
+            DBManager.singleton().SendOpinionToPublisher(PaperID, RefereeID, PublisherID);
         }
 
         [WebMethod]
@@ -398,10 +399,10 @@ namespace EYayincilikWS
         }
 
         [WebMethod]
-        public void PublishMagazine(int MagazineID)
+        public void PublishMagazine(int MagazineID, string PaperIDList)
         {
             //Pubslihes a magazine
-            DBManager.singleton().PublishMagazine(MagazineID);
+            DBManager.singleton().PublishMagazine(MagazineID,PaperIDList);
         }
 
         [WebMethod]
