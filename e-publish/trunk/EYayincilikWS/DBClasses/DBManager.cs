@@ -1287,8 +1287,8 @@ namespace BSClass
             try
             {
                 string sSQL = @"INSERT INTO [RefereePaper]
-                ([UserRefereeRef],[PaperRef],UserPublisherRef)
-                VALUES (@p1,@p2,@p3) " ;
+                ([UserRefereeRef],[PaperRef],UserPublisherRef,isApproved)
+                VALUES (@p1,@p2,@p3,1) " ;
 
 
                 if(sc.State==  ConnectionState.Closed) {sc.Open();}
@@ -1297,7 +1297,7 @@ namespace BSClass
                 scmd.Parameters[0].Value = RefereeID;
                 scmd.Parameters.Add("p2", SqlDbType.Int);
                 scmd.Parameters[1].Value = PaperID;
-                scmd.Parameters.Add("p2", SqlDbType.Int);
+                scmd.Parameters.Add("p3", SqlDbType.Int);
                 scmd.Parameters[2].Value = PublisherID;
 
 
@@ -2834,8 +2834,8 @@ namespace BSClass
                         a.userID = Convert.ToInt32(dr["ID"].ToString());
                         a.userName = dr["userName"].ToString();
                         a.isActive = Convert.ToInt32(dr["isActive"].ToString());
-                        a.paperCount = Convert.ToInt32(dr["paperCount"].ToString());
-                        a.paperList = this.GetPaperList("", "", "", -1, -1, a.userID, "", "", true);
+                   //     a.paperCount = Convert.ToInt32(dr["paperCount"].ToString());
+                   //     a.paperList = this.GetPaperList("", "", "", -1, -1, a.userID, "", "", true);
                         a.surName = dr["surName"].ToString();
                         a.name = dr["name"].ToString();
 
