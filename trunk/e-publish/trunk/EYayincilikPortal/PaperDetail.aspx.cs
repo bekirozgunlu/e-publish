@@ -47,11 +47,11 @@ namespace EYayincilikPortal
         }      
         protected void Download_Click(object sender, EventArgs e)
         {
-            string filename = p[0].title + ".pdf";            
+            string filename = p[0].id.ToString() + "_"+p[0].version.ToString()+".pdf";            
             Response.ContentType = "application/octet-stream";
             Response.AppendHeader("Content-Disposition", "attachment;filename=" + filename);
-            string path = p[0].contentPath;
-            Response.TransmitFile(Server.MapPath(path));
+            //string path = "C:/inetpub/wwwroot/upload/";
+            Response.TransmitFile("../upload/"+ filename); //Server.MapPath(path)
             Response.End();            
         }
 

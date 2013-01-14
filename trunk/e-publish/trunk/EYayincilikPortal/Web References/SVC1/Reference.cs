@@ -1928,23 +1928,25 @@ namespace EYayincilikPortal.SVC1 {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/PublishMagazine", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void PublishMagazine(int MagazineID) {
+        public void PublishMagazine(int MagazineID, string PaperIDList) {
             this.Invoke("PublishMagazine", new object[] {
-                        MagazineID});
+                        MagazineID,
+                        PaperIDList});
         }
         
         /// <remarks/>
-        public void PublishMagazineAsync(int MagazineID) {
-            this.PublishMagazineAsync(MagazineID, null);
+        public void PublishMagazineAsync(int MagazineID, string PaperIDList) {
+            this.PublishMagazineAsync(MagazineID, PaperIDList, null);
         }
         
         /// <remarks/>
-        public void PublishMagazineAsync(int MagazineID, object userState) {
+        public void PublishMagazineAsync(int MagazineID, string PaperIDList, object userState) {
             if ((this.PublishMagazineOperationCompleted == null)) {
                 this.PublishMagazineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnPublishMagazineOperationCompleted);
             }
             this.InvokeAsync("PublishMagazine", new object[] {
-                        MagazineID}, this.PublishMagazineOperationCompleted, userState);
+                        MagazineID,
+                        PaperIDList}, this.PublishMagazineOperationCompleted, userState);
         }
         
         private void OnPublishMagazineOperationCompleted(object arg) {

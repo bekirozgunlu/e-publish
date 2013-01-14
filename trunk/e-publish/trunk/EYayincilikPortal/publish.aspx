@@ -11,21 +11,32 @@
     <div>
     
         Dergi Seçiniz :
-            <asp:DropDownList ID="cmbDergi" runat="server" AutoPostBack="True" 
+            <asp:DropDownList ID="cmbDergi" runat="server" 
                 DataSourceID="objDergiler" DataTextField="name" DataValueField="id" 
                 Width="300px" DataTextFormatString="{0}">
             </asp:DropDownList>
+        <asp:Button ID="Button3" runat="server" onclick="Button3_Click" Text="SEC" />
         <br />
         <br />
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-            CellPadding="4" DataSourceID="obj_makaleler" ForeColor="#333333" Width="762px">
+            CellPadding="4" ForeColor="#333333" Width="762px">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" />
+                <asp:BoundField DataField="approvalDate" HeaderText="approvalDate" 
+                    SortExpression="approvalDate" />
+                <asp:BoundField DataField="publishedId" HeaderText="publishedId" 
+                    SortExpression="publishedId" Visible="False" />
+                <asp:BoundField DataField="version" HeaderText="version" 
+                    SortExpression="version" />
                 <asp:BoundField DataField="title" HeaderText="Title" SortExpression="title" />
+                <asp:BoundField DataField="publisherComment" HeaderText="Yorum" 
+                    SortExpression="publisherComment" />
                 <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" 
                     SortExpression="AuthorName" />
-                <asp:BoundField DataField="ApprovalStateText" HeaderText="ApprovalStateText" 
+                <asp:BoundField DataField="uploadDate" HeaderText="upload Date" 
+                    SortExpression="uploadDate" />
+                <asp:BoundField DataField="ApprovalStateText" HeaderText="Onay Durum" 
                     SortExpression="ApprovalStateText" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
@@ -43,17 +54,17 @@
         <asp:Label ID="lblError" runat="server" Font-Bold="True" ForeColor="#FF0066"></asp:Label>
         <br />
         <asp:Button ID="Button2" runat="server" Text="MAKALELERİ YAYINLA" 
-            Width="238px" />
+            Width="238px" onclick="Button2_Click" />
         <br />
         <br />
         <br />
         <asp:ObjectDataSource ID="obj_makaleler" runat="server" 
             SelectMethod="GetPaperList" TypeName="EYayincilikPortal.Manager">
             <SelectParameters>
-                <asp:Parameter DefaultValue="0" Name="PublishedMagazineIDList" Type="String" />
+                <asp:Parameter DefaultValue="" Name="PublishedMagazineIDList" Type="String" />
                 <asp:ControlParameter ControlID="cmbDergi" DefaultValue="0" 
                     Name="MagazineIDList" PropertyName="SelectedValue" Type="String" />
-                <asp:Parameter DefaultValue="0" Name="PaperIDList" Type="String" />
+                <asp:Parameter DefaultValue="" Name="PaperIDList" Type="String" />
                 <asp:Parameter DefaultValue="-1" Name="RefereeID" Type="Int32" />
                 <asp:Parameter DefaultValue="-1" Name="PublisherID" Type="Int32" />
                 <asp:Parameter DefaultValue="-1" Name="AuthorID" Type="Int32" />

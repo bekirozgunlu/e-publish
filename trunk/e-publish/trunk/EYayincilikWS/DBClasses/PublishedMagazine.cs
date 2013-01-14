@@ -38,7 +38,7 @@ namespace BSClass
 
         public void PublishMagazine()
         {
-            DBManager.singleton().PublishMagazine(this.id);
+            //DBManager.singleton().PublishMagazine(this.id);
         }
 
 

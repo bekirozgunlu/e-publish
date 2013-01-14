@@ -1058,13 +1058,13 @@ namespace EYayincilikPortal
         }
 
         
-        public void PublishMagazine(int MagazineID)
+        public void PublishMagazine(int MagazineID,string PaperIDList)        
         {
             //Pubslihes a agazine..
 
             try
             {
-                svc.PublishMagazine(MagazineID);
+                svc.PublishMagazine(MagazineID, PaperIDList);
                 return ;
             }
             catch (Exception ex)
