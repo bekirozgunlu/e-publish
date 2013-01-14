@@ -25,7 +25,7 @@ namespace BSClass
                 if (approvalState == 2) return "Hakem Onayında";
                 if (approvalState == 3) return "Yazar Düzeltme";
                 if (approvalState == 4) return "Hakem_Onayli";
-                if (approvalState == 4) return "Onaylı";                
+                if (approvalState == 5) return "Onaylı";                
                 return " ";       
             
                 
