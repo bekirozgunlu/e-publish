@@ -58,9 +58,9 @@ namespace EYayincilikPortal
                   {
                        // TODO references
                        Manager m = new Manager();
-                       DataTable comments = m.GetReferenceList(Convert.ToInt32(pID), -1);
-                       GridView3.DataSource = comments;
-                     //  GridView3.DataBind();
+                       Paper[] references = m.GetReferencedPapersList(Convert.ToInt32(pID));
+                       GridView3.DataSource = references;
+                       GridView3.DataBind();
                   }
                   
              }
