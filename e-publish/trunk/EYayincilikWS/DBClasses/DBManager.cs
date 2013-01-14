@@ -3244,6 +3244,91 @@ namespace BSClass
         }
 
 
+
+
+        public BSClass.Paper[] GetRefereeNotesOnPaper(int PaperID)
+        {
+
+            List<Paper> tList = new List<Paper>();
+            try
+            {
+                string sSQL = @"Select P.ID , RR.name+' '+RR.surName as RefereeName, 
+                    case RP.isApproved when 1 then 'Onay Bekliyor'
+                    when 2 then 'Hakem Onaylı'
+                    when 3 then 'Hakem Reddetti'
+                    end as HakemOnayDurum  , 
+                    CC.commentDate , CC.commentContent as Yorum
+                    from Paper P
+                    LEFT join RefereePaper RP on RP.PaperRef=P.ID
+                    LEFT join PortalUser RR on RR.ID=RP.UserRefereeRef 
+                    LEFT Join Comment  CC on CC.UserRef=RR.ID and CC.PaperRef=P.ID and CC.commentType=2 and CC.isActive=1
+                    where P.ID=" + PaperID.ToString();
+
+
+                if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                if (dt.Rows.Count < 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        Paper p = new Paper();
+                        p.id = Convert.ToInt32(dr["ID"].ToString());
+                    //p.isActive = Convert.ToInt32(dr["isActive"].ToString());
+                    //p.MagazineID = Convert.ToInt32(dr["MagazineRef"].ToString());
+
+                        if (dr["commentDate"].ToString().Length > 0)
+                            p.approvalDate = Convert.ToDateTime(dr["commentDate"].ToString());
+                        //p.approvalState = Convert.ToInt32(dr["commentDate"].ToString());
+
+                       // p.authorId = Convert.ToInt32(dr["AuthorUserRef"].ToString());
+                        //p.comments = this.GetCommentList(p.id.ToString(), -1, true);
+                        //p.contentPath = dr["contentPath"].ToString();
+                        p.MagazineName = dr["Yorum"].ToString();
+
+                        p.AuthorName = dr["RefereeName"].ToString();
+
+                       // p.publishedId = dr["publishedId"].ToString();
+                        /*
+                        if (dr["PublishedMagazineRef"].ToString().Length > 0)
+                            p.PublishedMagazineID = Convert.ToInt32(dr["PublishedMagazineRef"].ToString());
+                        p.publisherComment = dr["publisherComment"].ToString();
+
+                        p.referencePaperID = null; //TODO...
+
+                        p.subCategories = GetSubCategoryList(true, "", p.MagazineID);
+                        */
+                        p.title = dr["HakemOnayDurum"].ToString();
+                        //p.version = Convert.ToDouble(dr["version"].ToString());
+
+                        tList.Add(p);
+                    }
+                }
+
+                return tList.ToArray();
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return null;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+
+
         public ScienceCategory[] GetScienceCategoryList(bool onlyActiveRecords,int SubCategoryID , int MagazineID)
         {
             List<ScienceCategory> tList = new List<ScienceCategory>();
@@ -3264,8 +3349,11 @@ namespace BSClass
                         LEFT join MagazineSubCategory MSC on MSC.SubCategoryRef=SSC.SubCategoryRef
                         where MSC.MagazineRef="+MagazineID.ToString()+" and ScienceCategory.isActive=1 ";               
                 }
-         
 
+                else if (SubCategoryID < 0 && MagazineID < 0)
+                {
+                    sSQL = @"SELECT distinct  [ScienceCategory].*  FROM [ScienceCategory] WHERE ScienceCategory.isActive = 1";
+                }
                
 
 
@@ -3319,9 +3407,9 @@ namespace BSClass
                 FROM [SubCategory] 
                 LEFT JOIN MagazineSubCategory MSC on MSC.SubCategoryRef=SubCategory.ID 
                 LEFT JOIN ScienceSubCategory SSC on SSC.SubCategoryRef=SubCategory.ID  
-                WHERE 1=1 ";
+                WHERE 1=1 AND SubCategory.isActive = 1";
 
-
+                 
 
                 if (MagazineID > 0)
                 {
@@ -3427,6 +3515,72 @@ namespace BSClass
                         c.id = Convert.ToInt32(dr["ID"].ToString());
                         c.isActive = Convert.ToInt32(dr["isActive"].ToString());
                         c.question= dr["question"].ToString();                       
+                        tList.Add(c);
+                    }
+                }
+
+                return tList.ToArray();
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return null;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+
+
+
+
+        public BSClass.Survey[] GetSurvey(bool onlyActiveRecords, int MagazineID, int SurveyID)
+        {
+            List<BSClass.Survey> tList = new List<BSClass.Survey>();
+            try
+            {
+                //[ID],[SurveyRef],[question],[isActive]
+                string sSQL = @"SELECT [Survey].* 
+                FROM [Survey]  where isActive=1 ";
+
+
+                if (MagazineID > 0)
+                {
+                    sSQL = sSQL + "  AND Survey.MagazineRef="+MagazineID.ToString() ;
+                }
+
+                
+
+                if (SurveyID > 0)
+                {
+                    sSQL = sSQL + " and ID =" + SurveyID.ToString();
+                }
+
+
+
+                if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                if (dt.Rows.Count < 0)
+                {
+                    return null;
+                }
+                else
+                {
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        Survey c = new Survey();
+                        c.id = Convert.ToInt32(dr["ID"].ToString());
+                        c.isActive = Convert.ToInt32(dr["isActive"].ToString());
+                        c.magazineId= Convert.ToInt32(dr["MagazineRef"].ToString());
                         tList.Add(c);
                     }
                 }
