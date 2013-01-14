@@ -46,7 +46,11 @@ namespace EYayincilikPortal
 
         protected void btnDownload_Click(object sender, EventArgs e)
         {
-           // Response.Redirect("")
+            Manager m = new Manager();
+            Paper[] plist = m.GetPaperList("", "", paperID.ToString(), -1, -1, -1, "", "", true);
+
+            string path ="../../upload/" + paperID.ToString() + "_" + plist[0].version.ToString();
+            Response.Redirect(path);
         }
 
         protected void btnOnayla_Click(object sender, EventArgs e)
@@ -58,6 +62,8 @@ namespace EYayincilikPortal
             m.UpdatePaper(plist[0]);
 
             m = null;
+
+            Response.Redirect("editor.aspx");
 
 
         }
@@ -92,6 +98,8 @@ namespace EYayincilikPortal
             m.UpdatePaper(plist[0]);
 
             m = null;
+
+            Response.Redirect("editor.aspx");
         }
     }
 }
