@@ -17,10 +17,14 @@ namespace BSClass
 
 
                 //1:Yeni Yüklendi , 2:Editor Onayında,3:Hakem Onayında;4:Yazar Düzeltme ;5:Onaylı;
+
+                //{ YeniYuklendi, Editor_Onayinda, Hakem_Onayinda, Yazar_Duzeltme, Hakem_Onayli, Editor_Onayli } ;
+
                 if (approvalState == 0) return "Yeni Yüklendi";
                 if (approvalState == 1) return "Editor Onayında";
                 if (approvalState == 2) return "Hakem Onayında";
                 if (approvalState == 3) return "Yazar Düzeltme";
+                if (approvalState == 4) return "Hakem_Onayli";
                 if (approvalState == 4) return "Onaylı";                
                 return " ";       
             
