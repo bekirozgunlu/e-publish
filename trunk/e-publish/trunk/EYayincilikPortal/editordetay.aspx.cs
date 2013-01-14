@@ -50,7 +50,7 @@ namespace EYayincilikPortal
             
             Paper[] plist = m.GetPaperList("", "", paperID.ToString(), -1, -1, -1, "", "", true);
 
-            string path ="../../upload/" + paperID.ToString() + "_" + plist[0].version.ToString();
+            string path ="../upload/" + paperID.ToString() + "_" + plist[0].version.ToString()+".pdf";
             Response.Redirect(path);
         }
 
