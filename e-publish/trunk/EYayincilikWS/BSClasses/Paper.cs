@@ -50,6 +50,9 @@ namespace BSClass
         public string MagazineName;
         public string AuthorName;
 
+        public string publisherName;
+ 	    public DateTime uploadDate; 
+
         public int PublishedMagazineID;
         public int isActive ;
     }
