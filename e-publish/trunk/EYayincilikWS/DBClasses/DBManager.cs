@@ -4336,6 +4336,197 @@ namespace BSClass
 
         //as
 
+         public Paper[] GetReferencesofPaperList(int PaperID)    //to get references of given paper
+         {
+             List<Int32> tList = new List<Int32>();
+             List<Paper> pList = new List<Paper>();
+             try
+             {
+                 string sSQL = @"SELECT R.* from PaperReferencePaper R
+
+                    WHERE  R.MainPaperRef= " + PaperID;
+
+
+                 if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
+                 DataTable dt = new DataTable();
+                 sda.Fill(dt);
+                 if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                 if (dt.Rows.Count < 0)
+                 {
+                     return null;
+                 }
+                 else
+                 {
+                     foreach (DataRow dr in dt.Rows)
+                     {
+                         Paper[] p = GetPaperList(null, null, dr["ReferancePaperRef"].ToString(), -1, -1, -1, null, null, true);
+                         Paper paper = p[0];
+                         pList.Add(paper);
+                     }
+
+                     return pList.ToArray();
+                 }
+
+             }
+             catch (Exception ex)
+             {
+                 string error = ex.Message;
+                 //LOG ERROR
+                 //RETURN 
+                 return null;
+             }
+             finally
+             {
+                 //dispose unused objects...
+             }
+         }
+
+         public Paper[] GetReferencedPapersList(int PaperID)      // to get papers who referenced given paper
+         {
+             List<Int32> tList = new List<Int32>();
+             List<Paper> pList = new List<Paper>();
+             try
+             {
+                 string sSQL = @"SELECT R.* from PaperReferencePaper R
+
+                    WHERE  R.ReferancePaperRef =" + PaperID;
+
+
+                 if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
+                 DataTable dt = new DataTable();
+                 sda.Fill(dt);
+                 if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                 if (dt.Rows.Count < 0)
+                 {
+                     return null;
+                 }
+                 else
+                 {
+                     foreach (DataRow dr in dt.Rows)
+                     {
+                         Paper[] p = GetPaperList(null, null, dr["MainPaperRef"].ToString(), -1, -1, -1, null, null, true);
+                         Paper paper = p[0];
+                         pList.Add(paper);
+                     }
+
+                     return pList.ToArray();
+                 }
+
+             }
+             catch (Exception ex)
+             {
+                 string error = ex.Message;
+                 //LOG ERROR
+                 //RETURN 
+                 return null;
+             }
+             finally
+             {
+                 //dispose unused objects...
+             }
+         }
+
+         public BSClass.SubCategory[] GetSubCategoryNameList(string subCategoryId, bool onlyActiveRecords)
+         {
+             List<SubCategory> tList = new List<SubCategory>();
+             try
+             {
+                 string sSQL = @"SELECT [SubCategory].* 
+                FROM [SubCategory]   
+                WHERE SubCategory.ID = " + subCategoryId + " AND SubCategory.isActive = 1";
+
+                 if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
+                 DataTable dt = new DataTable();
+                 sda.Fill(dt);
+                 if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                 if (dt.Rows.Count < 0)
+                 {
+                     return null;
+                 }
+                 else
+                 {
+
+                     foreach (DataRow dr in dt.Rows)
+                     {
+                         SubCategory c = new SubCategory();
+                         c.id = Convert.ToInt32(dr["ID"].ToString());
+                         c.isActive = Convert.ToInt32(dr["isActive"].ToString());
+                         c.approvalState = Convert.ToInt32(dr["approvalState"].ToString());
+                         c.name = dr["name"].ToString();
+                         c.scienceCategoryList = this.GetScienceCategoryList(true, c.id, -1);
+                         tList.Add(c);
+                     }
+                 }
+
+                 return tList.ToArray();
+             }
+             catch (Exception ex)
+             {
+                 string error = ex.Message;
+                 //LOG ERROR
+                 //RETURN 
+                 return null;
+             }
+             finally
+             {
+                 //dispose unused objects...
+             }
+
+         }
+
+         public BSClass.SubCategory[] GetSubCategoriesofPaperList(string PaperID)
+         {
+             List<Int32> tList = new List<Int32>();
+             List<SubCategory> pList = new List<SubCategory>();
+             try
+             {
+                 string sSQL = @"SELECT S.* from PaperSubCategory S
+
+                    WHERE  S.PaperRef =" + PaperID;
+
+
+                 if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
+                 DataTable dt = new DataTable();
+                 sda.Fill(dt);
+                 if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                 if (dt.Rows.Count < 0)
+                 {
+                     return null;
+                 }
+                 else
+                 {
+                     foreach (DataRow dr in dt.Rows)
+                     {
+                         SubCategory[] s = GetSubCategoryNameList(dr["SubCategoryRef"].ToString(), true);
+                         SubCategory subc = s[0];
+                         pList.Add(subc);
+                     }
+
+                     return pList.ToArray();
+                 }
+
+             }
+             catch (Exception ex)
+             {
+                 string error = ex.Message;
+                 //LOG ERROR
+                 //RETURN 
+                 return null;
+             }
+             finally
+             {
+                 //dispose unused objects...
+             }
+         }
+
     }
 
 
