@@ -57,6 +57,8 @@
     <form id="form1" runat="server">
     <div>
     
+                     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/yazar.aspx">Yazar Ana Sayfa</asp:HyperLink>
+    
         <table class="style1">
             <tr>
                 <td class="style2">
@@ -83,8 +85,7 @@
                 <td class="style3">
                     &nbsp;</td>
                 <td>
-                     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/yazar.aspx">Yazar Ana Sayfa</asp:HyperLink>
-                </td>
+                     &nbsp;</td>
             </tr>
             <tr>
                 <td class="style2">
@@ -209,8 +210,7 @@
                     <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
                         Text="Dergi Editörüne Gönder" Width="184px" />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/yazar.aspx">Yazar Ana Sayfa</asp:HyperLink>
-                </td>
+                     </td>
             </tr>
             <tr>
                 <td class="style2">
@@ -218,6 +218,8 @@
                 <td class="style3">
                     :</td>
                 <td>
+                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/yazar.aspx">Yazar Ana Sayfa</asp:HyperLink>
+                     <br />
                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
                 &nbsp;<br />

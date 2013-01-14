@@ -36,16 +36,16 @@
           .style11
           {
                width: 103px;
-               height: 27px;
+               height: 168px;
           }
           .style12
           {
                width: 8px;
-               height: 27px;
+               height: 168px;
           }
           .style13
           {
-               height: 27px;
+               height: 168px;
           }
          </style>
 </head>
@@ -95,29 +95,33 @@
             </tr>
             <tr>
                 <td class="style2">
-                    Ana Bilim Dalı:</td>
+                     &nbsp;</td>
                 <td class="style3">
-                    :</td>
+                     &nbsp;</td>
                 <td class="style4">
-                     <asp:TextBox ID="TextBox2" runat="server" ReadOnly="True"></asp:TextBox>
-                </td>
+                     &nbsp;</td>
             </tr>
             <tr>
                 <td class="style2">
-                    Alt Bilim Dalı</td>
+                    Alt Bilim Dalları</td>
                 <td class="style3">
                     :</td>
                 <td class="style7">
-                    &nbsp;<asp:ListBox ID="ListBox1" runat="server" Height="129px" Width="197px">
+                    &nbsp;<asp:ListBox ID="ListBox1" 
+                          runat="server" Height="129px" Width="197px" DataTextField="name" 
+                          DataValueField="id">
                      </asp:ListBox>
                 </td>
             </tr>
             <tr>
                 <td class="style11">
-                    </td>
+                     Referenslar</td>
                 <td class="style12">
-                    </td>
+                     :</td>
                 <td class="style13">
+                    
+                     <asp:ListBox ID="ListBox2" runat="server" DataTextField="title" 
+                          DataValueField="id" Height="153px" Width="198px"></asp:ListBox>
                     
                 </td>
             </tr>
