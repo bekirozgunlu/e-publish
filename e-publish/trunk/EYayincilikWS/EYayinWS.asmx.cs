@@ -90,6 +90,7 @@ namespace EYayincilikWS
         public void UpdateSubCategory(SubCategory ss)
         {
             //updates a sub category content...
+            DBManager.singleton().UpdateSubCategory(ss);
         }
 
         [WebMethod]
@@ -177,6 +178,7 @@ namespace EYayincilikWS
         public void UpdateScienceCategory(ScienceCategory sc)
         {
             //Updates a ScienceCategory Record with new values...
+            DBManager.singleton().UpdateScienceCategory(sc);
         }
 
 
