@@ -273,12 +273,15 @@ namespace EYayincilikWS
         public void SendPaperToReferee(int PaperID, int RefereeID, int PublisherID)
         {
             //Called when a publisher  Wants to send a paper to a a referee
+            DBManager.singleton().SendPaperToReferee(PaperID, RefereeID, PublisherID);
         }
 
         [WebMethod]
         public void SendPaperBackToWriter(int PaperID, int AuthorID, int PublisherID)
         {
             //Called when a publisher  Wants to send a paper to a an author
+            DBManager.singleton().SendPaperBackToWriter(PaperID, AuthorID, PublisherID);
+
         }
 
 
@@ -286,6 +289,7 @@ namespace EYayincilikWS
         public void InviteReferee(Referee passiveRefereeRecord, int PublisherID)
         {
             //Called when a publisher  Wants to send a paper to a an author
+            DBManager.singleton().InviteReferee(passiveRefereeRecord, PublisherID);
         }
 
         [WebMethod]
@@ -313,6 +317,7 @@ namespace EYayincilikWS
         public void UpdateUser(User u)
         {
             //Updates a User Record with new values...
+            DBManager.singleton().UpdateUser(u);
         }
 
 
@@ -336,6 +341,7 @@ namespace EYayincilikWS
         public void UpdateAnonimUser(AnonimUser u)
         {
             //Updates a AnonimUser Record with new values...
+            DBManager.singleton().UpdateAnonimUser(u);
         }
 
 
@@ -426,6 +432,7 @@ namespace EYayincilikWS
         public void UpdateSurvey(Survey s)
         {
             //Updates a Survey Record with new values...
+            DBManager.singleton().UpdateSurvey(s);
         }
 
         /// <summary>
@@ -453,6 +460,7 @@ namespace EYayincilikWS
         public void UpdateSurveyQuestionary(SurveyQuestionary s)
         {
             //Updates a SurveyQuestionary Record with new values...
+            DBManager.singleton().UpdateSurveyQuestionary(s);
         }
 
         /// <summary>
@@ -479,6 +487,7 @@ namespace EYayincilikWS
         public void UpdatePublishedMagazine(PublishedMagazine pm)
         {
             //Updates a PublishedMagazine Record with new values...
+            DBManager.singleton().UpdatePublishedMagazine(pm);
         }
 
 
