@@ -13,6 +13,16 @@ namespace EYayincilikPortal
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            Session["user"] = null;
+            Session["userid"] = null;
+            Session["isEditor"] = "0";
+            Session["isReferee"] = "0";
+            Session["isAuthor"] = "0";
+            Session["isModerator"] = "0";
+            Session["isAdmin"] = "0";
+            Session["isStandardUser"] = "0";
+            Session["isAnonimUser"] = "0";
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -36,6 +46,10 @@ namespace EYayincilikPortal
 
                     Session["user"] = u;
                     Session["userid"] = u.userID;
+
+
+
+                    
 
                     if (GrantList.Contains<int>( Convert.ToInt32(UserType.editor)) ) 
                     {
