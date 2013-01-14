@@ -3210,9 +3210,13 @@ namespace BSClass
             List<Paper> tList = new List<Paper>();
             try
             {
-                string sSQL = @"SELECT Paper.*,M.name as MagazineName ,UPPER(PO1.name+' '+PO1.surName) as Yazar  FROM [Paper] 
+                string sSQL = @"SELECT Paper.*,M.name as MagazineName ,UPPER(PO1.name+' '+PO1.surName) as Yazar ,
+                    PPX.name+' '+PPX.surName  as  publisherName
+                    FROM [Paper] 
                     inner join Magazine M on M.ID=Paper.MagazineRef
+                    LEFT join PortalUser PPX on M.PublisherUserRef=PPX.ID
                     LEFT join PortalUser PO1 on PO1.ID=Paper.AuthorUserRef
+
                     WHERE 1=1 ";
 
 
@@ -3235,10 +3239,12 @@ namespace BSClass
                 if (RefereeID > 0)
                 {
                     //yeni SQL yaz...
-                    sSQL = @"SELECT Paper.*,M.name as MagazineName ,UPPER(PO1.name+' '+PO1.surName) as Yazar  FROM [Paper] 
+                    sSQL = @"SELECT Paper.*,M.name as MagazineName ,UPPER(PO1.name+' '+PO1.surName) as Yazar,PPX.name+' '+PPX.surName  as  publisherName 
+                    FROM [Paper]                     
                     inner join RefereePaper RP  on RP.PaperRef=Paper.ID
                     inner join Magazine M on M.ID=Paper.MagazineRef
                     LEFT join PortalUser PO1 on PO1.ID=Paper.AuthorUserRef
+                    LEFT join PortalUser PPX on M.PublisherUserRef=PPX.ID
                     where Paper.isActive=1 " +
                     " and RP.UserRefereeRef=" + RefereeID.ToString();
                     //and RP.isApproved=2
@@ -3246,10 +3252,13 @@ namespace BSClass
 
                 if (PublisherID > 0) 
                 {
-                    sSQL = @" SELECT Paper.*,M.name as MagazineName,UPPER(PO1.name+' '+PO1.surName) as Yazar    FROM [Paper] 
+                    sSQL = @" SELECT Paper.*,M.name as MagazineName,UPPER(PO1.name+' '+PO1.surName) as Yazar ,
+                    PPX.name+' '+PPX.surName  as  publisherName
+                    FROM [Paper] 
                     inner join Magazine M on M.ID=Paper.MagazineRef
                     inner join PortalUser PO on PO.ID=M.PublisherUserRef
                     LEFT join PortalUser PO1 on PO1.ID=Paper.AuthorUserRef
+                    LEFT join PortalUser PPX on M.PublisherUserRef=PPX.ID
                     where Paper.isActive=1
                     and PO.ID=" + PublisherID.ToString();
                 }
@@ -3282,6 +3291,22 @@ namespace BSClass
                         p.comments= this.GetCommentList(p.id.ToString(),-1,true);
                         p.contentPath=dr["contentPath"].ToString();
                         p.MagazineName = dr["MagazineName"].ToString();
+
+
+                        try
+                        {
+                            if (dr["uploadDate"] != null)
+                                p.uploadDate = Convert.ToDateTime(dr["uploadDate"].ToString());
+                        }
+                        catch (Exception ex22) 
+                        {
+                            p.uploadDate = DateTime.Now;
+                        }
+
+                        if (dr["publisherName"] != null)
+                            p.publisherName = dr["publisherName"].ToString();
+                        else
+                            p.publisherName = "";
 
                         p.AuthorName= dr["Yazar"].ToString();
 
