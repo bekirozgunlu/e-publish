@@ -83,7 +83,8 @@
                 <td class="style3">
                     &nbsp;</td>
                 <td>
-                    &nbsp;</td>
+                     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/yazar.aspx">Yazar Ana Sayfa</asp:HyperLink>
+                </td>
             </tr>
             <tr>
                 <td class="style2">
@@ -207,6 +208,8 @@
                 <td>
                     <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
                         Text="Dergi Editörüne Gönder" Width="184px" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/yazar.aspx">Yazar Ana Sayfa</asp:HyperLink>
                 </td>
             </tr>
             <tr>
@@ -218,7 +221,6 @@
                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
                 &nbsp;<br />
-                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/yazar.aspx">Yazar Ana Sayfa</asp:HyperLink>
                 </td>
             </tr>
         </table>

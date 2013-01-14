@@ -59,6 +59,7 @@
     <Content Include="hakem.aspx" />
     <Content Include="invite.aspx" />
     <Content Include="kayit.aspx" />
+    <Content Include="makaleAyrintilar.aspx" />
     <Content Include="makaleEkle.aspx" />
     <Content Include="login.aspx" />
     <Content Include="moderator.aspx" />
@@ -187,6 +188,13 @@
     </Compile>
     <Compile Include="kayit.aspx.designer.cs">
       <DependentUpon>kayit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="makaleAyrintilar.aspx.cs">
+      <DependentUpon>makaleAyrintilar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="makaleAyrintilar.aspx.designer.cs">
+      <DependentUpon>makaleAyrintilar.aspx</DependentUpon>
     </Compile>
     <Compile Include="makaleEkle.aspx.cs">
       <DependentUpon>makaleEkle.aspx</DependentUpon>

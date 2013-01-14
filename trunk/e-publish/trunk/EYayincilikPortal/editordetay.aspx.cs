@@ -33,11 +33,11 @@ namespace EYayincilikPortal
 
 
 
-            if (paperID > 0)
+            if (paperID > 0 && (!IsPostBack) )
             {
                 Manager m = new Manager();
                 Paper[] plist = m.GetPaperList("", "", paperID.ToString(), -1, -1, -1, "", "", true);
-                TextBox1.Text = plist[0].publisherComment;
+                txtYorum.Text = plist[0].publisherComment;
                 m = null;
             }
 
@@ -67,7 +67,7 @@ namespace EYayincilikPortal
             Manager m = new Manager();
             m.SendPaperToReferee(paperID, Convert.ToInt32( cmbReferee.SelectedValue.ToString()), sessionUser.userID);
             m = null;
-
+            GridView1.DataBind();
         }
 
         protected void btnEditorYorum_Click(object sender, EventArgs e)
@@ -75,7 +75,7 @@ namespace EYayincilikPortal
             Manager m = new Manager();
             Paper[] plist = m.GetPaperList("", "", paperID.ToString(), -1, -1, -1, "", "", true);
 
-            plist[0].publisherComment = TextBox1.Text;
+            plist[0].publisherComment = txtYorum.Text;
             m.UpdatePaper(plist[0]);
 
             m = null;
@@ -86,7 +86,7 @@ namespace EYayincilikPortal
             Manager m = new Manager();
             Paper[] plist = m.GetPaperList("", "", paperID.ToString(), -1, -1, -1, "", "", true);
 
-            plist[0].publisherComment = TextBox1.Text;
+            plist[0].publisherComment = txtYorum.Text;
             plist[0].approvalState = Convert.ToInt32(ApprovalState.Yazar_Duzeltme);
 
             m.UpdatePaper(plist[0]);
