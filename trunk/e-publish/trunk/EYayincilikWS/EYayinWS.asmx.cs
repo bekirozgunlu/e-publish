@@ -654,7 +654,7 @@ namespace EYayincilikWS
             return DBManager.singleton().GetReferenceList(MainPaperID, ReferencedPaperId); 
         }
 
-
+        [WebMethod]
         public Paper[] GetReferencedPapersList(int PaperID)
         {
             return DBManager.singleton().GetReferencedPapersList(PaperID);
