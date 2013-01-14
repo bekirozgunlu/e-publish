@@ -151,6 +151,21 @@ namespace EYayincilikWS
             return newID;
         }
 
+
+        [WebMethod]
+        public int AddSubCategorytoPaper(int sId, int PaperId)
+        {
+            //adds a  new Paper
+            return DBManager.singleton().AddSubCategorytoPaper(sId, PaperId);
+        }
+
+        [WebMethod]
+        public int AddReferencetoPaper(int rId, int PaperId)
+        {
+            //adds a  new Paper
+            return DBManager.singleton().AddReferencetoPaper(rId, PaperId);
+        }
+
         [WebMethod]
         public void DeleteScienceCategory(int ScienceCategoryID)
         {
@@ -229,6 +244,8 @@ namespace EYayincilikWS
         public void UpdatePaper(Paper pp)
         {
             //Updates a Paper Record with new values...
+            
+            DBManager.singleton().UpdatePaper(pp);
 
         }
 
@@ -617,8 +634,13 @@ namespace EYayincilikWS
         {
             return DBManager.singleton().GetRefereeNotesOnPaper(PaperID);
         }
-         
 
+        [WebMethod]
+
+        public System.Data.DataTable GetReferenceList(int MainPaperID, int ReferencedPaperId)
+        {
+            return DBManager.singleton().GetReferenceList(MainPaperID, ReferencedPaperId);
+        }
 
     }
 }
