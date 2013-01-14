@@ -6,12 +6,12 @@
 <head runat="server">
     <title></title>
 </head>
-<body style="height: 1921px; margin-bottom: 208px">
+<body style="height: 2162px; margin-bottom: 208px">
     <form id="form1" runat="server">
     <p>
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
     </p>
-    <div style="height: 1865px">
+    <div style="height: 2109px">
     
     &nbsp;<br />
         <asp:Label ID="Label1" runat="server" Text="Yapılacak işi seçin: "></asp:Label>
@@ -63,7 +63,7 @@
             </asp:ObjectDataSource>
         </asp:Panel>
         <asp:Panel 
-            ID="AltKategoriEklePanel" runat="server" Height="112px" Visible="False" 
+            ID="AltKategoriEklePanel" runat="server" Height="211px" Visible="False" 
             Width="414px">
             <asp:Label ID="AltKategoriAdiLabel" runat="server" Text="Alt kategori adı:"></asp:Label>
             &nbsp;
@@ -110,7 +110,7 @@
             Şifresi:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="ModeratorEkleSifreTextBox" runat="server"></asp:TextBox>
         </asp:Panel>
-        <asp:Panel ID="EditorSilPanel" runat="server" Height="180px" Width="412px" 
+        <asp:Panel ID="EditorSilPanel" runat="server" Height="270px" Width="412px" 
             Visible="False">
             Silinecek Editörü Seçin:<br />
             <asp:RadioButtonList ID="EditorSilRadioButtonList" runat="server" 
@@ -124,7 +124,7 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
         </asp:Panel>
-        <asp:Panel ID="ModeratorSilPanel" runat="server" Height="152px" Visible="False" 
+        <asp:Panel ID="ModeratorSilPanel" runat="server" Height="194px" Visible="False" 
             Width="411px">
             Silinecek Moderatörü Seçin:<br />
             <asp:RadioButtonList ID="ModeratorSilRadioButtonList" runat="server" 
@@ -140,7 +140,7 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
         </asp:Panel>
-        <asp:Panel ID="DergiSilPanel" runat="server" Height="172px" Visible="False" 
+        <asp:Panel ID="DergiSilPanel" runat="server" Height="280px" Visible="False" 
             Width="411px">
             Silinecek Dergiyi Seçin:<br />
             <asp:RadioButtonList ID="DergiSilRadioButtonList" runat="server" 
@@ -156,7 +156,7 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
         </asp:Panel>
-        <asp:Panel ID="BilimDaliSilPanel" runat="server" Height="137px" Visible="False" 
+        <asp:Panel ID="BilimDaliSilPanel" runat="server" Height="259px" Visible="False" 
             Width="410px">
             Silinecek Bilim Dalını Seçin:<br />
             <asp:RadioButtonList ID="BilimDaliSilRadioButtonList" runat="server" 
@@ -171,7 +171,7 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
         </asp:Panel>
-        <asp:Panel ID="AltKategoriSilPanel" runat="server" Height="134px" 
+        <asp:Panel ID="AltKategoriSilPanel" runat="server" Height="253px" 
             Visible="False" Width="410px">
             Silinecek Alt Kategoriyi Seçin:<br />
             <asp:RadioButtonList ID="AltkategoriSilRadioButtonList" runat="server" 

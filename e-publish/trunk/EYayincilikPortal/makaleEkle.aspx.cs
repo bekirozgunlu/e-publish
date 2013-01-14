@@ -82,8 +82,8 @@ namespace EYayincilikPortal
                     
 
 
-                    FileUpload1.SaveAs(uploadFolder + p.title+"_"+newID.ToString()+".pdf" );
-                    p.contentPath = p.title + "_" + newID.ToString() + ".pdf";
+                    FileUpload1.SaveAs(uploadFolder + newID.ToString()+".pdf" );
+                    p.contentPath =  newID.ToString() + ".pdf";
                     m.UpdatePaper(p);
                     m = null;
 

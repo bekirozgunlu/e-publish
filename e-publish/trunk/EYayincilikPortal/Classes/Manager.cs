@@ -1537,6 +1537,27 @@ namespace EYayincilikPortal
             }
         }
 
+
+        public SVC1.Survey[] GetSurvey(bool onlyActiveRecords, int MagazineID, int SurveyID)
+        {
+            try
+            {
+                return svc.GetSurvey(onlyActiveRecords, MagazineID, SurveyID);
+
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return null;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
         public void AddSubCategoryToScienceCategory(int SubCategoryId, int ScienceCategoryId)
         {
             try
@@ -1658,6 +1679,30 @@ namespace EYayincilikPortal
                 //LOG ERROR
                 //RETURN 
                 return;
+            }
+            finally
+            {
+                //dispose unused objects...
+            }
+        }
+
+        public SVC1.Paper[] GetRefereeNotesOnPaper(int PaperID) 
+        {
+            
+
+             //Updates a Moderator Record with new values...
+
+            try
+            {
+                return svc.GetRefereeNotesOnPaper( PaperID) ;
+                
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN 
+                return null;
             }
             finally
             {

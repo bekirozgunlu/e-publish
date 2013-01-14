@@ -53,9 +53,12 @@
   <ItemGroup>
     <Content Include="admin.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="dergisoru.aspx" />
     <Content Include="editor.aspx" />
+    <Content Include="editordetay.aspx" />
     <Content Include="hakem.aspx" />
     <Content Include="invite.aspx" />
+    <Content Include="kayit.aspx" />
     <Content Include="makaleEkle.aspx" />
     <Content Include="login.aspx" />
     <Content Include="moderator.aspx" />
@@ -114,6 +117,9 @@
     <None Include="Web References\SVC1\SubCategory.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\SVC1\Survey.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\SVC1\SurveyQuestionary.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -140,12 +146,26 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\Manager.cs" />
+    <Compile Include="dergisoru.aspx.cs">
+      <DependentUpon>dergisoru.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dergisoru.aspx.designer.cs">
+      <DependentUpon>dergisoru.aspx</DependentUpon>
+    </Compile>
     <Compile Include="editor.aspx.cs">
       <DependentUpon>editor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="editor.aspx.designer.cs">
       <DependentUpon>editor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="editordetay.aspx.cs">
+      <DependentUpon>editordetay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editordetay.aspx.designer.cs">
+      <DependentUpon>editordetay.aspx</DependentUpon>
     </Compile>
     <Compile Include="hakem.aspx.cs">
       <DependentUpon>hakem.aspx</DependentUpon>
@@ -160,6 +180,13 @@
     </Compile>
     <Compile Include="invite.aspx.designer.cs">
       <DependentUpon>invite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="kayit.aspx.cs">
+      <DependentUpon>kayit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="kayit.aspx.designer.cs">
+      <DependentUpon>kayit.aspx</DependentUpon>
     </Compile>
     <Compile Include="makaleEkle.aspx.cs">
       <DependentUpon>makaleEkle.aspx</DependentUpon>

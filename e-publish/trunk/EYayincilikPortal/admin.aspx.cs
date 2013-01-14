@@ -178,7 +178,6 @@ namespace EYayincilikPortal
                     foreach (int SubScienceId in checkedId)
                     {
                         mngr.AddSubCategoryToMagazine(SubScienceId,i);
-                        //mngr.AddSubCategoryToScienceCategory(SubScienceId, i);
                     }
                     if (i > 0)
                     {
@@ -223,8 +222,7 @@ namespace EYayincilikPortal
                     }
                     if (sc.id > 0)
                     {
-                        //MesajLabel.Text = "Bilim dalı alt kategorisi ekleme işlemi başarılı!";
-                        MesajLabel.Text = sc.id.ToString() ;
+                        MesajLabel.Text = "Bilim dalı alt kategorisi ekleme işlemi başarılı!";
                     }
                     else
                     {
@@ -255,22 +253,28 @@ namespace EYayincilikPortal
                 if (isListesi.SelectedValue.CompareTo("editorSil") == 0)
                 {
                     mngr.DeletePublisher(Convert.ToInt32(EditorSilRadioButtonList.SelectedValue));
+                    MesajLabel.Text = "Editör silme işlemi başarılı";
                 }
                 else if (isListesi.SelectedValue.CompareTo("modSil") == 0)
                 {
                     mngr.DeleteModerator(Convert.ToInt32(ModeratorSilRadioButtonList.SelectedValue));
+                    MesajLabel.Text = "moderatör silme işlemi başarılı";
+
                 }
                 else if (isListesi.SelectedValue.CompareTo("dergiSil") == 0)
                 {
-                   mngr.DeleteMagazine(Convert.ToInt32(DergiSilRadioButtonList.SelectedValue));
+                    mngr.DeleteMagazine(Convert.ToInt32(DergiSilRadioButtonList.SelectedValue));
+                    MesajLabel.Text = "Dergi silme işlemi başarılı";
                 }
                 else if (isListesi.SelectedValue.CompareTo("bilimDaliSil") == 0)
                 {
                    mngr.DeleteScienceCategory(Convert.ToInt32(BilimDaliSilRadioButtonList.SelectedValue));
+                   MesajLabel.Text = "Bilim dalı silme işlemi başarılı";
                 }
                 else if (isListesi.SelectedValue.CompareTo("altKategoriSil") == 0)
                 {
                     mngr.DeleteSubCategory(Convert.ToInt32(AltkategoriSilRadioButtonList.SelectedValue));
+                    MesajLabel.Text = "Bilim dalı alt kategorisi silme işlemi başarılı";
                 }
                 isListesi.ClearSelection();
                 Gorunmez_Yap();

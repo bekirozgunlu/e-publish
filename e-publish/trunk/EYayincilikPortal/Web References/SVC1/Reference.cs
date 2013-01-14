@@ -185,6 +185,10 @@ namespace EYayincilikPortal.SVC1 {
         
         private System.Threading.SendOrPostCallback GetPublisherListOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetSurveyOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetRefereeNotesOnPaperOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -456,6 +460,12 @@ namespace EYayincilikPortal.SVC1 {
         
         /// <remarks/>
         public event GetPublisherListCompletedEventHandler GetPublisherListCompleted;
+        
+        /// <remarks/>
+        public event GetSurveyCompletedEventHandler GetSurveyCompleted;
+        
+        /// <remarks/>
+        public event GetRefereeNotesOnPaperCompletedEventHandler GetRefereeNotesOnPaperCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -2772,6 +2782,68 @@ namespace EYayincilikPortal.SVC1 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSurvey", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Survey[] GetSurvey(bool onlyActiveRecords, int MagazineID, int SurveyID) {
+            object[] results = this.Invoke("GetSurvey", new object[] {
+                        onlyActiveRecords,
+                        MagazineID,
+                        SurveyID});
+            return ((Survey[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSurveyAsync(bool onlyActiveRecords, int MagazineID, int SurveyID) {
+            this.GetSurveyAsync(onlyActiveRecords, MagazineID, SurveyID, null);
+        }
+        
+        /// <remarks/>
+        public void GetSurveyAsync(bool onlyActiveRecords, int MagazineID, int SurveyID, object userState) {
+            if ((this.GetSurveyOperationCompleted == null)) {
+                this.GetSurveyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSurveyOperationCompleted);
+            }
+            this.InvokeAsync("GetSurvey", new object[] {
+                        onlyActiveRecords,
+                        MagazineID,
+                        SurveyID}, this.GetSurveyOperationCompleted, userState);
+        }
+        
+        private void OnGetSurveyOperationCompleted(object arg) {
+            if ((this.GetSurveyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSurveyCompleted(this, new GetSurveyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRefereeNotesOnPaper", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Paper[] GetRefereeNotesOnPaper(int PaperID) {
+            object[] results = this.Invoke("GetRefereeNotesOnPaper", new object[] {
+                        PaperID});
+            return ((Paper[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetRefereeNotesOnPaperAsync(int PaperID) {
+            this.GetRefereeNotesOnPaperAsync(PaperID, null);
+        }
+        
+        /// <remarks/>
+        public void GetRefereeNotesOnPaperAsync(int PaperID, object userState) {
+            if ((this.GetRefereeNotesOnPaperOperationCompleted == null)) {
+                this.GetRefereeNotesOnPaperOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRefereeNotesOnPaperOperationCompleted);
+            }
+            this.InvokeAsync("GetRefereeNotesOnPaper", new object[] {
+                        PaperID}, this.GetRefereeNotesOnPaperOperationCompleted, userState);
+        }
+        
+        private void OnGetRefereeNotesOnPaperOperationCompleted(object arg) {
+            if ((this.GetRefereeNotesOnPaperCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRefereeNotesOnPaperCompleted(this, new GetRefereeNotesOnPaperCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -4975,6 +5047,58 @@ namespace EYayincilikPortal.SVC1 {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Publisher[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetSurveyCompletedEventHandler(object sender, GetSurveyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSurveyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSurveyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Survey[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Survey[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetRefereeNotesOnPaperCompletedEventHandler(object sender, GetRefereeNotesOnPaperCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRefereeNotesOnPaperCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRefereeNotesOnPaperCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Paper[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Paper[])(this.results[0]));
             }
         }
     }
