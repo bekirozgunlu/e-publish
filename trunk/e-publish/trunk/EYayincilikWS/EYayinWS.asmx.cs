@@ -139,6 +139,8 @@ namespace EYayincilikWS
         public void ApproveSubCategory(SubCategory sc)
         {
             //Converts a sub category request to a Sub Category
+            //Converts a sub category request to a Sub Category
+            DBManager.singleton().ApproveSubCategory(sc);
         }
 
         [WebMethod]
@@ -603,6 +605,19 @@ namespace EYayincilikWS
             return DBManager.singleton().GetPublisherList(PublisherIDList, onlyActiveRecords);
         }
 
+        [WebMethod]
+        public Survey[] GetSurvey(bool onlyActiveRecords, int MagazineID, int SurveyID)
+        {
+            return DBManager.singleton().GetSurvey(onlyActiveRecords, MagazineID, SurveyID);
+        }
+
+
+        [WebMethod]
+        public BSClass.Paper[] GetRefereeNotesOnPaper(int PaperID) 
+        {
+            return DBManager.singleton().GetRefereeNotesOnPaper(PaperID);
+        }
+         
 
 
     }
