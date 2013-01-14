@@ -80,9 +80,9 @@
             ForeColor="#333333" Width="943px" Caption="DERGİYE AİT MAKALELER">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:HyperLinkField DataNavigateUrlFields="id" 
-                    DataNavigateUrlFormatString="../../upload/{0}.pdf" DataTextField="id" 
-                    DataTextFormatString="OKU" NavigateUrl="../../upload/{0}.pdf" Text="OKU" 
+                <asp:HyperLinkField DataNavigateUrlFields="id,version" 
+                    DataNavigateUrlFormatString="../../upload/{0}_{1}.pdf" DataTextField="id" 
+                    DataTextFormatString="OKU" NavigateUrl="../../upload/{0}_{1}.pdf" Text="OKU" 
                     Target="_blank" />
                 <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" 
                     Visible="False" />

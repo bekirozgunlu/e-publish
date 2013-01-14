@@ -22,6 +22,25 @@
         {
             width: 287px;
         }
+        .style6
+        {
+            width: 287px;
+            height: 37px;
+        }
+        .style7
+        {
+            width: 156px;
+            height: 37px;
+        }
+        .style8
+        {
+            width: 151px;
+            height: 37px;
+        }
+        .style9
+        {
+            height: 37px;
+        }
     </style>
 </head>
 <body>
@@ -66,31 +85,31 @@
         <asp:Label ID="Label1" runat="server" 
             style="font-weight: 700; text-decoration: underline" Text="Editör Yorumu"></asp:Label>
         <br />
-        <asp:TextBox ID="TextBox1" runat="server" Height="84px" TextMode="MultiLine" 
-            Width="520px"></asp:TextBox>
+        <asp:TextBox ID="txtYorum" runat="server" Width="749px"></asp:TextBox>
         <br />
         <asp:Button ID="btnEditorYorum" runat="server" onclick="btnEditorYorum_Click" 
             Text="Editor Yorumu Ekle" />
         <br />
         <table class="style1">
             <tr>
-                <td class="style5">
+                <td class="style6">
                     <asp:DropDownList ID="cmbReferee" runat="server" DataSourceID="objRefereelist" 
-                        DataTextField="userName" DataValueField="userID" Height="16px" Width="263px">
+                        DataTextField="userName" DataValueField="userID" Height="26px" 
+                        Width="263px" Font-Size="Medium">
                     </asp:DropDownList>
                 </td>
-                <td class="style3">
+                <td class="style7">
                     <asp:Button ID="btnSendToReferee" runat="server" 
                         onclick="btnSendToReferee_Click" Text="Hakeme Gönder" />
                 </td>
-                <td class="style4">
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
+                <td class="style8">
+                    </td>
+                <td class="style9">
+                    </td>
+                <td class="style9">
+                    </td>
+                <td class="style9">
+                    </td>
             </tr>
             <tr>
                 <td class="style5">
