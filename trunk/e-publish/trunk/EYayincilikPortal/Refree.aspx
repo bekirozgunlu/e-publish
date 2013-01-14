@@ -16,35 +16,25 @@
         <asp:Label ID="Label1" runat="server" Text="username"></asp:Label>
 &nbsp;&nbsp;&nbsp;<asp:TextBox ID="TextBox1" runat="server" style="margin-left: 10px" 
             Width="113px"></asp:TextBox>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <br />
-        <asp:Label ID="Label2" runat="server" Text="Name"></asp:Label>
-&nbsp;
-        &nbsp;
-        <asp:TextBox ID="TextBox2" runat="server" style="margin-left: 23px" 
-            Width="121px"></asp:TextBox>
-        <br />
-        <asp:Label ID="Label3" runat="server" Text="Surname    "></asp:Label>
-        <asp:TextBox ID="TextBox3" runat="server" style="margin-left: 20px" 
-            Width="116px"></asp:TextBox>
-        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
         <br />
         <br />
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-            CellPadding="4" DataSourceID="ObjectDataSource1" EnableModelValidation="True" 
+            CellPadding="4" DataSourceID="ObjectDataSource1" 
             ForeColor="#333333" GridLines="None" Width="560px">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:HyperLinkField DataNavigateUrlFields="id" 
-                    
                     DataNavigateUrlFormatString="PaperDetail.aspx?pid={0}" 
-                    Text="Go" />
-                <asp:BoundField DataField="title" HeaderText="Paper" SortExpression="title" />
-                <asp:BoundField DataField="uploadDate" HeaderText="Upload Date" 
-                    SortExpression="uploadDate" />
-                <asp:BoundField DataField="magazineName" HeaderText="Magazine" 
-                    SortExpression="magazineName" />
+                    NavigateUrl="~/PaperDetail.aspx" Text="Go" />
+                <asp:BoundField DataField="title" HeaderText="Title" SortExpression="title" />
+                <asp:BoundField DataField="version" HeaderText="Version" 
+                    SortExpression="version" />
+                <asp:BoundField DataField="approvalDate" HeaderText="Approval Date" 
+                    SortExpression="approvalDate" />
+                <asp:BoundField DataField="MagazineName" HeaderText="Magazine" 
+                    SortExpression="MagazineName" />
                 <asp:BoundField DataField="publisherName" HeaderText="Publisher" 
                     SortExpression="publisherName" />
             </Columns>
@@ -63,8 +53,8 @@
                 <asp:Parameter DefaultValue="&quot;&quot;" Name="MagazineIDList" 
                     Type="String" />
                 <asp:Parameter DefaultValue="&quot;&quot;" Name="PaperIDList" Type="String" />
-                <asp:QueryStringParameter DefaultValue="-1" Name="RefereeID" 
-                    QueryStringField="rid" Type="Int32" />
+                <asp:SessionParameter DefaultValue="-1" Name="RefereeID" SessionField="userid" 
+                    Type="Int32" />
                 <asp:Parameter DefaultValue="-1" Name="PublisherID" Type="Int32" />
                 <asp:Parameter DefaultValue="-1" Name="AuthorID" Type="Int32" />
                 <asp:Parameter DefaultValue="&quot;&quot;" Name="category" Type="String" />

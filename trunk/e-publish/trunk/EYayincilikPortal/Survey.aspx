@@ -28,10 +28,11 @@
             <td class="style1">
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
         BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" 
-        CellPadding="4" DataSourceID="ObjectDataSource1" EnableModelValidation="True" 
-        GridLines="Horizontal" Width="354px">
+        CellPadding="4" DataSourceID="ObjectDataSource1" 
+        GridLines="Horizontal" Width="354px" DataKeyNames="id">
         <Columns>
-            <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" />
+            <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" 
+                Visible="False" />
             <asp:TemplateField HeaderText="Answer">
                 <ItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
@@ -42,6 +43,9 @@
             <ItemStyle HorizontalAlign="Left" />
             </asp:BoundField>
         </Columns>        
+        <EmptyDataTemplate>
+            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+        </EmptyDataTemplate>
         <FooterStyle BackColor="White" ForeColor="#333333" />
         <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#336666" ForeColor="White" HorizontalAlign="Center" />
@@ -73,11 +77,8 @@
         </tr>
         <tr>
             <td class="style1">
-                <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
+                <asp:Button ID="Submit" runat="server" onclick="Submit_Click" 
                     style="width: 61px" Text="Submit" />
-                <br />
-                <br />
-                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                 <br />
             </td>
             <td class="style4">

@@ -17,7 +17,7 @@ namespace EYayincilikPortal
         {            
         }       
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Submit_Click(object sender, EventArgs e)
         {            
             List<SVC1.SurveyAnswer> answerlist = new List<SVC1.SurveyAnswer>();
             int i = 0;
@@ -26,14 +26,14 @@ namespace EYayincilikPortal
             {
                 answer = GridView1.Rows[i];
                 SVC1.SurveyAnswer sc = new SVC1.SurveyAnswer();
-                sc.answer = ((TextBox)answer.FindControl("TextBox1")).Text;               
-                sc.surveyQuestionaryid = Convert.ToInt32(answer.Cells[0].Text);                                                                
+                sc.answer = ((TextBox)answer.FindControl("TextBox1")).Text;
+                sc.surveyQuestionaryid = Convert.ToInt32(GridView1.DataKeys[i].Value);                                                            
                 sc.PaperRef = Convert.ToInt32(Request.QueryString["pid"]);
                 answerlist.Add(sc);
             }
             Manager m = new Manager();                                                           
             m.AnswerSurvey(answerlist.ToArray());
-            Response.Redirect("Default.aspx?code=200");   
+            Response.Redirect("PaperDetail.aspx?pid=" + Request.QueryString["pid"].ToString());   
         }
     }
 } 
