@@ -53,8 +53,19 @@ namespace BSClass
 
                 if (dt.Rows.Count > 0)
                 {
-                    u.userID = System.Convert.ToInt32(dt.Rows[0]["ID"].ToString());
-                    u.userName = dt.Rows[0]["userName"].ToString();
+                   // u.userID = System.Convert.ToInt32(dt.Rows[0]["ID"].ToString());
+                    //u.userName = dt.Rows[0]["userName"].ToString();
+                    DataRow dr = dt.Rows[0];
+
+                    u.userID = Convert.ToInt32(dr["ID"].ToString());
+                    u.userName = dr["userName"].ToString();
+                    u.isActive = Convert.ToInt32(dr["isActive"].ToString());
+                    u.surName = dr["surName"].ToString();
+                    u.name = dr["name"].ToString();
+
+                    if (dr["photoFilePath"] != null)
+                        u.photoFilePath = dr["photoFilePath"].ToString();
+                    u.userType = this.GetUserTypes(u.userID);
                 }
                 else
                 {
@@ -296,6 +307,69 @@ namespace BSClass
             }
         }
 
+        public int AddSubCategorytoPaper(int sId, int PaperId)
+        {
+            try
+            {
+                int newID = 0;
+
+                string sSQL = @"INSERT INTO [PaperSubCategory]([PaperRef] ,[SubCategoryRef])
+                              VALUES (" + PaperId.ToString() + ", " + sId.ToString() + ")";
+
+                if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                SqlCommand scmd = new SqlCommand(sSQL, sc);
+
+                object o = scmd.ExecuteScalar();
+                newID = Convert.ToInt32(o.ToString());
+                if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                return newID;
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN NULL
+                return 0;
+            }
+            finally
+            {
+                if (sc.State == ConnectionState.Open) { sc.Close(); };
+                //dispose unused objects...
+            }
+        }
+
+        public int AddReferencetoPaper(int rId, int PaperId)
+        {
+            try
+            {
+                int newID = 0;
+
+                string sSQL = @"INSERT INTO [PaperReferencePaper]([MainPaperRef],[ReferancePaperRef])
+                              VALUES(" + PaperId.ToString() + ", " + rId.ToString() + " )";
+
+                if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                SqlCommand scmd = new SqlCommand(sSQL, sc);
+
+                object o = scmd.ExecuteScalar();
+                newID = Convert.ToInt32(o.ToString());
+                if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                return newID;
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                //LOG ERROR
+                //RETURN NULL
+                return 0;
+            }
+            finally
+            {
+                if (sc.State == ConnectionState.Open) { sc.Close(); };
+                //dispose unused objects...
+            }
+        }
 
         public int AddReferee(BSClass.Referee r)
         {
@@ -922,7 +996,7 @@ namespace BSClass
                 scmd.Parameters.Add("p3", SqlDbType.VarChar);
                 scmd.Parameters[2].Value = p.contentPath;
                 scmd.Parameters.Add("p4", SqlDbType.Decimal);
-                scmd.Parameters[3].Value = p.version;
+                scmd.Parameters[3].Value = p.version.ToString();
                 scmd.Parameters.Add("p5", SqlDbType.TinyInt);
                 scmd.Parameters[4].Value = p.isActive;
                 scmd.Parameters.Add("p6", SqlDbType.VarChar);
@@ -4120,6 +4194,60 @@ namespace BSClass
                  //dispose unused objects...
              }
          }
+
+        //as
+         public DataTable GetReferenceList(int MainPaperID, int ReferencedPaperId)
+         {
+
+             try
+             {
+                 string sSQL = @"SELECT R.* from PaperReferencePaper R
+
+                    WHERE 1=1 ";
+
+
+                 if (MainPaperID > 0)
+                 {
+                     sSQL = sSQL + " and PaperReferencePaper.MainPaperRef= " + MainPaperID + ") ";
+                 }
+
+
+                 if (ReferencedPaperId > 0)
+                 {
+                     sSQL = sSQL + " and PaperReferencePaper.ReferancePaperRef= " + ReferencedPaperId + ") ";
+                 }
+
+                 if (sc.State == ConnectionState.Closed) { sc.Open(); }
+                 SqlDataAdapter sda = new SqlDataAdapter(sSQL, sc);
+                 DataTable dt = new DataTable();
+                 sda.Fill(dt);
+                 if (sc.State == ConnectionState.Open) { sc.Close(); };
+
+                 if (dt.Rows.Count < 0)
+                 {
+                     return null;
+                 }
+                 else
+                 {
+                     return dt;
+                 }
+
+             }
+             catch (Exception ex)
+             {
+                 string error = ex.Message;
+                 //LOG ERROR
+                 //RETURN 
+                 return null;
+             }
+             finally
+             {
+                 //dispose unused objects...
+             }
+         }
+
+
+        //as
 
     }
 
