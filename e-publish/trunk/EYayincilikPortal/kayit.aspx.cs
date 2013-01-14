@@ -36,7 +36,7 @@ namespace EYayincilikPortal
                     u.surName = TxtSoyadı.Text;
                     u.userName = txtKullanıcıAdı.Text;
                     u.passWord = TxtSifre.Text;
-                    u.photoFilePath = TxtFoto.Text;
+                    
                     
                     u.isActive = 2;
 
@@ -58,7 +58,7 @@ namespace EYayincilikPortal
                     aa.resume = TxtCV.Text;
                     aa.passWord = TxtSifre.Text;
                     aa.isActive = 2;
-                    aa.photoFilePath = TxtFoto.Text;
+                    
 
                     Manager m = new Manager() ;
                     m.AddAuthor(aa);
@@ -77,7 +77,7 @@ namespace EYayincilikPortal
                     m.userName = txtKullanıcıAdı.Text;
                     m.passWord = TxtSifre.Text;
                     m.isActive = 2;
-                    m.photoFilePath = TxtFoto.Text;
+                    
 
 
 
@@ -96,7 +96,7 @@ namespace EYayincilikPortal
                 TxtSifre.Text = "";
                 TxtSifre2.Text = "";
                 TxtCV.Text = "";
-                TxtFoto.Text = "";
+                
                
                 //DropDownList1.SelectedValue = "0" ;
             }
@@ -112,14 +112,14 @@ namespace EYayincilikPortal
             if (DropDownList1.SelectedValue != "2")
             {
                 TxtCV.Visible = false;
-                BtnCv.Visible = false;
+               
                 LblCV.Visible = false;
             }
             if (DropDownList1.SelectedValue == "2")
             {
                 TxtCV.Visible = true;
                 LblCV.Visible = true;
-                BtnCv.Visible = true;
+               
             }
         }
 
@@ -131,6 +131,23 @@ namespace EYayincilikPortal
         protected void TxtSifre2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            
+            
+            
+        }
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            TxtAdı.Text = "";
+            TxtSoyadı.Text = "";
+            txtKullanıcıAdı.Text = "";
+            TxtSifre.Text = "";
+            TxtSifre2.Text = "";
+            TxtCV.Text = "";
         }
 
         

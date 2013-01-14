@@ -49,17 +49,17 @@
         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
             SelectMethod="GetPaperList" TypeName="EYayincilikPortal.Manager">
             <SelectParameters>
-                <asp:Parameter DefaultValue="&quot;&quot;" Name="PublishedMagazineIDList" 
+                <asp:Parameter DefaultValue="" Name="PublishedMagazineIDList" 
                     Type="String" />
-                <asp:Parameter DefaultValue="&quot;&quot;" Name="MagazineIDList" 
+                <asp:Parameter DefaultValue="" Name="MagazineIDList" 
                     Type="String" />
                 <asp:QueryStringParameter DefaultValue="-1" Name="PaperIDList" 
                     QueryStringField="pid" Type="String" />
                 <asp:Parameter DefaultValue="-1" Name="RefereeID" Type="Int32" />
                 <asp:Parameter DefaultValue="-1" Name="PublisherID" Type="Int32" />
                 <asp:Parameter DefaultValue="-1" Name="AuthorID" Type="Int32" />
-                <asp:Parameter DefaultValue="&quot;&quot;" Name="category" Type="String" />
-                <asp:Parameter DefaultValue="&quot;&quot;" Name="SubCategoryIDlist" 
+                <asp:Parameter DefaultValue="" Name="category" Type="String" />
+                <asp:Parameter DefaultValue="" Name="SubCategoryIDlist" 
                     Type="String" />
                 <asp:Parameter DefaultValue="true" Name="onlyActiveRecords" Type="Boolean" />
             </SelectParameters>

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EYayincilikPortal {
-    
-    
-    public partial class admin {
-        
+namespace EYayincilikPortal
+{
+
+
+    public partial class admin
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// HyperLink1 control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-        
+
         /// <summary>
         /// Label1 control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-        
+
         /// <summary>
         /// isListesi control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList isListesi;
-        
+
         /// <summary>
         /// secButton control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button secButton;
-        
+
         /// <summary>
         /// MesajLabel control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label MesajLabel;
-        
+
         /// <summary>
         /// DergiEklePanel control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel DergiEklePanel;
-        
+
         /// <summary>
         /// DergiAdiLabel control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label DergiAdiLabel;
-        
+
         /// <summary>
         /// DergiAdiTextBox control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DergiAdiTextBox;
-        
+
         /// <summary>
         /// MaxMakaleLabel control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label MaxMakaleLabel;
-        
+
         /// <summary>
         /// MaxMakaleTextBox control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox MaxMakaleTextBox;
-        
+
         /// <summary>
         /// EditorIdLabel control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label EditorIdLabel;
-        
+
         /// <summary>
         /// EditorIdTextBox control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox EditorIdTextBox;
-        
+
         /// <summary>
         /// DergiEkleAltKategoriCheckBoxList control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList DergiEkleAltKategoriCheckBoxList;
-        
+
         /// <summary>
         /// ObjectDataSource1 control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
-        
+
         /// <summary>
         /// AltKategoriEklePanel control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel AltKategoriEklePanel;
-        
+
         /// <summary>
         /// AltKategoriAdiLabel control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label AltKategoriAdiLabel;
-        
+
         /// <summary>
         /// AltKategoriAdiTextBox control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox AltKategoriAdiTextBox;
-        
+
         /// <summary>
         /// BilimDaliCheckBoxList control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList BilimDaliCheckBoxList;
-        
+
         /// <summary>
         /// ObjectDataSource2 control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource2;
-        
+
         /// <summary>
         /// EditorEklePanel control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel EditorEklePanel;
-        
+
         /// <summary>
         /// EditorEkleAdiTextBox control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox EditorEkleAdiTextBox;
-        
+
         /// <summary>
         /// EditorEkleSoyadiTextBox control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox EditorEkleSoyadiTextBox;
-        
+
         /// <summary>
         /// EditorEkleKullaniciAdiTextBox control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox EditorEkleKullaniciAdiTextBox;
-        
+
         /// <summary>
         /// EditorEkleSifreTextBox control.
         /// </summary>
@@ -236,7 +238,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox EditorEkleSifreTextBox;
-        
+
         /// <summary>
         /// ModeratorEklePanel control.
         /// </summary>
@@ -245,7 +247,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel ModeratorEklePanel;
-        
+
         /// <summary>
         /// ModeratorEkleAdiTextBox control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ModeratorEkleAdiTextBox;
-        
+
         /// <summary>
         /// ModeratorEkleSoyadiTextBox control.
         /// </summary>
@@ -263,7 +265,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ModeratorEkleSoyadiTextBox;
-        
+
         /// <summary>
         /// ModeratorEkleKullaniciAdiTextBox control.
         /// </summary>
@@ -272,7 +274,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ModeratorEkleKullaniciAdiTextBox;
-        
+
         /// <summary>
         /// ModeratorEkleSifreTextBox control.
         /// </summary>
@@ -281,7 +283,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ModeratorEkleSifreTextBox;
-        
+
         /// <summary>
         /// EditorSilPanel control.
         /// </summary>
@@ -290,7 +292,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel EditorSilPanel;
-        
+
         /// <summary>
         /// EditorSilRadioButtonList control.
         /// </summary>
@@ -299,7 +301,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList EditorSilRadioButtonList;
-        
+
         /// <summary>
         /// ObjectDataSource7 control.
         /// </summary>
@@ -308,7 +310,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource7;
-        
+
         /// <summary>
         /// ModeratorSilPanel control.
         /// </summary>
@@ -317,7 +319,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel ModeratorSilPanel;
-        
+
         /// <summary>
         /// ModeratorSilRadioButtonList control.
         /// </summary>
@@ -326,7 +328,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList ModeratorSilRadioButtonList;
-        
+
         /// <summary>
         /// ObjectDataSource3 control.
         /// </summary>
@@ -335,7 +337,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource3;
-        
+
         /// <summary>
         /// DergiSilPanel control.
         /// </summary>
@@ -344,7 +346,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel DergiSilPanel;
-        
+
         /// <summary>
         /// DergiSilRadioButtonList control.
         /// </summary>
@@ -353,7 +355,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList DergiSilRadioButtonList;
-        
+
         /// <summary>
         /// ObjectDataSource4 control.
         /// </summary>
@@ -362,7 +364,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource4;
-        
+
         /// <summary>
         /// BilimDaliSilPanel control.
         /// </summary>
@@ -371,7 +373,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel BilimDaliSilPanel;
-        
+
         /// <summary>
         /// BilimDaliSilRadioButtonList control.
         /// </summary>
@@ -380,7 +382,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList BilimDaliSilRadioButtonList;
-        
+
         /// <summary>
         /// ObjectDataSource5 control.
         /// </summary>
@@ -389,7 +391,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource5;
-        
+
         /// <summary>
         /// AltKategoriSilPanel control.
         /// </summary>
@@ -398,7 +400,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel AltKategoriSilPanel;
-        
+
         /// <summary>
         /// AltkategoriSilRadioButtonList control.
         /// </summary>
@@ -407,7 +409,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList AltkategoriSilRadioButtonList;
-        
+
         /// <summary>
         /// ObjectDataSource6 control.
         /// </summary>
@@ -416,7 +418,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource6;
-        
+
         /// <summary>
         /// BilimDaliEklePanel control.
         /// </summary>
@@ -425,7 +427,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel BilimDaliEklePanel;
-        
+
         /// <summary>
         /// BilimDaliLabel control.
         /// </summary>
@@ -434,7 +436,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label BilimDaliLabel;
-        
+
         /// <summary>
         /// BilimDaliTextBox control.
         /// </summary>
@@ -443,7 +445,115 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox BilimDaliTextBox;
-        
+
+        /// <summary>
+        /// BilimDaliDüzenlePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel BilimDaliDüzenlePanel;
+
+        /// <summary>
+        /// BilimDaliDuzenleBilimDaliLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label BilimDaliDuzenleBilimDaliLabel;
+
+        /// <summary>
+        /// BilimDaliDuzenleRadioButtonList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList BilimDaliDuzenleRadioButtonList;
+
+        /// <summary>
+        /// ObjectDataSource8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource8;
+
+        /// <summary>
+        /// BilimDaliDuzenleBilimDaliAdiLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label BilimDaliDuzenleBilimDaliAdiLabel;
+
+        /// <summary>
+        /// BilimDaliDuzenleBilimDaliAdiTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox BilimDaliDuzenleBilimDaliAdiTextBox;
+
+        /// <summary>
+        /// AltKategoriDuzenlePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel AltKategoriDuzenlePanel;
+
+        /// <summary>
+        /// AltKategoriDuzenleRadioButtonList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList AltKategoriDuzenleRadioButtonList;
+
+        /// <summary>
+        /// ObjectDataSource9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource9;
+
+        /// <summary>
+        /// AltKateGoriDuzenleAltKategoriAdiLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AltKateGoriDuzenleAltKategoriAdiLabel;
+
+        /// <summary>
+        /// AltKategoriDuzenleAltKategoriAdiTextbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox AltKategoriDuzenleAltKategoriAdiTextbox;
+
+        /// <summary>
+        /// DuzenleButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DuzenleButton;
+
         /// <summary>
         /// SilButton control.
         /// </summary>
@@ -452,7 +562,7 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SilButton;
-        
+
         /// <summary>
         /// EkleButton control.
         /// </summary>
@@ -461,7 +571,16 @@ namespace EYayincilikPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button EkleButton;
-        
+
+        /// <summary>
+        /// KaydetButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button KaydetButton;
+
         /// <summary>
         /// IptalButton control.
         /// </summary>

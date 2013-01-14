@@ -33,12 +33,14 @@ namespace EYayincilikPortal
             c.content = Request.Form["S1"].ToString();
             c.paperId = paperID;
             c.userId = refreeid;
-            c.approvalState = 1;
-            c.commentType = 1;
+            c.approvalState = 2;
+            c.commentType = 2;
+
             clist.Add(c);
-            SVC1.Paper p = new SVC1.Paper();
-            p.id = paperID;
-            m.ExaminePaper(p,clist.ToArray(),refreeid,null);            
+           // SVC1.Paper p = new SVC1.Paper();
+           // p.id = paperID;
+            //m.ExaminePaper(p,clist.ToArray(),refreeid,null);
+            m.AddComment(c, paperID);
         }  
 
         protected void Send_Publisher_Click(object sender, EventArgs e)
@@ -46,7 +48,9 @@ namespace EYayincilikPortal
             int paperID = Convert.ToInt32(Request.QueryString["pid"].ToString());
             Manager m = new Manager();
             int refreeid = Convert.ToInt32(Session["userid"]);
-            m.SendOpinionToPublisher(paperID, refreeid, 2);           
+            m.SendOpinionToPublisher(paperID, refreeid, 2);
+
+            Response.Redirect("Refree.aspx");
         }      
         protected void Download_Click(object sender, EventArgs e)
         {

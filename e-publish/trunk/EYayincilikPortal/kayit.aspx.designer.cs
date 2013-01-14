@@ -148,24 +148,6 @@ namespace EYayincilikPortal {
         protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
         
         /// <summary>
-        /// TxtFoto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtFoto;
-        
-        /// <summary>
-        /// btnFto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFto;
-        
-        /// <summary>
         /// LblCV control.
         /// </summary>
         /// <remarks>
@@ -184,15 +166,6 @@ namespace EYayincilikPortal {
         protected global::System.Web.UI.WebControls.TextBox TxtCV;
         
         /// <summary>
-        /// BtnCv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCv;
-        
-        /// <summary>
         /// BtnKaydet control.
         /// </summary>
         /// <remarks>
@@ -202,12 +175,21 @@ namespace EYayincilikPortal {
         protected global::System.Web.UI.WebControls.Button BtnKaydet;
         
         /// <summary>
-        /// Btntemizle control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btntemizle;
+        protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// HyperLink1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
     }
 }
