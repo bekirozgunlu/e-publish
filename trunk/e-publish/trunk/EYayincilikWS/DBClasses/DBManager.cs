@@ -1114,8 +1114,12 @@ namespace BSClass
                 scmd.Parameters[1].Value = p.approvalState;
                 scmd.Parameters.Add("p5", SqlDbType.VarChar);
                 scmd.Parameters[2].Value = p.contentPath;
+
+
                 scmd.Parameters.Add("p6", SqlDbType.DateTime);
-                scmd.Parameters[3].Value = p.approvalDate;
+                scmd.Parameters[3].Value = DateTime.Now; 
+
+
                 scmd.Parameters.Add("p7", SqlDbType.VarChar);
                 scmd.Parameters[4].Value = p.publishedId;
                 scmd.Parameters.Add("p8", SqlDbType.VarChar);
@@ -1135,7 +1139,7 @@ namespace BSClass
                 else 
                 {
                     scmd.Parameters.Add("p12", SqlDbType.Int);
-                    scmd.Parameters[10].Value = DBNull.Value;
+                    scmd.Parameters[9].Value = DBNull.Value;
                 }
 
                 scmd.Parameters.Add("p13", SqlDbType.VarChar);
