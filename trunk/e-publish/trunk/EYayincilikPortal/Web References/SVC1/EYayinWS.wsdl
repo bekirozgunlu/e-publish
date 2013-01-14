@@ -151,6 +151,8 @@
           <s:element minOccurs="1" maxOccurs="1" name="MagazineID" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="MagazineName" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="AuthorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="publisherName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="uploadDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="PublishedMagazineID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="isActive" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="ApprovalStateText" type="s:string" />
