@@ -18,8 +18,8 @@ namespace EYayincilikPortal
             {
                 sessionUser = (Session["user"] as User);
                 Label1.Text = sessionUser.name + ' ' + sessionUser.surName.ToUpper();
-
-                if (Session["isEditor"]!=null && Session["isEditor"].ToString() == "1") 
+                loginlink.Visible = false;
+                if (Session["isEditor"] != null && Session["isEditor"].ToString() == "1")
                 {
                     btnEditor.Visible = true;
                 }
@@ -41,8 +41,12 @@ namespace EYayincilikPortal
                 {
                     btnHakem.Visible = true;
                 }
+                loginlink1.Visible = true;
             }
-           
+            else {
+                loginlink1.Visible = false;
+                loginlink.Visible = true;
+            }
            // DataBind();
         }
 
