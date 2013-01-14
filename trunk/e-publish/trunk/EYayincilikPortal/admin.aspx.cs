@@ -22,9 +22,14 @@ namespace EYayincilikPortal
             BilimDaliSilPanel.Visible = false;
             AltKategoriSilPanel.Visible = false;
             BilimDaliEklePanel.Visible = false;
+            BilimDaliDüzenlePanel.Visible = false;
+            AltKategoriDuzenlePanel.Visible = false;
             EkleButton.Visible = false;
             IptalButton.Visible = false;
             SilButton.Visible = false;
+            DuzenleButton.Visible = false;
+            KaydetButton.Visible = false;
+            DataBind();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,7 +39,7 @@ namespace EYayincilikPortal
         protected void secButton_Click(object sender, EventArgs e)
         {
             Gorunmez_Yap();
-            if(isListesi.SelectedValue.CompareTo("editorEkle")==0)
+            if (isListesi.SelectedValue.CompareTo("editorEkle") == 0)
             {
                 EditorEklePanel.Visible = true;
                 EditorEkleAdiTextBox.Text = "";
@@ -113,6 +118,20 @@ namespace EYayincilikPortal
                 SilButton.Visible = true;
                 IptalButton.Visible = true;
             }
+            else if (isListesi.SelectedValue.CompareTo("bilimDaliDuzenle") == 0)
+            {
+                BilimDaliDüzenlePanel.Visible = true;
+                BilimDaliDuzenleRadioButtonList.ClearSelection();
+                DuzenleButton.Visible = true;
+                IptalButton.Visible = true;
+            }
+            else if (isListesi.SelectedValue.CompareTo("altKategoriDuzenle") == 0)
+            {
+                AltKategoriDuzenlePanel.Visible = true;
+                AltKategoriDuzenleRadioButtonList.ClearSelection();
+                DuzenleButton.Visible = true;
+                IptalButton.Visible = true;
+            }
             MesajLabel.Text = "";
         }
 
@@ -177,7 +196,7 @@ namespace EYayincilikPortal
                     }
                     foreach (int SubScienceId in checkedId)
                     {
-                        mngr.AddSubCategoryToMagazine(SubScienceId,i);
+                        mngr.AddSubCategoryToMagazine(SubScienceId, i);
                     }
                     if (i > 0)
                     {
@@ -234,7 +253,7 @@ namespace EYayincilikPortal
                 Gorunmez_Yap();
                 DataBind();
             }
-            catch(FormatException ex)
+            catch (FormatException ex)
             {
                 string error = ex.Message;
             }
@@ -268,8 +287,8 @@ namespace EYayincilikPortal
                 }
                 else if (isListesi.SelectedValue.CompareTo("bilimDaliSil") == 0)
                 {
-                   mngr.DeleteScienceCategory(Convert.ToInt32(BilimDaliSilRadioButtonList.SelectedValue));
-                   MesajLabel.Text = "Bilim dalı silme işlemi başarılı";
+                    mngr.DeleteScienceCategory(Convert.ToInt32(BilimDaliSilRadioButtonList.SelectedValue));
+                    MesajLabel.Text = "Bilim dalı silme işlemi başarılı";
                 }
                 else if (isListesi.SelectedValue.CompareTo("altKategoriSil") == 0)
                 {
@@ -278,19 +297,87 @@ namespace EYayincilikPortal
                 }
                 isListesi.ClearSelection();
                 Gorunmez_Yap();
-                DataBind();
             }
-            catch(FormatException ex)
+            catch (FormatException ex)
             {
                 string error = ex.Message;
             }
-        
+
         }
 
         protected void IptalButton_Click(object sender, EventArgs e)
         {
             isListesi.ClearSelection();
+            BilimDaliDuzenleBilimDaliAdiTextBox.Visible = false;
+            BilimDaliDuzenleBilimDaliAdiLabel.Visible = false;
+            AltKateGoriDuzenleAltKategoriAdiLabel.Visible = false;
+            AltKategoriDuzenleAltKategoriAdiTextbox.Visible = false;
             Gorunmez_Yap();
+        }
+
+        protected void DuzenleButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (isListesi.SelectedValue.CompareTo("bilimDaliDuzenle") == 0)
+                {
+                    BilimDaliDuzenleBilimDaliAdiTextBox.Text = BilimDaliDuzenleRadioButtonList.SelectedItem.Text;
+                    BilimDaliDuzenleBilimDaliAdiTextBox.Visible = true;
+                    BilimDaliDuzenleBilimDaliAdiLabel.Visible = true;
+                    KaydetButton.Visible = true;
+                    DuzenleButton.Visible = false;
+                }
+                else if (isListesi.SelectedValue.CompareTo("altKategoriDuzenle") == 0)
+                {
+                    AltKategoriDuzenleAltKategoriAdiTextbox.Text = AltKategoriDuzenleRadioButtonList.SelectedItem.Text;
+                    AltKategoriDuzenleAltKategoriAdiTextbox.Visible = true;
+                    AltKateGoriDuzenleAltKategoriAdiLabel.Visible = true;
+                    KaydetButton.Visible = true;
+                    DuzenleButton.Visible = false;
+                }
+
+            }
+            catch (FormatException ex)
+            {
+                string error = ex.Message;
+            }
+        }
+
+        protected void KaydetButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Manager mngr = new Manager();
+                if (isListesi.SelectedValue.CompareTo("bilimDaliDuzenle") == 0)
+                {
+                    ScienceCategory sc = new ScienceCategory();
+                    sc.name = BilimDaliDuzenleBilimDaliAdiTextBox.Text;
+                    sc.id = Convert.ToInt32(BilimDaliDuzenleRadioButtonList.SelectedValue);
+                    sc.isActive = 1;
+                    mngr.UpdateScienceCategory(sc);
+                    MesajLabel.Text = "Bilim dalı düzenleme işlemi başarılı";
+                }
+                else if (isListesi.SelectedValue.CompareTo("altKategoriDuzenle") == 0)
+                {
+                    SubCategory sc = new SubCategory();
+                    sc.name = AltKategoriDuzenleAltKategoriAdiTextbox.Text;
+                    sc.id = Convert.ToInt32(AltKategoriDuzenleRadioButtonList.SelectedValue);
+                    sc.isActive = 1;
+                    mngr.UpdateSubCategory(sc);
+                    MesajLabel.Text = "Alt Kategori düzenleme işlemi başarılı";
+                }
+                BilimDaliDuzenleBilimDaliAdiTextBox.Visible = false;
+                BilimDaliDuzenleBilimDaliAdiLabel.Visible = false;
+                AltKateGoriDuzenleAltKategoriAdiLabel.Visible = false;
+                AltKategoriDuzenleAltKategoriAdiTextbox.Visible = false;
+                isListesi.ClearSelection();
+                Gorunmez_Yap();
+
+            }
+            catch (FormatException ex)
+            {
+                string error = ex.Message;
+            }
         }
     }
 }

@@ -50,7 +50,7 @@
                     <br />
                     <br />
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" 
-                        ShowMessageBox="True" ShowSummary="False" />
+                        ShowMessageBox="True" ShowSummary="False" Height="42px" />
                 </td>
             </tr>
             <tr>
@@ -118,19 +118,11 @@
             </tr>
             <tr>
                 <td class="style3">
-                    Fotograf:</td>
-                <td>
-                    <asp:TextBox ID="TxtFoto" runat="server"></asp:TextBox>
-                    <asp:Button ID="btnFto" runat="server" Text="Upload" />
-                </td>
-            </tr>
-            <tr>
-                <td class="style3">
                     <asp:Label ID="LblCV" runat="server" Text="CV:" Visible="False"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="TxtCV" runat="server" Visible="False"></asp:TextBox>
-                    <asp:Button ID="BtnCv" runat="server" Text="Upload" Visible="False" />
+                    <asp:TextBox ID="TxtCV" runat="server" Visible="False" Height="154px" 
+                        TextMode="MultiLine" Width="203px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -138,8 +130,9 @@
                     &nbsp;</td>
                 <td>
                     <asp:Button ID="BtnKaydet" runat="server" onclick="BtnKaydet_Click" 
-                        Text="Kaydet" />
-                    <asp:Button ID="Btntemizle" runat="server" Text="Temizle" />
+                        Text="Kaydet" CausesValidation="False" />
+                    <asp:Button ID="Button1" runat="server" CausesValidation="False" 
+                        onclick="Button1_Click1" Text="Temizle" />
                 </td>
             </tr>
             <tr>
@@ -152,7 +145,8 @@
                 <td class="style3">
                     &nbsp;</td>
                 <td>
-                    &nbsp;</td>
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
+                </td>
             </tr>
             <tr>
                 <td class="style3">

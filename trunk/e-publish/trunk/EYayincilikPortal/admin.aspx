@@ -3,15 +3,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
 </head>
-<body style="height: 2162px; margin-bottom: 208px">
+<body style="height: 2825px; margin-bottom: 208px">
     <form id="form1" runat="server">
     <p>
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Ana Sayfaya Dön</asp:HyperLink>
     </p>
-    <div style="height: 2109px">
+    <div style="height: 2770px">
     
     &nbsp;<br />
         <asp:Label ID="Label1" runat="server" Text="Yapılacak işi seçin: "></asp:Label>
@@ -23,8 +23,10 @@
             <asp:ListItem Value="dergiEkle">Dergi Ekle</asp:ListItem>
             <asp:ListItem Value="dergiSil">Dergi Sil</asp:ListItem>
             <asp:ListItem Value="bilimDaliEkle">Bilim Dalı Ekle</asp:ListItem>
+            <asp:ListItem Value="bilimDaliDuzenle">Bilim Dalı Düzenle</asp:ListItem>
             <asp:ListItem Value="bilimDaliSil">Bilim Dalı Sil</asp:ListItem>
             <asp:ListItem Value="altKategoriEkle">Alt Kategori Ekle</asp:ListItem>
+            <asp:ListItem Value="altKategoriDuzenle">Alt Kategori Düzenle</asp:ListItem>
             <asp:ListItem Value="altKategoriSil">Alt Kategori Sil</asp:ListItem>
         </asp:DropDownList>
 &nbsp;
@@ -186,19 +188,67 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
         </asp:Panel>
-        <asp:Panel ID="BilimDaliEklePanel" runat="server" Height="23px" Visible="False" 
-            Width="407px">
+        <asp:Panel ID="BilimDaliEklePanel" runat="server" Height="28px" Visible="False" 
+            Width="411px">
             <asp:Label ID="BilimDaliLabel" runat="server" Text="Bilim Dalı Adı: "></asp:Label>
-            <asp:TextBox ID="BilimDaliTextBox" runat="server" Height="16px"></asp:TextBox>
+            <asp:TextBox ID="BilimDaliTextBox" runat="server" Height="25px"></asp:TextBox>
+        </asp:Panel>
+        <asp:Panel ID="BilimDaliDüzenlePanel" runat="server" Height="348px" 
+            Visible="False" Width="410px">
+            <asp:Label ID="BilimDaliDuzenleBilimDaliLabel" runat="server" 
+                Text="Düzenlemek istediğiniz bilim dalını seçin:"></asp:Label>
+            <br />
+            <asp:RadioButtonList ID="BilimDaliDuzenleRadioButtonList" runat="server" 
+                DataSourceID="ObjectDataSource8" DataTextField="name" DataValueField="id">
+            </asp:RadioButtonList>
+            <asp:ObjectDataSource ID="ObjectDataSource8" runat="server" 
+                SelectMethod="ScienceCategoryList" TypeName="EYayincilikPortal.Manager">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="true" Name="onlyActiveRecords" Type="Boolean" />
+                    <asp:Parameter DefaultValue="-1" Name="SubCAtegoryID" Type="Int32" />
+                    <asp:Parameter DefaultValue="-1" Name="MagazineID" Type="Int32" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
+            <br />
+            <asp:Label ID="BilimDaliDuzenleBilimDaliAdiLabel" runat="server" 
+                Text="Bilim Dalı adı:" Visible="False"></asp:Label>
+            <asp:TextBox ID="BilimDaliDuzenleBilimDaliAdiTextBox" runat="server" 
+                Visible="False"></asp:TextBox>
+        </asp:Panel>
+        <asp:Panel ID="AltKategoriDuzenlePanel" runat="server" Height="337px" 
+            Visible="False" Width="410px">
+            Düzenlemek istediğiniz alt kategoriyi seçin:<br />
+            <asp:RadioButtonList ID="AltKategoriDuzenleRadioButtonList" runat="server" 
+                DataSourceID="ObjectDataSource9" DataTextField="name" DataValueField="id">
+            </asp:RadioButtonList>
+            <asp:ObjectDataSource ID="ObjectDataSource9" runat="server" 
+                SelectMethod="GetSubCategoryList" TypeName="EYayincilikPortal.Manager">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="true" Name="onlyActiveRecords" Type="Boolean" />
+                    <asp:Parameter DefaultValue="" Name="scienceCAtegorylist" Type="String" />
+                    <asp:Parameter DefaultValue="-1" Name="MagazineID" Type="Int32" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
+            <br />
+            <asp:Label ID="AltKateGoriDuzenleAltKategoriAdiLabel" runat="server" 
+                Text="Alt Kategori Adı:" Visible="False"></asp:Label>
+            <asp:TextBox ID="AltKategoriDuzenleAltKategoriAdiTextbox" runat="server" 
+                Visible="False"></asp:TextBox>
         </asp:Panel>
         <br />
 &nbsp;&nbsp;&nbsp;
         <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="DuzenleButton" runat="server" onclick="DuzenleButton_Click" 
+            Text="Düzenle" Visible="False" />
+        <asp:Button 
             ID="SilButton" runat="server" onclick="SilButton_Click" Text="Sil" 
             Visible="False" Width="57px" />
         <asp:Button ID="EkleButton" runat="server" onclick="EkleButton_Click" 
             Text="Ekle" Width="69px" Visible="False" />
+    
+        <asp:Button ID="KaydetButton" runat="server" onclick="KaydetButton_Click" 
+            Text="Kaydet" Visible="False" Width="56px" />
     
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
