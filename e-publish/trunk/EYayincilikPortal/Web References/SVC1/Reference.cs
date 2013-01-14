@@ -3543,6 +3543,10 @@ namespace EYayincilikPortal.SVC1 {
         
         private string authorNameField;
         
+        private string publisherNameField;
+        
+        private System.DateTime uploadDateField;
+        
         private int publishedMagazineIDField;
         
         private int isActiveField;
@@ -3716,6 +3720,26 @@ namespace EYayincilikPortal.SVC1 {
             }
             set {
                 this.authorNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string publisherName {
+            get {
+                return this.publisherNameField;
+            }
+            set {
+                this.publisherNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime uploadDate {
+            get {
+                return this.uploadDateField;
+            }
+            set {
+                this.uploadDateField = value;
             }
         }
         
