@@ -651,7 +651,32 @@ namespace EYayincilikWS
 
         public System.Data.DataTable GetReferenceList(int MainPaperID, int ReferencedPaperId)
         {
-            return DBManager.singleton().GetReferenceList(MainPaperID, ReferencedPaperId);
+            return DBManager.singleton().GetReferenceList(MainPaperID, ReferencedPaperId); 
+        }
+
+
+        public Paper[] GetReferencedPapersList(int PaperID)
+        {
+            return DBManager.singleton().GetReferencedPapersList(PaperID);
+        }
+
+        [WebMethod]
+
+        public Paper[] GetReferencesofPaperList(int PaperID)
+        {
+            return DBManager.singleton().GetReferencesofPaperList(PaperID);
+        }
+        [WebMethod]
+
+        public SubCategory[] GetSubCategoryNameList(string subCategoryId, bool onlyActiveRecords)
+        {
+            return DBManager.singleton().GetSubCategoryNameList(subCategoryId, onlyActiveRecords);
+        }
+        [WebMethod]
+
+        public BSClass.SubCategory[] GetSubCategoriesofPaperList(string PaperID)
+        {
+            return DBManager.singleton().GetSubCategoriesofPaperList(PaperID);
         }
 
     }
