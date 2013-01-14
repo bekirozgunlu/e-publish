@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data; 
 
 
 namespace EYayincilikPortal
@@ -510,7 +511,48 @@ namespace EYayincilikPortal
             }
         }
 
-        
+        public int AddSubCategorytoPaper(int sId, int PaperId)
+        {
+             try
+             {
+                  int newID = svc.AddSubCategorytoPaper(sId, PaperId);
+                  return newID;
+             }
+             catch (Exception ex)
+             {
+                  string error = ex.Message;
+                  //LOG ERROR
+                  //RETURN NULL
+                  return 0;
+             }
+             finally
+             {
+                  //dispose unused objects...
+             }
+
+        }
+
+        public int AddReferencetoPaper(int rId, int PaperId)
+        {
+             try
+             {
+                  int newID = svc.AddReferencetoPaper(rId, PaperId);
+                  return newID;
+             }
+             catch (Exception ex)
+             {
+                  string error = ex.Message;
+                  //LOG ERROR
+                  //RETURN NULL
+                  return 0;
+             }
+             finally
+             {
+                  //dispose unused objects...
+             }
+
+        }
+
         public void DeletePaper(int PaperID)
         {
             //makes a SVC1.Publisher record  passive...
@@ -1408,8 +1450,27 @@ namespace EYayincilikPortal
                 //dispose unused objects...
             }
         }
+       //TODO
+        public DataTable GetReferenceList(int MasterPaperID, int ReferencedPaperId)
+        {
 
-        
+             try
+             {
+                  return svc.GetReferenceList(MasterPaperID, ReferencedPaperId);
+
+             }
+             catch (Exception ex)
+             {
+                  string error = ex.Message;
+                  //LOG ERROR
+                  //RETURN 
+                  return null;
+             }
+             finally
+             {
+                  //dispose unused objects...
+             }
+        }
         public SVC1.Paper[] GetPaperList(string PublishedMagazineIDList,string MagazineIDList, string PaperIDList, int RefereeID, int PublisherID, int AuthorID, string category, string SubCategoryIDlist, bool onlyActiveRecords)
         {
             
